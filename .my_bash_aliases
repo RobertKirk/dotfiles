@@ -1,11 +1,9 @@
 # A file with various aliases for git, vscode environment and others
 
-alias stashfix='git commit -q -m "FIXUPHERE adjustment to be fixuped" && git stash push -m "temporary stash" && git rebase -i HEAD^^^^ && git stash pop &&                                                                                                                            
-git push origin $(git rev-parse --abbrev-ref HEAD) -f'                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                      
-alias cleanfix='git commit -q -m "FIXUPHERE adjustment to be fixuped" && git rebase -i HEAD^^^^ && echo "remember to pop the stash if used the wrong command" &&                                                                                                                      
-git push origin $(git rev-parse --abbrev-ref HEAD) -f'                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                                                      
+if [ -f ~/repos/personal/.my_aliases ]; then
+    . ~/repos/personal/.my_aliases
+fi
+
 # Git branch bash completion                                                                                                                                                                                                                                                          
 if [ -f ~/.git-completion.bash ]; then                                                                                                                                                                                                                                                
   . ~/.git-completion.bash                                                                                                                                                                                                                                                            
@@ -29,32 +27,3 @@ gitshort gco checkout
 gitshort gp pull                                                                                                                                                                                                                                                                      
 gitshort ga add                                                                                                                                                                                                                                                                       
                                                                                                                                                                                                                                                                                       
-alias gs='git status'                                                                                                                                                                                                                                                                 
-alias gl='git log'                                                                                                                                                                                                                                                                    
-alias ga='git add'                                                                                                                                                                                                                                                                    
-alias gc='git commit -v'                                                                                                                                                                                                                                                              
-alias gp='git pull'                                                                                                                                                                                                                                                                   
-alias gco='git checkout'                                                                                                                                                                                                                                                              
-alias gnb='git checkout -b'                                                                                                                                                                                                                                                           
-alias grb='git rebase'                                                                                                                                                                                                                                                                
-alias grbi='git rebase -i HEAD^^^^^^^'                                                                                                                                                                                                                                                
-alias grbm='git rebase master'                                                                                                                                                                                                                                                        
-alias gpm='git checkout master && git pull'                                                                                                                                                                                                                                           
-alias gpb='git push origin $(git rev-parse --abbrev-ref HEAD)'                                                                                                                                                                                                                        
-alias gpbf='git push origin $(git rev-parse --abbrev-ref HEAD) -f'                                                                                                                                                                                                                    
-alias gsh='git show' 
-alias gshh='git show HEAD'                                                                                                                                                                                                                                                               
-alias gshh^='git show HEAD^'
-alias gsth='git stash'                                                                                                                                                                                                                                                                
-alias gsthl='git stash list'                                                                                                                                                                                                                                                          
-alias gsthpm='git stash push -m'                                                                                                                                                                                                                                                      
-alias gsthd='git stash drop'
-alias grs='git reset'
-
-alias vscodenv='deactivate && cd ~/smkcodeconfig && pipenv run coding && pyms && dev'
-
-alias mrc='xdotool mousemove 500 1325 sleep 0.1 keydown ctrl sleep 0.3 click 1 sleep 0.1 keyup ctrl'
-
-export VISUAL=vim
-export EDITOR="$VISUAL"
-

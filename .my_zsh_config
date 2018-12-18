@@ -1,0 +1,14 @@
+
+BULLETTRAIN_PROMPT_ORDER=(
+  dir
+  screen
+  virtualenv
+  git
+  cmd_exec_time 
+)
+
+BULLETTRAIN_PROMPT_CHAR=" "
+
+BULLETTRAIN_VIRTUALENV_FG=black
+
+BULLETTRAIN_DIR_EXTENDED=2

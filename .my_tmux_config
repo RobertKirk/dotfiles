@@ -6,6 +6,25 @@ set-option -g status-position top
 
 set-option -g repeat-time 0
 
+set -g mouse on
+
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+
+# split panes using | and -
+bind | split-window -h
+bind - split-window -v
+unbind '"'
+unbind %
+
+bind r source-file ~/.tmux.conf
+
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
 # Removes ESC delay
 set -sg escape-time 0
 

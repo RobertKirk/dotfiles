@@ -4,7 +4,7 @@ git push origin $(git rev-parse --abbrev-ref HEAD) -f'
 alias cleanfix='git commit -q -m "FIXUPHERE adjustment to be fixuped" && git rebase -i HEAD^^^^ && echo "remember to pop the stash if used the wrong command" &&                                                                                                                      
 git push origin $(git rev-parse --abbrev-ref HEAD) -f'
 
-alias gs='git status'                                                                                                                                                                                                                                                                 
+alias gs='git status'                                                                                                                                                                                                                                                                
 alias gl='git log'                                                                                                                                                                                                                                                                    
 alias ga='git add'                                                                                                                                                                                                                                                                    
 alias gc='git commit -v'                                                                                                                                                                                                                                                              
@@ -32,3 +32,10 @@ alias mrc='xdotool mousemove 500 1325 sleep 0.1 keydown ctrl sleep 0.3 click 1 s
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+mkalias() {
+   echo "alias $1='$2'" >> ~/.aliases
+   source ~/.aliases
+}
+
+

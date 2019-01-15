@@ -18,7 +18,7 @@ alias gpm='git checkout master && git pull'
 alias gpb='git push origin $(git rev-parse --abbrev-ref HEAD)'                                                                                                                                                                                                                        
 alias gpbf='git push origin $(git rev-parse --abbrev-ref HEAD) -f'                                                                                                                                                                                                                    
 alias gsh='git show' 
-alias gshh='git show HEAD'                                                                                                                                                                                                                                                               
+alias gshh='git show HEAD'
 alias gshh^='git show HEAD^'
 alias gsth='git stash'                                                                                                                                                                                                                                                                
 alias gsthl='git stash list'                                                                                                                                                                                                                                                          
@@ -28,7 +28,7 @@ alias grs='git reset'
 
 alias vscodenv='deactivate && cd ~/smkcodeconfig && pipenv run coding && pyms && dev'
 
-alias mrc='xdotool mousemove 500 1325 sleep 0.1 keydown ctrl sleep 0.3 click 1 sleep 0.1 keyup ctrl'
+alias mrc='xdotool mousemove 500 1275 sleep 0.1 keydown ctrl sleep 0.3 click 1 sleep 0.1 keyup ctrl'
 
 export VISUAL=vim
 export EDITOR="$VISUAL"

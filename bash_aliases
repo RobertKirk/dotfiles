@@ -1,7 +1,7 @@
 # A file with various aliases for git, vscode environment and others
 
-if [ -f ~/repos/personal/.my_aliases ]; then
-    . ~/repos/personal/.my_aliases
+if [ -f ~/repos/personal/aliases ]; then
+    . ~/repos/personal/aliases
 fi
 
 # Git branch bash completion

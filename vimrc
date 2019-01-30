@@ -1,0 +1,2 @@
+source ~/repos/personal/vimrc
+

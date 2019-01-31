@@ -1,0 +1,78 @@
+# make C-a the prefix
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+# Start windows and panes at 1, not 0
+set -g base-index 1
+set -g pane-base-index 1
+
+# Status bar at the top
+set-option -g status-position top
+
+# Status refresh often
+set-option -g repeat-time 0
+
+# Enable use mouse
+set -g mouse on
+
+# Make it so my pane names stick
+set-option -g allow-rename off
+
+# sane movement
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+
+# Smart pane switching with awareness of Vim splits.
+# # See: https://github.com/christoomey/vim-tmux-navigator
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+bind-key -n M-Left if-shell "$is_vim" "send-keys M-Left"  "select-pane -L"
+bind-key -n M-Down if-shell "$is_vim" "send-keys M-Down"  "select-pane -D"
+bind-key -n M-Up if-shell "$is_vim" "send-keys M-Up"  "select-pane -U"
+bind-key -n M-Right if-shell "$is_vim" "send-keys M-Right"  "select-pane -R"
+bind-key -n M-/ if-shell "$is_vim" "send-keys M-w" "select-pane -l"
+bind-key -T copy-mode-vi M-Up select-pane -L
+bind-key -T copy-mode-vi M-Down select-pane -D
+bind-key -T copy-mode-vi M-Up select-pane -U
+bind-key -T copy-mode-vi M-Right select-pane -R
+bind-key -T copy-mode-vi M-0 select-pane -l
+
+
+# split panes using | and -
+bind | split-window -h
+bind - split-window -v
+unbind '"'
+unbind %
+
+# sane window switching
+bind -n C-PPage previous-window
+bind -n C-NPage next-window
+
+# nice copy mode
+bind -n F4 copy-mode
+
+# reloading configuration
+bind r source-file ~/.tmux.conf
+
+# Removes ESC delay
+set -sg escape-time 0
+
+# List of plugins
+set -g @tpm_plugins '                     \
+    caiogondim/maglev                     \
+    tmux-plugins/tpm                      \
+    tmux-plugins/tmux-sensible            \
+    tmux-plugins/tmux-resurrect           \
+    tmux-plugins/tmux-continuum           \
+    tmux-plugins/tmux-yank                \
+    tmux-plugins/tmux-pain-control        \
+    tmux-plugins/tmux-copycat             \
+    tmux-plugins/tmux-open                \
+    tmux-plugins/tmux-cpu                 \
+    tmux-plugins/tmux-prefix-highlight    \
+'
+
+set-environment -g TMUX_PLUGIN_MANAGER_PATH '~/.tmux/plugins/'

@@ -25,3 +25,4 @@ gitshort() {
 gitshort gco checkout
 gitshort gp pull
 gitshort ga add
+

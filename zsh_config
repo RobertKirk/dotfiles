@@ -47,6 +47,8 @@ POWERLEVEL9K_LOAD_CRITICAL_VISUAL_IDENTIFIER_COLOR="darkred"
 POWERLEVEL9K_LOAD_WARNING_VISUAL_IDENTIFIER_COLOR="darkyellow"
 POWERLEVEL9K_LOAD_NORMAL_VISUAL_IDENTIFIER_COLOR="darkgreen"
 
+eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced)"
+
 bindkey -e
 
 unsetopt share_history

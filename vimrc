@@ -6,6 +6,8 @@ let mapleader=","
 
 " leader w saves
 nmap <leader>w :w!<cr>
+" qw saves and quits
+nmap <leader>qw :wq<cr>
 
 " tab configuration
 set tabstop=4 softtabstop=4 expandtab
@@ -19,10 +21,25 @@ set smartcase
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
 map <space> /
 map <c-space> ?
 
-" turn off search highlight
+" move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+"k turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
 " show paranthesis match
@@ -50,6 +67,10 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " filetype specific stuff
 augroup configgroup
@@ -122,6 +143,12 @@ set wildmode=list:longest,full   "make cmdline tab completion similar to bash
 set wildmenu                     "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~      "stuff to ignore when tab completing
 
+" tags
+nmap <F8> :TagbarToggle<CR>
+
+" airline config
+let g:airline#extensions#tabline#enabled = 1
+
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
@@ -134,10 +161,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/goyo.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'ervandew/supertab'
+Plug 'jiangmiao/auto-pairs'
+Plug 'majutsushi/tagbar'
+Plug 'easymotion/vim-easymotion'
 
 " Initialize plugin system
 call plug#end()
-
-" airline config
-let g:airline#extensions#tabline#enabled = 1
 

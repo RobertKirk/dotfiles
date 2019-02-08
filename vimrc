@@ -4,10 +4,17 @@ highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 
 let mapleader=","
 
+set cursorline        " highlight current line
+set cursorcolumn      " highlight current column
+highlight CursorColumn ctermbg=darkgrey
+set nowrap
+
 " leader w saves
 nmap <leader>w :w!<cr>
-" qw saves and quits
+" leader qw saves and quits
 nmap <leader>qw :wq<cr>
+" leader x exits 
+nmap <leader>x :x<cr>
 
 " tab configuration
 set tabstop=4 softtabstop=4 expandtab
@@ -36,12 +43,11 @@ map <space> /
 map <c-space> ?
 
 " move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+map  <Leader>wo <Plug>(easymotion-bd-w)
+nmap <Leader>wo <Plug>(easymotion-overwin-w)
 
-"k turn off search highlight
+",<space> turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
-
 " show paranthesis match
 set showmatch
 
@@ -50,11 +56,18 @@ set foldenable
 set foldlevelstart=10   " open most folds by default
 set foldmethod=indent
 
+noremap <Leader>y "+y
+noremap <Leader>p "+p
+noremap <Leader>Y "*y
+noremap <Leader>P "*p
+
 " only redraw when we need to
 set lazyredraw
 
-" syntax completion
-syntax enable
+let g:ale_completion_enabled = 1
+let g:ale_linters = {
+    \ 'sh': ['language_server'],
+    \ }
 
 " strips trailing whitespace at the end of files. this
 " is called on buffer write in the autogroup below.
@@ -70,14 +83,14 @@ endfunction
 
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_format = '[%linter%] (code): %s [%severity%]'
 
 " filetype specific stuff
 augroup configgroup
     autocmd!
     autocmd VimEnter * highlight clear SignColumn
-    autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
-                \:call <SID>StripTrailingWhitespaces()
+"    autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
+"                \:call <SID>StripTrailingWhitespaces()
     autocmd FileType python setlocal commentstring=#\ %s
     autocmd BufEnter *.cls setlocal filetype=java
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
@@ -135,9 +148,10 @@ endif
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTreeVCS | endif
 nnoremap <leader>nt :NERDTreeToggle<cr>
 nnoremap <leader>nf :NERDTreeFind<cr>
+let NERDTreeIgnore=['\__pycache__', '\.hypothesis', '**/.mypy_cache', '**/.pytest_cache', '**/*.egg-info', '**/.tox',]
 
 set wildmode=list:longest,full   "make cmdline tab completion similar to bash
 set wildmenu                     "enable ctrl-n and ctrl-p to scroll thru matches
@@ -148,6 +162,9 @@ nmap <F8> :TagbarToggle<CR>
 
 " airline config
 let g:airline#extensions#tabline#enabled = 1
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')

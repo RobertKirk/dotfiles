@@ -21,14 +21,14 @@ alias gsthl='git stash list'
 alias gsthpm='git stash push -m'
 alias gsthd='git stash drop'
 alias grs='git reset'
-alias vscodenv='deactivate && cd ~/smkcodeconfig && pipenv run coding && pyms && dev'
+alias vscd='deactivate && cd ~/smkcodeconfig && pipenv run coding && pyms && dev'
 alias mrc='xdotool mousemove 500 1275 sleep 0.1 keydown ctrl sleep 0.3 click 1 sleep 0.1 keyup ctrl'
 export VISUAL=vim
 export EDITOR="$VISUAL"
+alias v=vim
 
 mkalias() {
    echo "alias $1='$2'" >> ~/.aliases
    source ~/.zshrc
 }
-
 

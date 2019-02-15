@@ -151,7 +151,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTreeVCS | endif
 nnoremap <leader>nt :NERDTreeToggle<cr>
 nnoremap <leader>nf :NERDTreeFind<cr>
-let NERDTreeIgnore=['\__pycache__', '\.hypothesis', '**/.mypy_cache', '**/.pytest_cache', '**/*.egg-info', '**/.tox',]
+" let NERDTreeIgnore=['\__pycache__', '\.hypothesis', '**/.mypy_cache', '**/.pytest_cache', '**/*.egg-info', '**/.tox',]
 
 set wildmode=list:longest,full   "make cmdline tab completion similar to bash
 set wildmenu                     "enable ctrl-n and ctrl-p to scroll thru matches

@@ -23,12 +23,15 @@ alias gsthd='git stash drop'
 alias grs='git reset'
 alias vscd='deactivate && cd ~/smkcodeconfig && pipenv run coding && pyms && dev'
 alias mrc='xdotool mousemove 500 1275 sleep 0.1 keydown ctrl sleep 0.3 click 1 sleep 0.1 keyup ctrl'
-export VISUAL=vim
-export EDITOR="$VISUAL"
 alias v=vim
+
+alias reload='source ~/.zshrc'
+alias jpn='jupyter notebook'
+alias album='tizonia --spotify-album'
+alias personal='cd ~/repos/personal/'
+alias lua='lua5.3'
 
 mkalias() {
    echo "alias $1='$2'" >> ~/.aliases
    source ~/.zshrc
 }
-

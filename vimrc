@@ -36,11 +36,11 @@ set smartcase
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
-"leader <space> to turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
-
-" KEYBOARD SHORCUTS
+" KEYBOARD SHORTCUTS
 let mapleader=","
+
+" leader <space> to turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
 
 " Pasting from system keyboard easily
 noremap <Leader>y "+y
@@ -90,7 +90,7 @@ augroup END
 autocmd BufWritePre,BufRead *.c,*.conf,*.cpp,*.css,*.erb,*.js,*.json,*.md,*.php,*.pp,*.py,*.rst,*.sh,*.sql :%s/\s\+$//e
 
 " VIM BACKUP
-" backup to seperate folder
+" backup to separate folder
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*

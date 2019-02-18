@@ -30,6 +30,7 @@ alias jpn='jupyter notebook'
 alias album='tizonia --spotify-album'
 alias personal='cd ~/repos/personal/'
 alias lua='lua5.3'
+alias ag="ag --color-line-number '1;133' --color-path '1;230'"
 
 mkalias() {
    echo "alias $1='$2'" >> ~/.aliases

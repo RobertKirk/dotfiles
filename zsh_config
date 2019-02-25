@@ -34,9 +34,12 @@ POWERLEVEL9K_LOAD_CRITICAL_VISUAL_IDENTIFIER_COLOR="darkred"
 POWERLEVEL9K_LOAD_WARNING_VISUAL_IDENTIFIER_COLOR="darkyellow"
 POWERLEVEL9K_LOAD_NORMAL_VISUAL_IDENTIFIER_COLOR="darkgreen"
 
-eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced)"
+# tmux zsh config
+ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_FIXTERM="true"
 
-alias b='z -b'
+# lua z autojumper install
+eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced)"
 
 unsetopt share_history
 unsetopt inc_append_history
@@ -45,7 +48,7 @@ setopt append_history
 # Path to your oh-my-zsh installation.
 export ZSH="/home/robert/.oh-my-zsh"
 
-# Set name of the theme to loadZ
+# Set name of the theme to load
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 HYPHEN_INSENSITIVE="true"
@@ -70,29 +73,16 @@ COMPLETION_WAITING_DOTS="true"
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
 # You can set one of the optional three formats:
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
 HIST_STAMPS="yyyy-mm-dd"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(git command-not-found debian docker extract pip python tmux websearch)
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then

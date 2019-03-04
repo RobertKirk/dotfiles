@@ -84,16 +84,16 @@ HIST_STAMPS="yyyy-mm-dd"
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git sudo command-not-found debian docker extract pip python tmux websearch vi-mode)
+plugins=(git sudo command-not-found debian docker extract pip python tmux websearch)
 
 # vi-mode stuff
-bindkey -v
-export KEYTIMEOUT=10
-bindkey -M viins 'jk' vi-cmd-mode
+# bindkey -v
+# export KEYTIMEOUT=10
+# bindkey -M viins 'jk' vi-cmd-mode
 
 source $ZSH/oh-my-zsh.sh
 
-bindkey -M viins '^S' sudo-command-line
+# bindkey -M viins '^S' sudo-command-line
 
 # Preferred editor for local and remote sessions
 export EDITOR='vim'

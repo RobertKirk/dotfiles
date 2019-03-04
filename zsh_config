@@ -2,7 +2,7 @@
 POWERLEVEL9K_MODE='nerdfont-complete'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir virtualenv anaconda vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
 
 POWERLEVEL9K_LINUX_UBUNTU_ICON=""
 POWERLEVEL9K_OS_ICON_FOREGROUND="red"
@@ -88,7 +88,7 @@ plugins=(git sudo command-not-found debian docker extract pip python tmux websea
 
 # vi-mode stuff
 # bindkey -v
-# export KEYTIMEOUT=10
+export KEYTIMEOUT=10
 # bindkey -M viins 'jk' vi-cmd-mode
 
 source $ZSH/oh-my-zsh.sh
@@ -101,5 +101,6 @@ export EDITOR='vim'
 # Athame working
 export ATHAME_SHOW_MODE=1
 export ATHAME_SHOW_COMMAND=1
+export ATHAME_TEST_RC=~/.athamerc
 unset zle_bracketed_paste
 

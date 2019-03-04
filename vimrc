@@ -183,6 +183,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ivalkeen/nerdtree-execute'
 Plug 'bkad/CamelCaseMotion'
 Plug 'tmhedberg/SimpylFold'
+Plug 'mhinz/vim-startify'
 
 " Initialize plugin system
 call plug#end()

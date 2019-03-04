@@ -1,5 +1,5 @@
 sudo apt-get update
-sudo apt-get install vim zsh spotifycli gnome-tweaks tmux curl wget wmctrl git ssh openssh sakura tizonia lua5.3 psql
+sudo apt-get install vim zsh spotifycli gnome-tweaks tmux curl wget wmctrl git ssh openssh sakura tizonia lua5.3 psql ranger powerline
 
 # vscode, spotify, firefox, wavebox, oh-my-zsh, fonts, anaconda, python latest, z.lua
 
@@ -8,5 +8,5 @@ mkdir repos
 touch .vimrc
 touch .zshrc
 
-# vscode plugins: vim, git, python, base16themes, gitlens, bracket pair colourizer 2, vscode-spotify, material icon theme zenburn
+# vscode plugins: vim, git, python, base16themes, gitlens, bracket pair colourizer 2, material icon theme zenburn
 

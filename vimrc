@@ -127,8 +127,6 @@ nmap <Leader>wo <Plug>(easymotion-overwin-w)
 
 " nerdtree
 map <C-n> :NERDTreeFocus<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTreeVCS | endif
 " let NERDTreeIgnore=['\__pycache__$[[dir]]', '\*.egg-info$[[dir]]']
 
 set wildmode=list:longest,full   "make cmdline tab completion similar to bash

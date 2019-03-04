@@ -159,6 +159,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" powerline setup (just trying)
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
@@ -175,6 +180,9 @@ Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
 Plug 'easymotion/vim-easymotion'
+Plug 'ivalkeen/nerdtree-execute'
+Plug 'bkad/CamelCaseMotion'
+Plug 'tmhedberg/SimpylFold'
 
 " Initialize plugin system
 call plug#end()

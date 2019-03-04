@@ -81,4 +81,8 @@ set -g @yank_selection 'clipboard'
 set -g @yank_selection_mouse 'primary'
 set -g @yank_action 'copy-pipe-and-cancel'
 
+# trying out powerline
+run-shell "powerline-daemon -q"
+source "/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf"
+
 set-environment -g TMUX_PLUGIN_MANAGER_PATH '~/.tmux/plugins/'

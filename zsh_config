@@ -2,7 +2,7 @@
 POWERLEVEL9K_MODE='nerdfont-complete'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir virtualenv anaconda vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status time)
 
 POWERLEVEL9K_LINUX_UBUNTU_ICON=""
 POWERLEVEL9K_OS_ICON_FOREGROUND="red"
@@ -80,13 +80,16 @@ HIST_STAMPS="yyyy-mm-dd"
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git command-not-found debian docker extract pip python tmux websearch)
+plugins=(git sudo command-not-found debian docker extract pip python tmux websearch vi-mode)
+
+# vi-mode stuff
+bindkey -v
+export KEYTIMEOUT=10
+bindkey -M viins 'jk' vi-cmd-mode
 
 source $ZSH/oh-my-zsh.sh
 
+bindkey -M viins '^S' sudo-command-line
+
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
+export EDITOR='vim'

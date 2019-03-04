@@ -73,6 +73,7 @@ set -g @tpm_plugins '                     \
     tmux-plugins/tmux-cpu                 \
     tmux-plugins/tmux-prefix-highlight    \
     pwittchen/tmux-plugin-spotify         \
+    pwittchen/tmux-plugin-ram             \
 '
 
 # copy mode settings

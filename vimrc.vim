@@ -1,3 +1,4 @@
+" Obviously
 set nocompatible
 
 " VIEW SETTINGS
@@ -10,6 +11,9 @@ set cursorline        " highlight current line
 set cursorcolumn      " highlight current column
 highlight CursorColumn ctermbg=darkgrey
 set nowrap
+
+" keep the cursor on the screen
+set scrolloff=5
 
 " Return to last position on opening file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -91,6 +95,9 @@ augroup configgroup
 augroup END
 autocmd BufWritePre,BufRead *.c,*.conf,*.cpp,*.css,*.erb,*.js,*.json,*.md,*.php,*.pp,*.py,*.rst,*.sh,*.sql :%s/\s\+$//e
 
+filetype plugin on
+syntax on
+
 " VIM BACKUP
 " backup to separate folder
 set backup
@@ -148,6 +155,10 @@ let g:ale_echo_msg_format = '[%linter%] (code): %s [%severity%]'
 " TAG setup
 nmap <F8> :TagbarToggle<CR>
 
+" Calendar Setup
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+
 " airline config
 let g:airline#extensions#tabline#enabled = 1
 " Set this. Airline will handle the rest.
@@ -186,6 +197,8 @@ Plug 'ivalkeen/nerdtree-execute'
 Plug 'bkad/CamelCaseMotion'
 Plug 'tmhedberg/SimpylFold'
 Plug 'mhinz/vim-startify'
+Plug 'vimwiki/vimwiki'
+Plug 'itchyny/calendar.vim'
 
 " Initialize plugin system
 call plug#end()

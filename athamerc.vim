@@ -1,7 +1,10 @@
 " show paranthesis match
 set showmatch
 
-" TAB SETTINGS
+" search stop at bottom/top of page
+set nowrapscan
+
+"TAB SETTINGS
 set tabstop=4 softtabstop=4 expandtab
 
 " KEYBOARD SHORTCUTS

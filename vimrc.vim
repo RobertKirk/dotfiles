@@ -1,3 +1,5 @@
+set nocompatible
+
 " VIEW SETTINGS
 " Setting coloured column
 colors zenburn

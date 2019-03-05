@@ -14,7 +14,7 @@ noremap <Leader>Y "*y
 noremap <Leader>P "*p
 
 " jk is escape
-inoremap jk <esc>
+imap jk 
 
 " Easymotion
 " <Leader>f{char} to move to {char}

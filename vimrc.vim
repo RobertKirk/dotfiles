@@ -71,7 +71,11 @@ inoremap jk <esc>
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
-" Move a line of text using ALT+[jk] or Command+[jk] on mac
+" incrementing
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+"Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
@@ -152,7 +156,10 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] (code): %s [%severity%]'
 
-" TAG setup
+"PGSQL SETUP
+let g:sql_type_default = 'pgsql'
+
+"TAG setup
 nmap <F8> :TagbarToggle<CR>
 
 " Calendar Setup
@@ -165,17 +172,17 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
+" powerline setup (just trying)
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+
 " Autoloading vim plugins
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
-" powerline setup (just trying)
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -199,6 +206,7 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'mhinz/vim-startify'
 Plug 'vimwiki/vimwiki'
 Plug 'itchyny/calendar.vim'
+Plug 'lifepillar/pgsql.vim'
 
 " Initialize plugin system
 call plug#end()

@@ -20,9 +20,7 @@ alias gsthpm='git stash push -m'
 alias gsthd='git stash drop'
 alias grs='git reset'
 
-alias vscd='deactivate && cd ~/smkcodeconfig && pipenv run coding && pyms && dev'
 alias v=vim
-alias reload='source ~/.zshrc'
 alias jpn='jupyter notebook'
 alias album='tizonia --spotify-album'
 alias personal='cd ~/repos/personal/'
@@ -33,6 +31,9 @@ alias personal='cd ~/repos/personal/'
 alias reload='source ~/.zshrc'
 alias b='z -b'
 alias album='tizonia --spotify-album'
+alias l='ll'
+alias repo='cd ~/repos'
+alias r=ranger
 
 mkalias() {
    echo "alias $1='$2'" >> ~/.aliases.sh

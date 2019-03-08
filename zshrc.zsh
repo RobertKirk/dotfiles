@@ -99,7 +99,8 @@ eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced)"
 #}}}
 #}}}
 # SCRIPTS{{{
+export SCRIPTS_ROOT='/home/robert/repos/personal/scripts'
 export GIT_WORKTREE_DIR='/home/robert/git-worktrees'
-source scripts/git_worktrees.sh
+source $SCRIPTS_ROOT/git_worktrees.sh
 #}}}
 # vim:foldmethod=marker:foldlevel=0

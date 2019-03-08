@@ -19,6 +19,7 @@ alias gsthl='git stash list'
 alias gsthpm='git stash push -m'
 alias gsthd='git stash drop'
 alias grs='git reset'
+alias gupdb='git fetch origin master && git rebase master'
 
 alias v=vim
 alias jpn='jupyter notebook'
@@ -34,6 +35,7 @@ alias album='tizonia --spotify-album'
 alias l='ll'
 alias repo='cd ~/repos'
 alias r=ranger
+alias fial='alias | ag'
 
 mkalias() {
    echo "alias $1='$2'" >> ~/.aliases.sh

@@ -1,17 +1,14 @@
 " Robert Kirk
 " GENERIC SETTINGS{{{
 set nocompatible
+set encoding=UTF-8
 set modelines=1
 "}}}
 " VIEW SETTINGS{{{
-" Setting coloured column
-colors zenburn
-let &colorcolumn=111
-highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
+colors default
 
-set cursorline        " highlight current line
 set cursorcolumn      " highlight current column
-highlight CursorColumn ctermbg=darkgrey
+highlight CursorColumn ctermbg=black
 set nowrap
 
 " Always show statusline
@@ -37,8 +34,8 @@ set lazyredraw
 " show paranthesis match
 set showmatch
 
-" show line numbers
-set number
+" show relative line numbers
+set relativenumber
 
 " TAB SETTINGS
 set tabstop=4 softtabstop=4 expandtab
@@ -51,6 +48,18 @@ set smartcase
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
+"}}}
+" POST lOAD fIXED{{{
+function CorrectColorScheme()
+  " Annoying tilde should be hidden
+  highlight EndOfBuffer ctermfg=0
+  highlight VertSplit ctermbg=NONE guifg=#404040 guibg=NONE
+  highlight CursorColumn ctermbg=black
+  python3 from powerline.vim import setup as powerline_setup
+  python3 powerline_setup()
+endfunction
+
+autocmd VimEnter * call CorrectColorScheme()
 "}}}
 " KEYBOARD SHORTCUTS{{{
 let mapleader=","
@@ -66,10 +75,14 @@ noremap <Leader>P "*p
 
 " leader w saves
 nmap <leader>w :w!<cr>
-" leader qw saves and quits
-nmap <leader>qw :wq<cr>
 " leader x exits 
-nmap <leader>x :x<cr>
+nmap <leader>x :bd<cr>
+
+" leader n toggles nerdtree
+map <leader>n :NERDTreeToggle<CR>
+
+" leader m toggles tagbar
+map <leader>n :TagbarToggle<CR>
 
 " CR open/closes folds
 nnoremap <CR> za
@@ -176,10 +189,11 @@ let g:ale_completion_enabled = 1
 let g:ale_linters = {
     \ 'sh': ['language_server'],
     \ }
+let g:ale_sign_column_always = 1
 
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] (code): %s [%severity%]'
+let g:ale_echo_msg_format = '[%linter%] %(code):% %s [%severity%]'
 
 "}}}
 "PGSQL SETUP{{{
@@ -222,16 +236,18 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline-themes/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'yegappan/mru'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/goyo.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ervandew/supertab'
+Plug 'Konfekt/FastFold'
+Plug 'tmhedberg/SimpylFold'
 Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
 Plug 'easymotion/vim-easymotion'
+Plug 'Valloric/YouCompleteMe'
 Plug 'ivalkeen/nerdtree-execute'
 Plug 'bkad/CamelCaseMotion'
 Plug 'tmhedberg/SimpylFold'
@@ -239,6 +255,8 @@ Plug 'mhinz/vim-startify'
 Plug 'vimwiki/vimwiki'
 Plug 'itchyny/calendar.vim'
 Plug 'lifepillar/pgsql.vim'
+Plug 'vim-scripts/CycleColor'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 "}}}
 "}}}

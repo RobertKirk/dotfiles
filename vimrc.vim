@@ -50,10 +50,10 @@ set hlsearch            " highlight matches
 
 "}}}
 " POST lOAD fIXED{{{
-function CorrectColorScheme()
+function! CorrectColorScheme()
   " Annoying tilde should be hidden
-  highlight EndOfBuffer ctermfg=0
-  highlight VertSplit ctermbg=NONE guifg=#404040 guibg=NONE
+  highlight EndOfBuffer ctermfg=16
+  highlight VertSplit ctermbg=16 ctermfg=16
   highlight CursorColumn ctermbg=black
   python3 from powerline.vim import setup as powerline_setup
   python3 powerline_setup()
@@ -112,10 +112,10 @@ nnoremap $ <nop>
 nnoremap ^ <nop>
 
 "Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+"nmap <M-j> mz:m+<cr>`z
+"nmap <M-k> mz:m-2<cr>`z
+"vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+"vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 "}}}
 " FILE SPECIFIC CONFIGS{{{
@@ -151,11 +151,11 @@ set writebackup
 " TMUX PANE NAVIGATION{{{
 " tmux navigation with vim splits as well
 let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <M-Left> :TmuxNavigateLeft<cr>
-nnoremap <silent> <M-Down> :TmuxNavigateDown<cr>
-nnoremap <silent> <M-Up> :TmuxNavigateUp<cr>
-nnoremap <silent> <M-Right> :TmuxNavigateRight<cr>
-nnoremap <silent> <M-w> :TmuxNavigatePrevious<cr>
+nnoremap <silent> h :TmuxNavigateLeft<cr>
+nnoremap <silent> j :TmuxNavigateDown<cr>
+nnoremap <silent> k :TmuxNavigateUp<cr>
+nnoremap <silent> l :TmuxNavigateRight<cr>
+nnoremap <silent> w :TmuxNavigatePrevious<cr>
 let g:tmux_navigator_save_on_switch = 1
 
 "}}}

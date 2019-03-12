@@ -36,6 +36,7 @@ set showmatch
 
 " show relative line numbers
 set relativenumber
+set number
 
 " TAB SETTINGS
 set tabstop=4 softtabstop=4 expandtab
@@ -209,13 +210,6 @@ let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 
 "}}}
-" airline config{{{
-let g:airline#extensions#tabline#enabled = 1
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-
-"}}}
 " powerline setup (just trying){{{
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
@@ -224,39 +218,38 @@ let g:powerline_pyeval = "py3eval"
 set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim/
 "}}}
 " Autoloading vim plugins{{{
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+"if empty(glob('~/.vim/autoload/plug.vim'))
+"  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"endif
 
 "}}}
 " Loading Plugins{{{
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFocus' }
+Plug 'ivalkeen/nerdtree-execute', { 'on':  'NERDTreeFocus' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeFocus' }
+Plug 'tpope/vim-fugitive', { 'on':  'NERDTreeFocus' }
+Plug 'ryanoasis/vim-devicons', { 'on':  'NERDTreeFocus' }
+
+Plug 'vim-scripts/CycleColor', { 'on': 'CycleColorNext' }
+
 Plug 'w0rp/ale'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'yegappan/mru'
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/goyo.vim'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'Konfekt/FastFold'
-Plug 'tmhedberg/SimpylFold'
-Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
-Plug 'easymotion/vim-easymotion'
-Plug 'Valloric/YouCompleteMe'
-Plug 'ivalkeen/nerdtree-execute'
-Plug 'bkad/CamelCaseMotion'
 Plug 'tmhedberg/SimpylFold'
-Plug 'mhinz/vim-startify'
+
+Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
+
+Plug 'yegappan/mru'
+Plug 'junegunn/goyo.vim', { 'for': 'text, markdown' }
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'jiangmiao/auto-pairs'
+Plug 'easymotion/vim-easymotion'
+Plug 'bkad/CamelCaseMotion'
 Plug 'vimwiki/vimwiki'
-Plug 'itchyny/calendar.vim'
-Plug 'lifepillar/pgsql.vim'
-Plug 'vim-scripts/CycleColor'
-Plug 'ryanoasis/vim-devicons'
 call plug#end()
 "}}}
 "}}}

@@ -205,9 +205,8 @@ let g:sql_type_default = 'pgsql'
 nmap <F8> :TagbarToggle<CR>
 
 "}}}
-" Calendar Setup{{{
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
+" NoSwapSuck{{{
+so scripts/noswapsuck.vim
 
 "}}}
 " powerline setup (just trying){{{

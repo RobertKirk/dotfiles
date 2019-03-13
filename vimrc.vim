@@ -7,7 +7,7 @@ set autoread
 set updatetime=100
 "}}}
 " VIEW SETTINGS{{{
-colors default
+colors darkblue
 
 set cursorcolumn      " highlight current column
 highlight CursorColumn ctermbg=black
@@ -57,7 +57,7 @@ function! CorrectColorScheme()
   " Annoying tilde should be hidden
   highlight EndOfBuffer ctermfg=16
   highlight VertSplit ctermbg=16 ctermfg=16
-  highlight CursorColumn ctermbg=black
+  highlight CursorColumn ctermbg=8
   python3 from powerline.vim import setup as powerline_setup
   python3 powerline_setup()
 endfunction

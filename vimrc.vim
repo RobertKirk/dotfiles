@@ -206,7 +206,7 @@ nmap <F8> :TagbarToggle<CR>
 
 "}}}
 " NoSwapSuck{{{
-so scripts/noswapsuck.vim
+so ~/repos/personal/scripts/noswapsuck.vim
 
 "}}}
 " powerline setup (just trying){{{

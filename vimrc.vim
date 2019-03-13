@@ -3,6 +3,8 @@
 set nocompatible
 set encoding=UTF-8
 set modelines=1
+set autoread
+set updatetime=100
 "}}}
 " VIEW SETTINGS{{{
 colors default
@@ -83,7 +85,7 @@ nmap <leader>x :bd<cr>
 map <leader>n :NERDTreeToggle<CR>
 
 " leader m toggles tagbar
-map <leader>n :TagbarToggle<CR>
+map <leader>t :TagbarToggle<CR>
 
 " CR open/closes folds
 nnoremap <CR> za
@@ -205,6 +207,10 @@ let g:sql_type_default = 'pgsql'
 nmap <F8> :TagbarToggle<CR>
 
 "}}}
+"GitGutter setup{{{
+set signcolumn=yes
+
+"}}}
 " NoSwapSuck{{{
 so ~/repos/personal/scripts/noswapsuck.vim
 
@@ -231,23 +237,30 @@ Plug 'ivalkeen/nerdtree-execute', { 'on':  'NERDTreeFocus' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeFocus' }
 Plug 'tpope/vim-fugitive', { 'on':  'NERDTreeFocus' }
 Plug 'ryanoasis/vim-devicons', { 'on':  'NERDTreeFocus' }
+Plug 'airblade/vim-gitgutter'
 
 Plug 'vim-scripts/CycleColor', { 'on': 'CycleColorNext' }
 
 Plug 'w0rp/ale'
+Plug 'tpope/vim-commentary'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-Plug 'Konfekt/FastFold'
 Plug 'majutsushi/tagbar'
-Plug 'tmhedberg/SimpylFold'
-
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 
+Plug 'Konfekt/FastFold'
+Plug 'tmhedberg/SimpylFold'
+
 Plug 'yegappan/mru'
-Plug 'junegunn/goyo.vim', { 'for': 'text, markdown' }
+
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tmux-plugins/vim-tmux'
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
+
+Plug 'junegunn/goyo.vim', { 'for': 'text, markdown' }
 Plug 'vimwiki/vimwiki'
 call plug#end()
 "}}}

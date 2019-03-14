@@ -236,6 +236,7 @@ set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim/
 "}}}
 " Loading Plugins{{{
 call plug#begin('~/.vim/plugged')
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFocus' }
 Plug 'ivalkeen/nerdtree-execute', { 'on':  'NERDTreeFocus' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeFocus' }

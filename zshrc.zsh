@@ -36,11 +36,7 @@ POWERLEVEL9K_LOAD_WARNING_VISUAL_IDENTIFIER_COLOR="darkyellow"
 POWERLEVEL9K_LOAD_NORMAL_VISUAL_IDENTIFIER_COLOR="darkgreen"
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
-#}}}
-# Powerline{{{
-powerline-daemon -q
-. /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
-
+# ZSH_THEME=""
 #}}}
 #}}}
 # ZSH{{{
@@ -97,10 +93,21 @@ unset zle_bracketed_paste
 eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced)"
 
 #}}}
+# pyenv{{{
+[[ -d ~/.pyenv ]] || curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+export PATH="/home/robert/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+#}}}
 #}}}
 # SCRIPTS{{{
 export SCRIPTS_ROOT='/home/robert/repos/personal/scripts'
 export GIT_WORKTREE_DIR='/home/robert/git-worktrees'
 source $SCRIPTS_ROOT/git_worktrees.sh
+#}}}
+# Powerline{{{
+# powerline-daemon -q
+# . /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
+
 #}}}
 # vim:foldmethod=marker:foldlevel=0

@@ -7,7 +7,7 @@ set autoread
 set updatetime=100
 "}}}
 " VIEW SETTINGS{{{
-colors darkblue
+colors darkblue_mine
 
 set cursorcolumn      " highlight current column
 highlight CursorColumn ctermbg=black
@@ -215,6 +215,10 @@ set signcolumn=yes
 so ~/repos/personal/scripts/noswapsuck.vim
 
 "}}}
+" VirtualEnvStuff{{{
+let g:virtualenv_directory = '~/.pyenv/versions'
+
+"}}}
 " powerline setup (just trying){{{
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
@@ -246,6 +250,7 @@ Plug 'tpope/vim-commentary'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'majutsushi/tagbar'
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
+Plug 'plytophogy/vim-virtualenv'
 
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'

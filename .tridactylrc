@@ -32,8 +32,11 @@ unbind --mode=ex <C-a>
 " Let Ctrl-c to copy in the commandline
 unbind --mode=ex <C-c>
 
-" Julia docs' built in search is bad
-set searchurls.julia https://www.google.com/search?q=site:http://docs.julialang.org/en/v1.0%20
+" Postgres docs search
+set searchurls.pg https://www.postgresql.org/search/?u=%2Fdocs%2F10%2F&q=%s
+
+" Pandas docs search (default is bad)
+set searchurls.pd https://www.google.com/search?q=site:http://http://pandas.pydata.org/pandas-docs/version/0.24/+%s
 
 " set editorcmd to suckless terminal, or use the defaults on other platforms
 js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "st vim" : "auto"; tri.config.set("editorcmd", editorcmd)})

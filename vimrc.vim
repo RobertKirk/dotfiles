@@ -184,7 +184,7 @@ nmap <Leader>wo <Plug>(easymotion-overwin-w)
 "}}}
 " Nerdtree{{{
 map <C-n> :NERDTreeFocus<CR>
-" let NERDTreeIgnore=['\__pycache__$[[dir]]', '\*.egg-info$[[dir]]']
+let NERDTreeIgnore=['^__pycache__$[[dir]]', '\.egg-info$[[dir]]']
 
 "}}}
 " ALE setup{{{
@@ -217,6 +217,11 @@ so ~/repos/personal/scripts/noswapsuck.vim
 "}}}
 " CtrlP{{{
 let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_working_path_mode = 'ra'
+let g:cpsm_query_inverting_delimiter = ' '
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_clear_cache_on_exit = 0
 
 "}}}
 " VirtualEnvStuff{{{
@@ -242,15 +247,14 @@ set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim/
 call plug#begin('~/.vim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFocus' }
-Plug 'ivalkeen/nerdtree-execute', { 'on':  'NERDTreeFocus' }
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeFocus' }
-Plug 'tpope/vim-fugitive', { 'on':  'NERDTreeFocus' }
-Plug 'ryanoasis/vim-devicons', { 'on':  'NERDTreeFocus' }
+Plug 'scrooloose/nerdtree'
+Plug 'ivalkeen/nerdtree-execute'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive'
+Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'vim-scripts/CycleColor', { 'on': 'CycleColorNext' }
 
 Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'

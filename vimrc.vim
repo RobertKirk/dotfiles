@@ -215,6 +215,10 @@ set signcolumn=yes
 so ~/repos/personal/scripts/noswapsuck.vim
 
 "}}}
+" CtrlP{{{
+let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+
+"}}}
 " VirtualEnvStuff{{{
 let g:virtualenv_directory = '~/.pyenv/versions'
 
@@ -237,13 +241,15 @@ set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim/
 " Loading Plugins{{{
 call plug#begin('~/.vim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'nixprime/cpsm'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFocus' }
 Plug 'ivalkeen/nerdtree-execute', { 'on':  'NERDTreeFocus' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeFocus' }
 Plug 'tpope/vim-fugitive', { 'on':  'NERDTreeFocus' }
 Plug 'ryanoasis/vim-devicons', { 'on':  'NERDTreeFocus' }
 Plug 'airblade/vim-gitgutter'
-
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'vim-scripts/CycleColor', { 'on': 'CycleColorNext' }
 
 Plug 'w0rp/ale'
@@ -262,7 +268,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
 
-Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
 

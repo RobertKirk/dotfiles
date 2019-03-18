@@ -51,6 +51,10 @@
 		"cwd:current_folder":         "information:regular",
 		"cwd:divider":                { "fg": "gray7", "bg": "gray4", "attrs": [] },
 		"virtualenv":                 { "fg": "white", "bg": "darkcyan", "attrs": [] },
-		"attached_clients":           { "fg": "gray8", "bg": "gray0", "attrs": [] }
+		"attached_clients":           { "fg": "gray8", "bg": "gray0", "attrs": [] },
+        "athame_mode_INSERT":         { "fg": "darkestcyan", "bg": "white", "attrs": ["bold"] },
+        "athame_mode_NORMAL":         { "fg": "darkestgreen", "bg": "brightgreen", "attrs": ["bold"] },
+        "athame_mode_VISUAL":         { "fg": "darkorange", "bg": "brightestorange", "attrs": ["bold"] },
+        "athame_mode_REPLACE":        { "fg": "white", "bg": "brightred", "attrs": ["bold"] }
 	}
 }

@@ -4,7 +4,10 @@
             {
                 "left": [
                     {
-                        "function": "powerline.segments.shell.mode"
+                        "function": "powerline.segments.common.time.date",
+                        "args": {
+                            "format": ""
+                        }
                     },
                     {
                         "function": "powerline.segments.common.net.hostname",
@@ -15,11 +18,6 @@
                         }
                     },
                     {
-                        "function": "powerline.segments.common.env.virtualenv",
-                        "priority": 50,
-                        "before": " "
-                    },
-                    {
                         "function": "powerline.segments.common.env.cwd",
                         "priority": 10,
                         "args": {
@@ -27,6 +25,11 @@
                                 "dir_limit_depth": 4,
                                 "shorten_home": true
                         }
+                    },
+                    {
+                        "function": "powerline.segments.common.env.virtualenv",
+                        "priority": 50,
+                        "before": " "
                     },
                     {
                         "function": "powerline.segments.common.vcs.branch",
@@ -52,24 +55,24 @@
                     {
                         "function": "powerline.segments.common.time.date",
                         "name": "time",
+                        "before": " ",
                         "args": {
                             "format": "%H:%M:%S",
                             "istime": true
                         }
                     },
                     {
-                        "function": "powerline.segments.common.time.date"
+                        "function": "powerline.segments.common.time.date",
+                        "before": " "
                     }
                 ]
-            },
-            {
             }
         ],
         "left": [
 			{
 				"function": "powerline.segments.common.time.date",
 				"args": {
-					"format": "$ "
+					"format": ""
 				}
             }
         ],

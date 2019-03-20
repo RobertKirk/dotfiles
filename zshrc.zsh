@@ -1,5 +1,6 @@
 # DISPLAY{{{
 # Powerlevel9k
+export term="xterm-256color"
 POWERLEVEL9K_MODE='nerdfont-complete'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir virtualenv anaconda vcs)

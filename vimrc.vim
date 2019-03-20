@@ -271,7 +271,7 @@ Plug 'markonm/traces.vim'
 
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
-
+Plug 'cespare/vim-toml'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'

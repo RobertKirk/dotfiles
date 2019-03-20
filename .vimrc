@@ -231,6 +231,10 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_clear_cache_on_exit = 0
 
 "}}}
+" Goyo{{{
+let g:goyo_width = 200
+
+"}}}
 " VirtualEnvStuff{{{
 let g:virtualenv_directory = '~/.pyenv/versions'
 

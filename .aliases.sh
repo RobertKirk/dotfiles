@@ -1,3 +1,7 @@
+if [ -f ~/repos/home/.aliases.sh ]; then;
+  . ~/repos/home/.aliases.sh
+fi
+
 alias gs='git status'
 alias gl='git log'
 alias ga='git add'
@@ -24,18 +28,16 @@ alias gupdb='git checkout master && git pull && git checkout - && git rebase mas
 alias v=vim
 alias jpn='jupyter notebook'
 alias album='tizonia --spotify-album'
-alias personal='cd ~/repos/personal/'
 alias lua='lua5.3'
 alias ag="ag --color-line-number '1;133' --color-path '1;230'"
-alias l='colorls -lA'
-alias personal='cd ~/repos/personal/'
 alias reload='source ~/.zshrc'
 alias b='z -b'
 alias album='tizonia --spotify-album'
-alias l='ll'
+alias l='l -al'
 alias repo='cd ~/repos'
-alias r=ranger
 alias fial='alias | ag'
+alias mkst='cd ~/repos/st && sudo make clean install'
+alias vwk='vim +VimwikiIndex'
 
 lastpasscp() {
     lpass show -c --password $(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')

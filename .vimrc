@@ -219,7 +219,7 @@ let g:gitgutter_map_keys = 0
 
 "}}}
 " NoSwapSuck{{{
-so ~/repos/personal/scripts/vim/noswapsuck.vim
+so ~/scripts/vim/noswapsuck.vim
 
 "}}}
 " CtrlP{{{

@@ -1,3 +1,5 @@
+set nocompatible
+
 " show paranthesis match
 set showmatch
 
@@ -24,5 +26,15 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
 
-" Initialize plugin system
 call plug#end()
+
+set ttimeoutlen=10 "Otherwise, you have to wait for the escape key.
+
+set backspace-=eol   "For more traditional shell behavior
+set backspace+=start "Without this, you can't delete shell completions
+
+set textwidth=0 "Don't try to wrap text
+
+" Start each line in insert mode. Most shell vi-modes do this:
+autocmd User Vimbed_StartLine call feedkeys("\<C-\>\<C-N>i","n")
+

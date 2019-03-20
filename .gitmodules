@@ -1,0 +1,27 @@
+[submodule "repos/z.lua"]
+	path = repos/z.lua
+	url = git@github.com:skywind3000/z.lua.git
+[submodule "repos/lastpass-cli"]
+	path = repos/lastpass-cli
+	url = git@github.com:lastpass/lastpass-cli.git
+[submodule "repos/forgit"]
+	path = repos/forgit
+	url = git@github.com:wfxr/forgit.git
+[submodule "repos/athame"]
+	path = repos/athame
+	url = git@github.com:ardagnir/athame.git
+[submodule "repos/htop-vim"]
+	path = repos/htop-vim
+	url = git@github.com:KoffeinFlummi/htop-vim.git
+[submodule "repos/PathPicker"]
+	path = repos/PathPicker
+	url = git@github.com:facebook/PathPicker.git
+[submodule ".fzf"]
+	path = .fzf
+	url = git@github.com:junegunn/fzf.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = git@github.com:tmux-plugins/tpm.git
+[submodule "repos/st"]
+	path = repos/st
+	url = git@github.com:RobertKirk/st.git

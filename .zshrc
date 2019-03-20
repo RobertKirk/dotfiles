@@ -93,7 +93,7 @@ export ATHAME_TEST_RC=~/.athamerc
 unset zle_bracketed_paste
 #}}}
 # Z autojumper{{{
-eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced)"
+eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced once fzf)"
 
 #}}}
 # pyenv{{{
@@ -104,7 +104,13 @@ eval "$(pyenv virtualenv-init -)"
 #}}}
 #}}}
 # SCRIPTS{{{
-for f in ~/repos/personal/scripts/zsh/*; do
+fpath+=~/.zfunc
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. ~/.aliases.sh
+. /home/robert/anaconda3/etc/profile.d/conda.sh
+
+for f in ~/scripts/zsh/*; do
   # Exclude directories, i.e. '.', '..'
   [ ! -d "$f" ] || continue
   source $f

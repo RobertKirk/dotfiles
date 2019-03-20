@@ -1,17 +1,22 @@
 " Robert Kirk
 " GENERIC SETTINGS{{{
 set nocompatible
+scriptencoding utf-8
+set hidden
 set encoding=UTF-8
 set modelines=1
 set autoread
 set updatetime=100
 "}}}
 " VIEW SETTINGS{{{
-colors darkblue_mine
+syntax enable
+set background=dark
+colors solarized
 
 set cursorcolumn      " highlight current column
-highlight CursorColumn ctermbg=black
+highlight CursorColumn ctermbg=8
 set nowrap
+
 
 " Always show statusline
 set laststatus=2
@@ -54,12 +59,9 @@ set hlsearch            " highlight matches
 "}}}
 " POST lOAD fIXED{{{
 function! CorrectColorScheme()
-  " Annoying tilde should be hidden
-  highlight EndOfBuffer ctermfg=16
-  highlight VertSplit ctermbg=16 ctermfg=16
-  highlight CursorColumn ctermbg=8
   python3 from powerline.vim import setup as powerline_setup
   python3 powerline_setup()
+  highlight EndOfBuffer ctermfg=8
 endfunction
 
 autocmd VimEnter * call CorrectColorScheme()
@@ -67,25 +69,31 @@ autocmd VimEnter * call CorrectColorScheme()
 " KEYBOARD SHORTCUTS{{{
 let mapleader=","
 
+" Move to the next buffer 
+nmap <leader>l :bnext<CR>
+nmap <leader>h :bprevious<CR>
+
+" Close the current buffer and move to the previous one 
+" This replicates the idea of closing a tab 
+nmap <leader>bq :bp <BAR> bd #<CR> 
+" Show all open buffers and their status 
+nmap <leader>bl :ls<CR>
+
 " leader <space> to turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
 " Pasting from system keyboard easily
-noremap <Leader>y "+y
-noremap <Leader>p "+p
-noremap <Leader>Y "*y
-noremap <Leader>P "*p
+noremap <leader>y "+y
+noremap <leader>p "+p
+noremap <leader>Y "*y
+noremap <leader>P "*p
 
 " leader w saves
 nmap <leader>w :w!<cr>
-" leader x exits 
+" leader x closes the buffer 
 nmap <leader>x :bd<cr>
-
-" leader n toggles nerdtree
-map <leader>n :NERDTreeToggle<CR>
-
-" leader m toggles tagbar
-map <leader>t :TagbarToggle<CR>
+" leader q exits 
+nmap <leader>q :xa<cr>
 
 " CR open/closes folds
 nnoremap <CR> za
@@ -103,10 +111,6 @@ inoremap jk <esc>
 
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
-
-" incrementing
-nnoremap + <C-a>
-nnoremap - <C-x>
 
 " move to beginning/end of line is B/E not $/^
 nnoremap B ^
@@ -164,7 +168,7 @@ let g:tmux_navigator_save_on_switch = 1
 "}}}
 " MACROS{{{
 " Auto rebase move
-let @r = '/\n\n€khww€@7"ayVd? a:€khp€kD€kD€kD€kDif'
+let @r = '/\n\nÂ€khwwÂ€@7"ayVd? a:Â€khpÂ€kDÂ€kDÂ€kDÂ€kDif'
 
 "}}}
 " PLUGINS{{{
@@ -185,6 +189,12 @@ nmap <Leader>wo <Plug>(easymotion-overwin-w)
 " Nerdtree{{{
 map <C-n> :NERDTreeFocus<CR>
 let NERDTreeIgnore=['^__pycache__$[[dir]]', '\.egg-info$[[dir]]']
+let g:NERDTreeDirArrowExpandable = 'î—¿'
+let g:NERDTreeDirArrowCollapsible = 'î—¾'
+
+" Nerd tree opens when opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
 "}}}
 " ALE setup{{{
@@ -203,16 +213,13 @@ let g:ale_echo_msg_format = '[%linter%] %(code):% %s [%severity%]'
 let g:sql_type_default = 'pgsql'
 
 "}}}
-"TAG setup{{{
-nmap <F8> :TagbarToggle<CR>
-
-"}}}
 "GitGutter setup{{{
 set signcolumn=yes
+let g:gitgutter_map_keys = 0
 
 "}}}
 " NoSwapSuck{{{
-so ~/repos/personal/scripts/noswapsuck.vim
+so ~/repos/personal/scripts/vim/noswapsuck.vim
 
 "}}}
 " CtrlP{{{
@@ -234,6 +241,8 @@ python3 powerline_setup()
 let g:powerline_pycmd = "py3"
 let g:powerline_pyeval = "py3eval"
 set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim/
+set showtabline=2
+set noshowmode
 "}}}
 " Autoloading vim plugins{{{
 "if empty(glob('~/.vim/autoload/plug.vim'))
@@ -248,10 +257,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm'
 Plug 'scrooloose/nerdtree'
-Plug 'ivalkeen/nerdtree-execute'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
-Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -259,14 +265,12 @@ Plug 'tpope/vim-repeat'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-Plug 'majutsushi/tagbar'
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
-Plug 'plytophogy/vim-virtualenv'
+
+Plug 'markonm/traces.vim'
 
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
-
-Plug 'yegappan/mru'
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -275,7 +279,7 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
 
-Plug 'junegunn/goyo.vim', { 'for': 'text, markdown' }
+Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'
 call plug#end()
 "}}}

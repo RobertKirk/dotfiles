@@ -1,4 +1,3 @@
-
 get_ram_readable() {
     ramused=0
     base=''

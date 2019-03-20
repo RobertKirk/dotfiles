@@ -1,5 +1,5 @@
 # DISPLAY{{{
-# Powerlevel9k{{{
+# Powerlevel9k
 POWERLEVEL9K_MODE='nerdfont-complete'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir virtualenv anaconda vcs)
@@ -36,8 +36,6 @@ POWERLEVEL9K_LOAD_WARNING_VISUAL_IDENTIFIER_COLOR="darkyellow"
 POWERLEVEL9K_LOAD_NORMAL_VISUAL_IDENTIFIER_COLOR="darkgreen"
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
-# ZSH_THEME=""
-#}}}
 #}}}
 # ZSH{{{
 # History Settings{{{
@@ -54,9 +52,16 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
 
+zstyle ':completion:*' completer _complete _ignored _approximate
+zstyle :compinstall filename "$HOME/.zshrc"
+autoload -Uz compinit
+compinit
+autoload -Uz bashcompinit
+bashcompinit
+
 #}}}
 #plugins{{{
-plugins=(git sudo command-not-found debian docker extract pip python tmux websearch)
+plugins=(git sudo command-not-found extract python zsh-autosuggestions zsh-syntax-highlighting tmux websearch)
 
 #}}}
 # vi-mode{{{
@@ -69,20 +74,17 @@ export KEYTIMEOUT=10
 # tmux config {{{
 ZSH_TMUX_AUTOSTART="true"
 ZSH_TMUX_FIXTERM="true"
+ZSH_TMUX_AUTOQUIT="false"
 
 #}}}
 #}}}
 # OH-MY-ZSH{{{
-# oh-my-zsh installation.{{{
 export ZSH="/home/robert/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 #}}}
-#}}}
 # EXTERNAL{{{
-# Editor {{{
 export EDITOR='vim'
 
-#}}}
 # Athame {{{
 export ATHAME_SHOW_MODE=1
 export ATHAME_SHOW_COMMAND=1
@@ -101,11 +103,14 @@ eval "$(pyenv virtualenv-init -)"
 #}}}
 #}}}
 # SCRIPTS{{{
-export SCRIPTS_ROOT='/home/robert/repos/personal/scripts'
-export GIT_WORKTREE_DIR='/home/robert/git-worktrees'
-source $SCRIPTS_ROOT/git_worktrees.sh
+for f in ~/repos/personal/scripts/zsh/*; do
+  # Exclude directories, i.e. '.', '..'
+  [ ! -d "$f" ] || continue
+  source $f
+done
 #}}}
 # Powerline{{{
+# ZSH_THEME=""
 # powerline-daemon -q
 # . /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
 

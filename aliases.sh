@@ -37,6 +37,14 @@ alias repo='cd ~/repos'
 alias r=ranger
 alias fial='alias | ag'
 
+lastpasscp() {
+    lpass show -c --password $(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')
+}
+
+iconecho() {
+    echo -e "\\u$1"
+}
+
 get_colors() {
     for i in {0..255};
         do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ;

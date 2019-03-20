@@ -3,9 +3,6 @@
 	"segments": {
 		"left": [
 			{
-				"function": "nerdtree"
-			},
-			{
 				"type": "string",
 				"highlight_groups": ["background"],
 				"draw_soft_divider": false,

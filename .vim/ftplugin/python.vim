@@ -5,7 +5,7 @@ let b:ale_linters = ['flake8', 'pylint', 'mypy', 'isort']
 let b:ale_fixers = ['black', 'isort']
 
 " pylint options
-let b:ale_python_pylint_options = '--rcfile =/home/robert/smarkets/packages/smk_py_linting_utils/smk_py_linting_utils/pylintrc'
+let b:ale_python_pylint_options = '--rcfile=/home/robert/smarkets/packages/smk_py_linting_utils/smk_py_linting_utils/pylintrc'
 
 " flake8 options
 let b:ale_python_flake8_options = "--max-line-length=110 --max-complexity=10 --jobs=auto --import-order-style=smarkets --application-import-names=routes,run,tests,user,payment,notification,forex,fraud,auth,chat,mm-api,api,stream-api,tickets,odds-feed,email,exclusions,conftest,json_schemas --sql-excepted-names=checked,comment,count,session,state,timestamp,source --ignore=D1,W503,E201"

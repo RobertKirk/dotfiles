@@ -17,6 +17,10 @@ set cursorcolumn      " highlight current column
 highlight CursorColumn ctermbg=8
 set nowrap
 
+" cursor changing (doesn't work i think)
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
 
 " Always show statusline
 set laststatus=2

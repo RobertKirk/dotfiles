@@ -60,3 +60,4 @@ mkalias() {
    echo "alias $1='$2'" >> ~/.aliases.sh
    source ~/.zshrc
 }
+alias tsk='cat ~/vimwiki/Tasks.wiki | fzf --layout reverse --height 50%'

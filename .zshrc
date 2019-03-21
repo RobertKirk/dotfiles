@@ -3,20 +3,22 @@
 export term="xterm-256color"
 POWERLEVEL9K_MODE='nerdfont-complete'
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir virtualenv anaconda vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir virtualenv anaconda vcs newline vi_mode)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
 
-POWERLEVEL9K_LINUX_UBUNTU_ICON=""
-POWERLEVEL9K_OS_ICON_FOREGROUND="red"
-
 POWERLEVEL9K_VCS_GIT_ICON=""
+POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND="025"
+POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND="007"
+
+POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND="022"
+POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND="148"
 
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_end"
 
 POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M \uf073 %d/%m/%y}"
 
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ON_NEWLINE=false
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 POWERLEVEL9K_ANACONDA_LEFT_DELIMITER=""
@@ -62,14 +64,17 @@ bashcompinit
 
 #}}}
 #plugins{{{
-plugins=(git sudo command-not-found extract python zsh-autosuggestions zsh-syntax-highlighting tmux websearch)
+plugins=(git sudo command-not-found vi-mode extract python tmux websearch)
 
 #}}}
 # vi-mode{{{
-# bindkey -v
 export KEYTIMEOUT=10
-# bindkey -M viins 'jk' vi-cmd-mode
-# bindkey -M viins '^S' sudo-command-line
+
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins '^S' sudo-command-line
+
+bindkey -M vicmd '^S' sudo-command-line
+bindkey -M vicmd "^V" edit-command-line
 
 #}}}
 # tmux config {{{
@@ -110,6 +115,7 @@ eval "$(pyenv virtualenv-init -)"
 # SCRIPTS{{{
 fpath+=~/.zfunc
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/repos/zsh-vimode-visual/zsh-vimode-visual.zsh ] && source ~/repos/zsh-vimode-visual/zsh-vimode-visual.zsh
 
 . ~/.aliases.sh
 . /home/robert/anaconda3/etc/profile.d/conda.sh

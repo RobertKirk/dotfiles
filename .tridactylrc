@@ -9,6 +9,10 @@ bind ;c hint -c [class*="expand"],[class="togg"]
 " Git{Hub,Lab} git clone via SSH yank
 bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
 
+" Git{Hub,Lab} submodule add via SSH yank
+bind ys composite js "git submodule add -f " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") + " repos/" + document.location.href.replace(/https?:\/\/github\.com\/.+?\//,"").replace(/\.git/,"") + " --name=" + document.location.href.replace(/https?:\/\/github\.com\/.+?\//,"").replace(/\.git/,"") | clipboard yank
+
+" document.location.href.replace(/https?:\/\/github\.com\/.+?\//,"").replace(/\.git/,"") 
 " I like wikiwand but I don't like the way it changes URLs
 bindurl wikiwand.com yy composite js document.location.href.replace("wikiwand.com/en","wikipedia.org/wiki") | clipboard yank
 

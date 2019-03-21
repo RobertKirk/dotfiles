@@ -92,6 +92,10 @@ export ATHAME_SHOW_COMMAND=1
 export ATHAME_TEST_RC=~/.athamerc
 unset zle_bracketed_paste
 #}}}
+# zsh-interactive-cd{{{
+source ~/repos/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
+
+#}}}
 # Z autojumper{{{
 eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced once fzf)"
 

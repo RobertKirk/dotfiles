@@ -166,9 +166,20 @@ nnoremap <silent> w :TmuxNavigatePrevious<cr>
 let g:tmux_navigator_save_on_switch = 1
 
 "}}}
-" MACROS{{{
+" MACROS & FUNCTIONS{{{
 " Auto rebase move
-let @r = '/\n\nkhww@7"ayVd? a:khpkDkDkDkDif'
+let @r = 'gg/\n\nBww"8ywVd?a:pcwfjk, '
+
+" convert rows of numbers or text (as if pasted from excel column) to a tuple
+function! ToTupleFunction() range
+    silent execute a:firstline . "," . a:lastline . "s/^/’/"
+    silent execute a:firstline . "," . a:lastline . "s/$/’,/"
+    silent execute a:firstline . "," . a:lastline . "join"
+    silent execute "normal I("
+    silent execute "normal $xa)"
+endfunction
+
+command! -range ToTuple <line1>,<line2> call ToTupleFunction()
 
 "}}}
 " PLUGINS{{{
@@ -231,12 +242,11 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_clear_cache_on_exit = 0
 
 "}}}
+" VirtualEnv{{{
+let g:virtualenv_auto_activate = 1
+"}}}
 " Goyo{{{
 let g:goyo_width = 200
-
-"}}}
-" VirtualEnvStuff{{{
-let g:virtualenv_directory = '~/.pyenv/versions'
 
 "}}}
 " powerline setup (just trying){{{
@@ -265,7 +275,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-
+Plug 'plytophogy/vim-virtualenv'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }

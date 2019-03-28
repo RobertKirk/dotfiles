@@ -20,11 +20,11 @@ bindurl wikiwand.com yy composite js document.location.href.replace("wikiwand.co
 bindurl reddit.com gu urlparent 4
  
 " find mode commands
-bind / fillcmdline find
-bind ? fillcmdline find -?
-bind n findnext 1
-bind N findnext -1
-bind ,<Space> nohlsearch
+" bind / fillcmdline find
+" bind ? fillcmdline find -?
+" bind n findnext 1
+" bind N findnext -1
+" bind ,<Space> nohlsearch
 
 " Allow Ctrl-a to select all in the commandline
 unbind --mode=ex <C-a>

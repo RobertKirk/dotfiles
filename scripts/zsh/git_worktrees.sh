@@ -29,5 +29,6 @@ function worktree() {
   fi
   cd $BASEDIR/$BRANCHNAME;
 }
+export GIT_WORKTREE_DIR="/home/robert/git-worktrees"
 alias gwt='worktree'
 

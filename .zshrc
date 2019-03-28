@@ -1,5 +1,5 @@
 # DISPLAY{{{
-# Powerlevel9k
+# Powerlevel9k{{{
 export term="xterm-256color"
 POWERLEVEL9K_MODE='nerdfont-complete'
 
@@ -39,6 +39,10 @@ POWERLEVEL9K_LOAD_WARNING_VISUAL_IDENTIFIER_COLOR="darkyellow"
 POWERLEVEL9K_LOAD_NORMAL_VISUAL_IDENTIFIER_COLOR="darkgreen"
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
+#}}}
+# dircolors{{{
+eval $( dircolors -b $HOME/.dircolors )
+#}}}
 #}}}
 # ZSH{{{
 # History Settings{{{

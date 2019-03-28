@@ -1,3 +1,4 @@
+export EDITOR='vim'
 # DISPLAY{{{
 # Powerlevel9k{{{
 export term="xterm-256color"
@@ -46,13 +47,10 @@ eval $( dircolors -b $HOME/.dircolors )
 #}}}
 #}}}
 # ZSH{{{
-# History Settings{{{
 unsetopt share_history
 unsetopt inc_append_history
 setopt append_history
 
-#}}}
-# General ZSH settings {{{
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -68,8 +66,15 @@ autoload -Uz bashcompinit
 bashcompinit
 
 #}}}
+# OH-MY-ZSH{{{
 #plugins{{{
 plugins=(fd git sudo command-not-found ripgrep vi-mode extract python tmux)
+
+#}}}
+# tmux config {{{
+ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_FIXTERM="true"
+ZSH_TMUX_AUTOQUIT="false"
 
 #}}}
 # vi-mode{{{
@@ -82,46 +87,25 @@ bindkey -M vicmd '^S' sudo-command-line
 bindkey -M vicmd "^V" edit-command-line
 
 #}}}
-# tmux config {{{
-ZSH_TMUX_AUTOSTART="true"
-ZSH_TMUX_FIXTERM="true"
-ZSH_TMUX_AUTOQUIT="false"
 
-#}}}
-#}}}
-# OH-MY-ZSH{{{
 export ZSH="/home/robert/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 #}}}
 # EXTERNAL{{{
-export EDITOR='vim'
-
-# Athame {{{
-export ATHAME_SHOW_MODE=1
-export ATHAME_SHOW_COMMAND=1
-export ATHAME_TEST_RC=~/.athamerc
-unset zle_bracketed_paste
-#}}}
-# zsh-interactive-cd{{{
 source ~/repos/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
-
-#}}}
-# Z autojumper{{{
+source ~/repos/zsh-vimode-visual/zsh-vimode-visual.zsh
+source ~/repos/forgit/forgit.plugin.zsh
+source ~/.fzf.zsh
 eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced once fzf)"
 
-#}}}
 # pyenv{{{
-[[ -d ~/.pyenv ]] || curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
 export PATH="/home/robert/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
 #}}}
 #}}}
 # SCRIPTS{{{
-fpath+=~/.zfunc
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/repos/zsh-vimode-visual/zsh-vimode-visual.zsh ] && source ~/repos/zsh-vimode-visual/zsh-vimode-visual.zsh
-
 . ~/.aliases.sh
 . /home/robert/anaconda3/etc/profile.d/conda.sh
 

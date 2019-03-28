@@ -1,7 +1,7 @@
 sudo apt-get update
-sudo apt-get install vim zsh spotifycli gnome-tweaks tmux curl wget wmctrl git ssh openssh sakura tizonia lua5.3 psql ranger powerline
+sudo apt-get install vim zsh spotifycli gnome-tweaks tmux curl wget wmctrl git ssh openssh tizonia lua5.3 psql powerline fd-find
 
-# vscode, spotify, firefox, wavebox, oh-my-zsh, fonts, anaconda, python latest, z.lua
+# vscode, spotify, firefox, fonts, anaconda, python latest
 
 cd ~
 mkdir repos

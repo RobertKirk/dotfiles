@@ -68,7 +68,7 @@ bashcompinit
 
 #}}}
 #plugins{{{
-plugins=(git sudo command-not-found vi-mode extract python tmux websearch)
+plugins=(git sudo command-not-found ripgrep vi-mode extract python tmux)
 
 #}}}
 # vi-mode{{{

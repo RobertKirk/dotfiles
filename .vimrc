@@ -213,11 +213,13 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 
 "}}}
 " ALE setup{{{
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_linters = {
     \ 'sh': ['language_server'],
     \ }
 let g:ale_sign_column_always = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_save = 1
 
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'

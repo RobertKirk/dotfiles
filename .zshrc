@@ -4,8 +4,8 @@ export EDITOR='vim'
 export term="xterm-256color"
 POWERLEVEL9K_MODE='nerdfont-complete'
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir virtualenv anaconda vcs newline vi_mode)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir virtualenv anaconda vcs background_jobs newline vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time time)
 
 POWERLEVEL9K_VCS_GIT_ICON=""
 
@@ -95,6 +95,11 @@ source $ZSH/oh-my-zsh.sh
 source ~/repos/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
 source ~/repos/zsh-vimode-visual/zsh-vimode-visual.zsh
 source ~/repos/forgit/forgit.plugin.zsh
+source ~/repos/fancy-ctrl-z/fancy-ctrl-z.zsh
+source ~/repos/zsh-abbrev-alias/abbrev-alias.plugin.zsh
+abbrev-alias -g G="| rg"
+abbrev-alias -g S="~/smarkets/"
+abbrev-alias -i
 source ~/.fzf.zsh
 eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced once fzf)"
 

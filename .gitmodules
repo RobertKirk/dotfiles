@@ -31,3 +31,9 @@
 [submodule "repos/zsh-vimode-visual"]
 	path = repos/zsh-vimode-visual
 	url = git@github.com:b4b4r07/zsh-vimode-visual.git
+[submodule "repos/fancy-ctrl-z"]
+	path = repos/fancy-ctrl-z
+	url = git@github.com:mdumitru/fancy-ctrl-z.git
+[submodule "repos/zsh-abbrev-alias"]
+	path = repos/zsh-abbrev-alias
+	url = git@github.com:momo-lab/zsh-abbrev-alias.git

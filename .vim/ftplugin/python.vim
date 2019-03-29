@@ -14,6 +14,7 @@ let b:ale_python_flake8_options = "--max-line-length=110 --max-complexity=10 --j
 let b:ale_python_mypy_options = "--ignore-missing-imports --disallow-untyped-defs --follow-imports=silent"
 let b:ale_python_mypy_ignore_invalid_syntax = 1
 let b:ale_python_mypy_change_directory = 1
+let b:ale_python_mypy_executable='/bin/sh -c "cd $(dirname %) && /home/robert/smarkets/bin/mypy"'
 
 " black options
 let b:ale_python_black_options = '--line-length 110 --py36 '

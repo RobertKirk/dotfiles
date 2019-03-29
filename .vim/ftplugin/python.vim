@@ -8,7 +8,7 @@ let b:ale_fixers = ['black', 'trim_whitespace', 'remove_trailing_lines']
 let b:ale_python_pylint_options = '--rcfile=/home/robert/smarkets/packages/smk_py_linting_utils/smk_py_linting_utils/pylintrc'
 
 " flake8 options
-let b:ale_python_flake8_options = "--max-line-length=110 --max-complexity=10 --jobs=auto --import-order-style=smarkets --application-import-names=checkout,bank_transfer,skrill,neteller,paypal,trustly,routes,run,tests,user,payment,notification,forex,fraud,auth,chat,mm-api,api,stream-api,tickets,odds-feed,email,exclusions,conftest,json_schemas --sql-excepted-names=checked,comment,count,session,state,timestamp,source --ignore=D1,W503,E201"
+let b:ale_python_flake8_options = "--max-line-length=110 --max-complexity=10 --jobs=auto --import-order-style=smarkets --application-import-names=checkout,bank_transfer,skrill,neteller,paypal,trustly,routes,run,tests,user,payment,notification,forex,fraud,auth,chat,mm-api,api,stream-api,tickets,odds-feed,email,exclusions,conftest,json_schemas --sql-excepted-names=checked,comment,count,session,state,timestamp,source,month,year,money,type --ignore=D1,W503,E201"
 
 " mypy options
 let b:ale_python_mypy_options = "--ignore-missing-imports --disallow-untyped-defs --follow-imports=silent"

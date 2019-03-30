@@ -104,9 +104,8 @@ source ~/.fzf.zsh
 eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced once fzf)"
 
 # pyenv{{{
-export PATH="/home/robert/.pyenv/bin:$PATH"
+export PATH="/home/robert/repos/pyenv/bin:$PATH"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 #}}}
 #}}}

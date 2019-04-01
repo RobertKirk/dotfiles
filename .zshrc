@@ -104,10 +104,15 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 source ~/.fzf.zsh
 eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced once fzf)"
 
-# pyenv{{{
-export PATH="/home/robert/repos/pyenv/bin:$PATH"
-eval "$(pyenv init -)"
+# PATH{{{
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+export PYENV_ROOT="$HOME/repos/pyenv" 
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 #}}}
 #}}}
 # SCRIPTS{{{

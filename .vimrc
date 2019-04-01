@@ -297,7 +297,10 @@ Plug 'tpope/vim-repeat'
 Plug 'plytophogy/vim-virtualenv'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
+
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 
 Plug 'markonm/traces.vim'

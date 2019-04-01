@@ -60,3 +60,4 @@ mkalias() {
    source ~/.zshrc
 }
 alias tsk='cat ~/vimwiki/Tasks.wiki | fzf --layout reverse --height 50%'
+alias neomutt='nocorrect neomutt'

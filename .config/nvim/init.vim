@@ -256,6 +256,15 @@ let g:gitgutter_map_keys = 0
 so ~/scripts/vim/noswapsuck.vim
 
 "}}}
+" airline{{{
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#ale#enabled = 1
+let g:airline_highlighting_cache = 1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_theme='powerlineish'
+
+"}}}
 " CtrlP{{{
 let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -310,6 +319,9 @@ Plug 'tmux-plugins/vim-tmux'
 
 Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
+
+Plug 'vim-airline/vim-airline/'
+Plug 'vim-airline/vim-airline-themes/'
 
 Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'

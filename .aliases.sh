@@ -24,7 +24,7 @@ alias gsthd='git stash drop'
 alias grs='git reset'
 alias gupdb='git checkout master && git pull && git checkout - && git rebase master'
 
-alias v=vim
+alias v=nvim
 alias jpn='jupyter notebook'
 alias album='tizonia --spotify-album'
 alias lua='lua5.3'
@@ -36,7 +36,7 @@ alias l='l -al'
 alias repo='cd ~/repos'
 alias fial='alias | ag'
 alias mkst='cd ~/repos/st && sudo make clean install'
-alias vwk='vim +VimwikiIndex'
+alias vwk='nvim +VimwikiIndex'
 
 lastpasscp() {
     lpass show -c --password $(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')
@@ -61,3 +61,4 @@ mkalias() {
 }
 alias tsk='cat ~/vimwiki/Tasks.wiki | fzf --layout reverse --height 50%'
 alias neomutt='nocorrect neomutt'
+alias vim="echo 'are you sure about that'"

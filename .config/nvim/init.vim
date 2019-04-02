@@ -8,6 +8,7 @@ set encoding=UTF-8
 set modelines=1
 set autoread
 set updatetime=100
+set noshowmode
 
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3.6'
@@ -17,6 +18,7 @@ syntax enable
 set background=dark
 colors solarized
 
+highlight EndOfBuffer ctermfg=8
 set cursorcolumn      " highlight current column
 highlight CursorColumn ctermbg=8
 set nowrap
@@ -42,6 +44,9 @@ endi
 " Always show statusline
 set laststatus=2
 
+" No Tab Line
+set showtabline=0
+
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
 
@@ -51,7 +56,7 @@ set scrolloff=5
 " Return to last position on opening file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-" folding 
+" folding
 set foldenable
 set foldlevelstart=10   " open most folds by default
 set foldmethod=indent
@@ -77,6 +82,8 @@ set smartcase
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
+nnoremap <leader>g :lgrep<Space>
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 "}}}
 " POST lOAD fIXED{{{
 function! CorrectColorScheme()
@@ -85,19 +92,19 @@ function! CorrectColorScheme()
   highlight EndOfBuffer ctermfg=8
 endfunction
 
-autocmd VimEnter * call CorrectColorScheme()
+" autocmd VimEnter * call CorrectColorScheme()
 "}}}
 " KEYBOARD SHORTCUTS{{{
 let mapleader=","
 
-" Move to the next buffer 
+" Move to the next buffer
 nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
 
-" Close the current buffer and move to the previous one 
-" This replicates the idea of closing a tab 
-nmap <leader>bq :bp <BAR> bd #<CR> 
-" Show all open buffers and their status 
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+" Show all open buffers and their status
 nmap <leader>bl :ls<CR>
 
 " leader <space> to turn off search highlight
@@ -111,9 +118,9 @@ noremap <leader>P "*p
 
 " leader w saves
 nmap <leader>w :w!<cr>
-" leader x closes the buffer 
+" leader x closes the buffer
 nmap <leader>x :bd<cr>
-" leader q exits 
+" leader q exits
 nmap <leader>q :xa<cr>
 
 " CR open/closes folds
@@ -121,7 +128,6 @@ nnoremap <CR> za
 
 " Easy searching
 map <space> /
-map <c-space> ?
 
 " move vertically by visual line
 nnoremap j gj
@@ -221,8 +227,10 @@ nmap <Leader>wo <Plug>(easymotion-overwin-w)
 " Nerdtree{{{
 map <C-n> :NERDTreeFocus<CR>
 let NERDTreeIgnore=['^__pycache__$[[dir]]', '\.egg-info$[[dir]]']
+
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
+let g:NERDTreeStatusline = '%#NonText#'
 
 " Nerd tree opens when opening a directory
 autocmd StdinReadPre * let s:std_in=1
@@ -236,20 +244,51 @@ let g:ale_linters = {
     \ }
 let g:ale_sign_column_always = 1
 let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %(code):% %s [%severity%]'
 
-"}}}
-"PGSQL SETUP{{{
-let g:sql_type_default = 'pgsql'
+nnoremap <silent> <C-f> <Plug>(ale-format)
 
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+"}}}
+"Coc SETUP{{{
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+
+function! s:show_documentation()
+  if &filetype == 'vim' || &filetype == 'help'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nnoremap <silent> gd <Plug>(coc-definition)
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+"}}}
+"YouCompleteMe SETUP{{{
+let g:ycm_filetype_specific_completion_to_disable = {
+    \ 'python': 1,
+    \ 'json': 1
+    \}
 "}}}
 "GitGutter setup{{{
 set signcolumn=yes
 let g:gitgutter_map_keys = 0
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+nmap <Leader>ga <Plug>GitGutterStageHunk
+nmap <Leader>gu <Plug>GitGutterUndoHunk
+nmap <Leader>gp <Plug>GitGutterPreviewHunk
 
 "}}}
 " NoSwapSuck{{{
@@ -257,12 +296,15 @@ so ~/scripts/vim/noswapsuck.vim
 
 "}}}
 " airline{{{
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline_highlighting_cache = 1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline_theme='powerlineish'
+let g:airline_theme='solarized'
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
 
 "}}}
 " CtrlP{{{
@@ -276,6 +318,18 @@ let g:ctrlp_clear_cache_on_exit = 0
 "}}}
 " VirtualEnv{{{
 let g:virtualenv_auto_activate = 1
+let g:virtualenv_directory = '/home/robert/smarkets'
+
+"}}}
+" ctrspace{{{
+let g:CtrlSpaceDefaultMappingKey = "<C-space> "
+if executable("ag")
+    let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+endif
+let g:CtrlSpaceSearchTiming = 500
+let g:airline_exclude_preview = 1
+let g:CtrlSpaceUseTabline = 1
+
 "}}}
 " Goyo{{{
 let g:goyo_width = 200
@@ -309,6 +363,9 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'lifepillar/pgsql.vim'
 
 Plug 'markonm/traces.vim'
+
+Plug 'vim-ctrlspace/vim-ctrlspace'
+Plug 'jremmen/vim-ripgrep'
 
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'

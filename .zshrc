@@ -1,4 +1,4 @@
-export EDITOR='vim'
+export EDITOR='nvim'
 # DISPLAY{{{
 # Powerlevel9k{{{
 export term="xterm-256color"

@@ -76,8 +76,8 @@ set hlsearch            " highlight matches
 "}}}
 " POST lOAD fIXED{{{
 function! CorrectColorScheme()
-  python3 from powerline.vim import setup as powerline_setup
-  python3 powerline_setup()
+  "python3 from powerline.vim import setup as powerline_setup
+  "python3 powerline_setup()
   highlight EndOfBuffer ctermfg=8
 endfunction
 
@@ -278,15 +278,16 @@ set showtabline=2
 set noshowmode
 "}}}
 " Autoloading vim plugins{{{
-"if empty(glob('~/.vim/autoload/plug.vim'))
-"  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-"    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-"endif
+" if empty(glob('~/.vim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
 
 "}}}
 " Loading Plugins{{{
 call plug#begin('~/.vim/plugged')
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm'
 Plug 'scrooloose/nerdtree'

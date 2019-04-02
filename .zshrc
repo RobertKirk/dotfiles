@@ -100,6 +100,7 @@ source ~/repos/zsh-abbrev-alias/abbrev-alias.plugin.zsh
 abbrev-alias -g G="| rg"
 abbrev-alias -g S="~/smarkets/"
 abbrev-alias -i
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 source ~/.fzf.zsh
 eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced once fzf)"
 
@@ -126,3 +127,5 @@ done
 
 #}}}
 # vim:foldmethod=marker:foldlevel=0
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

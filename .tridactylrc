@@ -12,6 +12,9 @@ bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//
 " Git{Hub,Lab} submodule add via SSH yank
 bind ys composite js "git submodule add -f " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") + " repos/" + document.location.href.replace(/https?:\/\/github\.com\/.+?\//,"").replace(/\.git/,"") + " --name=" + document.location.href.replace(/https?:\/\/github\.com\/.+?\//,"").replace(/\.git/,"") | clipboard yank
 
+" GitHub zplug command to paste yank
+bind yz composite js "zplug \"" + document.location.href.replace(/https:\/\/github\.com\//,"") + "\"" | clipboard yank
+
 " document.location.href.replace(/https?:\/\/github\.com\/.+?\//,"").replace(/\.git/,"") 
 " I like wikiwand but I don't like the way it changes URLs
 bindurl wikiwand.com yy composite js document.location.href.replace("wikiwand.com/en","wikipedia.org/wiki") | clipboard yank

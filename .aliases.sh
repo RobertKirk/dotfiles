@@ -62,3 +62,5 @@ mkalias() {
 alias tsk='cat ~/vimwiki/Tasks.wiki | fzf --layout reverse --height 50%'
 alias neomutt='nocorrect neomutt'
 alias vim="echo 'are you sure about that'"
+alias ~='cd ~'
+alias ll='ls -al'

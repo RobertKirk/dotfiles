@@ -32,7 +32,6 @@ alias ag="ag --color-line-number '1;133' --color-path '1;230'"
 alias reload='source ~/.zshrc'
 alias b='z -b'
 alias album='tizonia --spotify-album'
-alias l='l -al'
 alias repo='cd ~/repos'
 alias fial='alias | ag'
 alias mkst='cd ~/repos/st && sudo make clean install'
@@ -57,10 +56,12 @@ get_colors() {
 
 mkalias() {
    echo "alias $1='$2'" >> ~/.aliases.sh
-   source ~/.zshrc
+   source ~/.aliases.sh
 }
+
 alias tsk='cat ~/vimwiki/Tasks.wiki | fzf --layout reverse --height 50%'
 alias neomutt='nocorrect neomutt'
 alias vim="echo 'are you sure about that'"
-alias ~='cd ~'
-alias ll='ls -al'
+alias ls='ls --color=always'
+alias ll='ls --color=always -al'
+alias l='ls --color=always -l'

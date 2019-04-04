@@ -44,22 +44,26 @@ source ~/.purepower
 # POWERLEVEL9K_LOAD_NORMAL_VISUAL_IDENTIFIER_COLOR="darkgreen"
 #}}}
 # ZSH{{{
-unsetopt share_history
+HISTSIZE=10000
+SAVEHIST=1000000
+HIST_STAMPS="yyyy-mm-dd"
+setopt share_history
 unsetopt inc_append_history
+setopt append_history
+
 setopt histignorespace
 setopt histignoredups
-setopt append_history
+
 setopt autocd
 setopt correct
 setopt globdots
+setopt chasedots
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-HIST_STAMPS="yyyy-mm-dd"
-
 #}}}
 # tmux config {{{
 ZSH_TMUX_AUTOSTART="true"
@@ -141,5 +145,8 @@ for f in ~/scripts/zsh/*; do
   [ ! -d "$f" ] || continue
   source $f
 done
+
+# Loading History
+fc -Rn ~/.zsh_history
 #}}}
 # vim:foldmethod=marker:foldlevel=0

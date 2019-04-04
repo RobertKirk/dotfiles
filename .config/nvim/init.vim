@@ -87,12 +87,10 @@ set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 "}}}
 " POST lOAD fIXED{{{
 function! CorrectColorScheme()
-  " python3 from powerline.vim import setup as powerline_setup
-  " python3 powerline_setup()
   highlight EndOfBuffer ctermfg=8
 endfunction
 
-" autocmd VimEnter * call CorrectColorScheme()
+autocmd VimEnter * call CorrectColorScheme()
 "}}}
 " KEYBOARD SHORTCUTS{{{
 let mapleader=","
@@ -225,9 +223,13 @@ nmap <Leader>wo <Plug>(easymotion-overwin-w)
 
 "}}}
 " Nerdtree{{{
-map <C-n> :NERDTreeFocus<CR>
+map <C-n> :NERDTreeFind<CR>
+map <leader>n :NERDTreeToggle<CR>
 let NERDTreeIgnore=['^__pycache__$[[dir]]', '\.egg-info$[[dir]]']
+let NERDTreeShowHidden=1
+let NERDTreeNaturalSort=1
 
+let NERDTreeMinimalUI=1
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeStatusline = '%#NonText#'
@@ -256,30 +258,27 @@ nnoremap <silent> <C-f> <Plug>(ale-format)
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "}}}
-"Coc SETUP{{{
-autocmd CursorHold * silent call CocActionAsync('highlight')
+""Coc SETUP{{{
+"" Smaller updatetime for CursorHold & CursorHoldI
+"set updatetime=300
 
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
+"function! s:show_documentation()
+"  if &filetype == 'vim' || &filetype == 'help'
+"    execute 'h '.expand('<cword>')
+"  else
+"    call CocAction('doHover')
+"  endif
+"endfunction
 
-function! s:show_documentation()
-  if &filetype == 'vim' || &filetype == 'help'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-nnoremap <silent> gd <Plug>(coc-definition)
-
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-"}}}
-"YouCompleteMe SETUP{{{
+"" Use K for show documentation in preview window
+"nnoremap <silent> K :call <SID>show_documentation()<CR>
+""}}}
+""YouCompleteMe SETUP{{{
 let g:ycm_filetype_specific_completion_to_disable = {
-    \ 'python': 1,
     \ 'json': 1
     \}
+
+nnoremap <silent> gd :YcmCompleter GoTo<CR>
 "}}}
 "GitGutter setup{{{
 set signcolumn=yes
@@ -321,6 +320,15 @@ let g:virtualenv_auto_activate = 1
 let g:virtualenv_directory = '/home/robert/smarkets'
 
 "}}}
+" DevIcons{{{
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
+let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
+" Disable arrow icons at the left side of folders for NERDTree.
+let g:NERDTreeDirArrowExpandable = "\u00a0"
+let g:NERDTreeDirArrowCollapsible = "\u00a0"
+highlight! link NERDTreeFlags NERDTreeDir
+
+"}}}
 " ctrspace{{{
 let g:CtrlSpaceDefaultMappingKey = "<C-space> "
 if executable("ag")
@@ -351,16 +359,17 @@ Plug 'nixprime/cpsm'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'plytophogy/vim-virtualenv'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
 
+Plug 'sheerun/vim-polyglot'
+
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-
-Plug 'lifepillar/pgsql.vim'
 
 Plug 'markonm/traces.vim'
 
@@ -369,7 +378,7 @@ Plug 'jremmen/vim-ripgrep'
 
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
-Plug 'cespare/vim-toml'
+
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'

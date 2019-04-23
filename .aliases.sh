@@ -61,7 +61,8 @@ mkalias() {
 
 alias tsk='cat ~/vimwiki/Tasks.wiki | fzf --layout reverse --height 50%'
 alias neomutt='nocorrect neomutt'
-alias vim="echo 'are you sure about that'"
 alias ls='ls --color=always'
 alias ll='ls --color=always -al'
 alias l='ls --color=always -l'
+alias md='mkdir -p'
+alias tree='tree -I '__pycache__''

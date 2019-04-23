@@ -117,7 +117,7 @@ noremap <leader>P "*p
 " leader w saves
 nmap <leader>w :w!<cr>
 " leader x closes the buffer
-nmap <leader>x :bd<cr>
+nmap <leader>x :w!<cr>:bd<cr>
 " leader q exits
 nmap <leader>q :xa<cr>
 
@@ -143,17 +143,10 @@ nnoremap E $
 nnoremap $ <nop>
 nnoremap ^ <nop>
 
-"Move a line of text using ALT+[jk] or Command+[jk] on mac
-"nmap <M-j> mz:m+<cr>`z
-"nmap <M-k> mz:m-2<cr>`z
-"vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-"vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
 "}}}
 " FILE SPECIFIC CONFIGS{{{
 augroup configgroup
     autocmd!
-    autocmd VimEnter * highlight clear SignColumn
     autocmd FileType python setlocal commentstring=#\ %s
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
     autocmd BufEnter Makefile setlocal noexpandtab
@@ -292,6 +285,7 @@ nmap <Leader>gp <Plug>GitGutterPreviewHunk
 "}}}
 " NoSwapSuck{{{
 so ~/scripts/vim/noswapsuck.vim
+set backupcopy=yes
 
 "}}}
 " airline{{{
@@ -329,16 +323,6 @@ let g:NERDTreeDirArrowCollapsible = "\u00a0"
 highlight! link NERDTreeFlags NERDTreeDir
 
 "}}}
-" ctrspace{{{
-let g:CtrlSpaceDefaultMappingKey = "<C-space> "
-if executable("ag")
-    let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
-endif
-let g:CtrlSpaceSearchTiming = 500
-let g:airline_exclude_preview = 1
-let g:CtrlSpaceUseTabline = 1
-
-"}}}
 " Goyo{{{
 let g:goyo_width = 200
 
@@ -365,15 +349,14 @@ Plug 'tpope/vim-repeat'
 Plug 'plytophogy/vim-virtualenv'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-vinegar'
 
 Plug 'sheerun/vim-polyglot'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 Plug 'markonm/traces.vim'
 
-Plug 'vim-ctrlspace/vim-ctrlspace'
 Plug 'jremmen/vim-ripgrep'
 
 Plug 'Konfekt/FastFold'
@@ -392,6 +375,5 @@ Plug 'vim-airline/vim-airline-themes/'
 Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'
 call plug#end()
-"}}}
 "}}}
 " vim:foldmethod=marker:foldlevel=0

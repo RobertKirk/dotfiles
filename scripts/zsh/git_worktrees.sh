@@ -2,9 +2,14 @@
 # This is useful when you have multiple branches on origin,
 # and want to pull work with them
 function worktree() {
+  if [ $# -eq 0 ]; then
+    git worktree list
+    return 0
+  fi
+
   REPO_NAME=$(basename `git rev-parse --show-toplevel`)
   BASEDIR=$GIT_WORKTREE_DIR/$REPO_NAME
-  mkdir -p BASEDIR
+  mkdir -p $BASEDIR
 
   BRANCHNAME=$1
 

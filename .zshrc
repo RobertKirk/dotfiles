@@ -59,6 +59,8 @@ setopt correct
 setopt globdots
 setopt chasedots
 
+setopt interactivecomments
+
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -109,18 +111,21 @@ bindkey -M vicmd '^V' edit-command-line
 
 bindkey -M vicmd '' history-substring-search-up
 
-bindkey '' history-substring-search-up
+bindkey  history-substring-search-up
 
 # Bind Ctrl + Shift + Left key combination to backwards direction.
 bindkey "[1;6D" _dircycle_insert_cycled_left
 # Bind Ctrl + Shift + Right key combination to forwards direction.
-bindkey "[1;6C>" _dircycle_insert_cycled_right
+bindkey "[1;6C" _dircycle_insert_cycled_right
 
 #}}}
 # EXTERNAL{{{
 eval $( dircolors -b $HOME/.dircolors )
 abbrev-alias -g G="| rg"
+abbrev-alias -g L="| less"
+abbrev-alias -g nv="| xargs nvim"
 abbrev-alias -g S="~/smarkets/"
+abbrev-alias -g C="| xclip -sel c"
 abbrev-alias -i
 source ~/.fzf.zsh
 eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced once fzf)"

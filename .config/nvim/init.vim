@@ -10,8 +10,7 @@ set autoread
 set updatetime=100
 set noshowmode
 
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3.6'
+let g:python3_host_prog = '/usr/bin/python3.7'
 "}}}
 " VIEW SETTINGS{{{
 syntax enable
@@ -94,6 +93,9 @@ autocmd VimEnter * call CorrectColorScheme()
 "}}}
 " KEYBOARD SHORTCUTS{{{
 let mapleader=","
+
+" sudo saving
+cmap w!! w !sudo tee > /dev/null %
 
 " Move to the next buffer
 nmap <leader>l :bnext<CR>

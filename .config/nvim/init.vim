@@ -117,7 +117,7 @@ noremap <leader>P "*p
 " leader w saves
 nmap <leader>w :w!<cr>
 " leader x closes the buffer
-nmap <leader>x :w!<cr>:bd<cr>
+nmap <leader>x :bp<bar>sp<bar>bn<bar>bd<CR>
 " leader q exits
 nmap <leader>q :xa<cr>
 
@@ -352,6 +352,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 
 Plug 'sheerun/vim-polyglot'
+Plug 'neomutt/neomutt.vim'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 

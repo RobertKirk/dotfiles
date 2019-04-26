@@ -83,6 +83,7 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/ripgrep", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
+zplug "plugins/kubectl", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
 zplug "plugins/fancy-ctrl-z", from:oh-my-zsh
 

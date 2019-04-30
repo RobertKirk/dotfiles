@@ -40,3 +40,9 @@
 [submodule "repos/pyenv"]
 	path = repos/pyenv
 	url = git@github.com:pyenv/pyenv.git
+[submodule "repos/dwm-scripts"]
+	path = repos/dwm-scripts
+	url = git@github.com:killabytenow/dwm-scripts.git
+[submodule "repos/dwm"]
+	path = repos/dwm
+	url = git@github.com:RobertKirk/dwm.git

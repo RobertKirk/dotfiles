@@ -4,7 +4,7 @@ userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
-background_image=${$background_image:-~/Downloads/vladstudio}
+background_image=${background_image:-~/.dwm-background}
 
 # merge in defaults and keymaps
 
@@ -33,7 +33,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-feh --bg-scale $background_image
 slstatus &
+feh --bg-scale $background_image
 
 exec dwm

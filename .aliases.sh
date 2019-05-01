@@ -59,6 +59,10 @@ mkalias() {
    source ~/.aliases.sh
 }
 
+addnewlines() {
+  git ls-files -z | while IFS= read -rd '' f; do tail -c1 < "$f" | read -r _ || echo >> "$f"; done
+}
+
 alias tsk='cat ~/vimwiki/Tasks.wiki | fzf --layout reverse --height 50%'
 alias neomutt='nocorrect neomutt'
 alias ls='ls --color=always'
@@ -67,4 +71,4 @@ alias l='ls --color=always -l'
 alias md='mkdir -p'
 alias tree='tree -I '__pycache__''
 alias gpuw='watch -n 1 -d -t nvidia-smi'
-alias cplgvfs='cpulimit -e gvfs -l 5 &'
+alias cplgvfs='nohup cpulimit -e gvfs -l 5  </dev/null >/dev/null 2>&1 & disown'

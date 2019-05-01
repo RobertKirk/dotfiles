@@ -12,8 +12,6 @@ HISTSIZE=10000
 SAVEHIST=1000000
 HIST_STAMPS="yyyy-mm-dd"
 setopt share_history
-unsetopt inc_append_history
-setopt append_history
 
 setopt histignorespace
 setopt histignoredups
@@ -54,14 +52,23 @@ zplug "plugins/fancy-ctrl-z", from:oh-my-zsh
 zplug "romkatv/powerlevel10k", use:powerlevel10k.zsh-theme
 
 zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-vi-more/vi-motions"
 zplug "michaelxmcbride/zsh-dircycle"
 zplug "wfxr/forgit", defer:1
 zplug "momo-lab/zsh-abbrev-alias"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "hlissner/zsh-autopair", defer:2
 zplug "b4b4r07/zsh-vimode-visual", defer:3
 zplug "zsh-users/zsh-history-substring-search", defer:3
 
 zplug load
+
+typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+typeset -g ZSH_AUTOSUGGEST_ORIGINAL_WIDGET_PREFIX='autosuggest-orig-'
+typeset -g ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE='20'
+typeset -g ZSH_AUTOSUGGEST_ASYNC_PTY_NAME='zsh_autosuggest_pty'
+typeset -ga ZSH_AUTOSUGGEST_STRATEGY=('history')
 
 setopt monitor
 #}}}
@@ -104,7 +111,7 @@ eval "$(rbenv init -)"
 
 export PYENV_ROOT="$HOME/repos/pyenv" 
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
 #}}}
 #}}}
 # SCRIPTS{{{
@@ -115,8 +122,5 @@ for f in ~/scripts/zsh/*; do
   [ ! -d "$f" ] || continue
   source $f
 done
-
-# Loading History
-fc -Rn ~/.zsh_history
 #}}}
 # vim:foldmethod=marker:foldlevel=0

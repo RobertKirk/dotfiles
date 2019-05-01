@@ -10,7 +10,8 @@ set autoread
 set updatetime=100
 set noshowmode
 
-let g:python3_host_prog = '/usr/bin/python3.7'
+let g:python3_host_prog = '/usr/bin/python3'
+let g:python_host_prog = '/usr/bin/python'
 "}}}
 " VIEW SETTINGS{{{
 syntax enable

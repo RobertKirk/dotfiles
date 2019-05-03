@@ -23,6 +23,7 @@ alias gsthpm='git stash push -m'
 alias gsthd='git stash drop'
 alias grs='git reset'
 alias gupdb='git checkout master && git pull && git checkout - && git rebase master'
+alias gd='git diff | diff-so-fancy | sed "s/^\([^-+]*\)[-+]/\1/" | less -R'
 
 alias v=nvim
 alias jpn='jupyter notebook'

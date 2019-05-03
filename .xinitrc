@@ -33,7 +33,16 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-slstatus &
-feh --bg-scale $background_image
+if which redshift &> /dev/null; then
+        redshift &
+fi
+
+if which slstatus &> /dev/null; then
+        slstatus &
+fi
+
+if which feh &> /dev/null; then
+        feh --bg-scale $background_image
+fi
 
 exec dwm

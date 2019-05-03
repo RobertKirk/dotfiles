@@ -1,5 +1,6 @@
 bat
 curl
+diff-so-fancy
 dmenu
 dwm
 fd
@@ -9,17 +10,18 @@ firefox
 fpp
 fzf
 gdm
-node
-diff-so-fancy
 git
+ipython
 make
 neomutt
+node
 nvim
 postman
 psql
 python
 python3
 ranger
+redshift
 rg
 sddm
 slack

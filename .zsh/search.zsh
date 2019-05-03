@@ -30,7 +30,7 @@ function antideepsearch() { # L searches for files not containing the given patt
 # fuzzy list all aliases
 function aliases() {
 	command=$(alias |
-		rg --color --no-line-number --color:match:fg:blue --passthru '^[^=]+' |
+		rg --color always --no-line-number --colors=match:fg:blue --passthru '^[^=]+' |
 		fzf-tmux --cycle --ansi --reverse --height=90% --query="$1" --multi --select-1 --exit-0 --tac |
 		cut -d "=" -f 1)
 	echo $command
@@ -49,7 +49,7 @@ function path() {
 	list=$(echo $PATH |
 		tr : '\n' |
 		sort --unique |
-		rg --color --no-line-number --color:match:fg:blue '[/]')
+		rg --color always --no-line-number --colors=match:fg:blue '[/]')
 
 	if type fzf >/dev/null 2>&1; then
 		$(echo "$list" |

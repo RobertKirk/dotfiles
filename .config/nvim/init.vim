@@ -1,5 +1,6 @@
 " Robert Kirk
 " GENERIC SETTINGS{{{
+set mouse=a
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 scriptencoding utf-8
@@ -270,11 +271,11 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "nnoremap <silent> K :call <SID>show_documentation()<CR>
 ""}}}
 ""YouCompleteMe SETUP{{{
-let g:ycm_filetype_specific_completion_to_disable = {
-    \ 'json': 1
-    \}
-
 nnoremap <silent> gd :YcmCompleter GoTo<CR>
+let g:ycm_min_num_of_chars_for_completion = 3
+let g:ycm_min_num_identifier_candidate_chars = 3
+let g:ycm_max_num_candidates = 20
+let g:ycm_autoclose_preview_window_after_completion = 1
 "}}}
 "GitGutter setup{{{
 set signcolumn=yes

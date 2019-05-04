@@ -5,3 +5,7 @@ done
 for f in ~/.zsh/*.zsh; do
   [ -f $f ] && source $f
 done
+
+for f in ~/.zsh/func/*.zsh; do
+  [ -f $f ] && source $f
+done

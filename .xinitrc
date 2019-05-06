@@ -20,8 +20,11 @@ if [ -f "$userresources" ]; then
     xrdb -merge "$userresources"
 fi
 
-if [ -f "$usermodmap" ]; then
-    xmodmap "$usermodmap"
+if [[ $(uname -r | grep ARCH) ]]; then
+        usermodmap=$HOME/.Xmodmap
+        if [ -f "$usermodmap" ]; then
+                xmodmap $usermodmap
+        fi
 fi
 
 # start some nice programs

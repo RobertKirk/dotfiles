@@ -1,3 +1,4 @@
+anki
 bat
 curl
 diff-so-fancy
@@ -45,6 +46,7 @@ xfontsel
 xinit
 xmodmap
 xsel
+xsv
 youtube-dl
 zplug
 zsh

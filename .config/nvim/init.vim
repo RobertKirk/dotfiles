@@ -167,6 +167,9 @@ autocmd BufWritePre,BufRead *.c,*.conf,*.cpp,*.css,*.erb,*.js,*.json,*.md,*.php,
 filetype plugin on
 syntax on
 
+"Automatic reloading of .vimrc
+au BufWritePost ~/.config/nvim/init.vim so ~/.config/nvim/init.vim
+
 "}}}
 " VIM BACKUP{{{
 " backup to separate folder
@@ -255,22 +258,7 @@ nnoremap <silent> <C-f> <Plug>(ale-format)
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "}}}
-""Coc SETUP{{{
-"" Smaller updatetime for CursorHold & CursorHoldI
-"set updatetime=300
-
-"function! s:show_documentation()
-"  if &filetype == 'vim' || &filetype == 'help'
-"    execute 'h '.expand('<cword>')
-"  else
-"    call CocAction('doHover')
-"  endif
-"endfunction
-
-"" Use K for show documentation in preview window
-"nnoremap <silent> K :call <SID>show_documentation()<CR>
-""}}}
-""YouCompleteMe SETUP{{{
+" YouCompleteMe SETUP{{{
 nnoremap <silent> gd :YcmCompleter GoTo<CR>
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_min_num_identifier_candidate_chars = 3

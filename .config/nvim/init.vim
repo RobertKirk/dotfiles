@@ -340,6 +340,7 @@ Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 
+Plug 'wellle/targets.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'neomutt/neomutt.vim'
 

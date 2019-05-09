@@ -1,5 +1,6 @@
 anki
 bat
+brew
 curl
 diff-so-fancy
 dmenu

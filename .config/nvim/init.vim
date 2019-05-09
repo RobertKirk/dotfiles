@@ -118,8 +118,6 @@ noremap <leader>p "+p
 noremap <leader>Y "*y
 noremap <leader>P "*p
 
-" leader w saves
-nmap <leader>w :w!<cr>
 " leader x closes the buffer
 nmap <leader>x :bp<bar>sp<bar>bn<bar>bd<CR>
 " leader q exits
@@ -167,9 +165,6 @@ autocmd BufWritePre,BufRead *.c,*.conf,*.cpp,*.css,*.erb,*.js,*.json,*.md,*.php,
 filetype plugin on
 syntax on
 
-"Automatic reloading of .vimrc
-au BufWritePost ~/.config/nvim/init.vim so ~/.config/nvim/init.vim
-
 "}}}
 " VIM BACKUP{{{
 " backup to separate folder
@@ -197,11 +192,11 @@ let @r = 'gg/\n\nBww"8ywVd?a:pcwfjk, '
 
 " convert rows of numbers or text (as if pasted from excel column) to a tuple
 function! ToTupleFunction() range
-    silent execute a:firstline . "," . a:lastline . "s/^/’/"
-    silent execute a:firstline . "," . a:lastline . "s/$/’,/"
+    silent execute a:firstline . "," . a:lastline . "s/^/'/"
+    silent execute a:firstline . "," . a:lastline . "s/$/',/"
     silent execute a:firstline . "," . a:lastline . "join"
     silent execute "normal I("
-    silent execute "normal $xa)"
+    silent execute "normal Exa)"
 endfunction
 
 command! -range ToTuple <line1>,<line2> call ToTupleFunction()
@@ -260,6 +255,8 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "}}}
 " YouCompleteMe SETUP{{{
 nnoremap <silent> gd :YcmCompleter GoTo<CR>
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_min_num_identifier_candidate_chars = 3
 let g:ycm_max_num_candidates = 20

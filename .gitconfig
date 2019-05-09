@@ -1,6 +1,6 @@
 [user]
 	email = robert.kirk@smarkets.com
-	name = robertkirk
+	name = Robert Kirk
 
 [core]
     editor = nvim
@@ -13,13 +13,16 @@
 [push]
     default = current
     followTags = true
+
 [colour]
 	ui = true
+
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+
 [color "diff"]
 	meta = yellow
 	frag = magenta bold

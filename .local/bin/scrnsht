@@ -1,0 +1,12 @@
+#!/bin/bash
+
+dt=$(date '+%d-%m-%YT%H-%M-%S');
+filename=polar-screenshot-$dt.png
+
+mkdir -p ~/Pictures/polar-shots/
+
+cd ~/Pictures/polar-shots/
+
+import $filename
+
+echo file:///home/robert/Pictures/polar-shots/$filename | xclip -sel c

@@ -13,6 +13,7 @@ fpp
 fzf
 gdm
 git
+import
 ipython
 make
 neomutt

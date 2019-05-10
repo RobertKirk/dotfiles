@@ -4,6 +4,7 @@ brew
 curl
 diff-so-fancy
 dmenu
+dunst
 dwm
 fd
 feh

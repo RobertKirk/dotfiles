@@ -16,8 +16,7 @@ set nolist
 syntax enable
 set laststatus=1
 
-let g:python3_host_prog = '/usr/bin/python3'
-let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3.7'
 "}}}
 " VIEW SETTINGS{{{
 set signcolumn=yes

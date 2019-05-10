@@ -3,6 +3,7 @@
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
+usermodmap=$HOME/.Xmodmap
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 export PATH="$HOME/.local/bin:$PATH"
@@ -21,11 +22,8 @@ if [ -f "$userresources" ]; then
     xrdb -merge "$userresources"
 fi
 
-if [[ $(uname -r | grep ARCH) ]]; then
-        usermodmap=$HOME/.Xmodmap
-        if [ -f "$usermodmap" ]; then
-                xmodmap $usermodmap
-        fi
+if [ -f "$usermodmap" ]; then
+        xmodmap $usermodmap
 fi
 
 # start some nice programs

@@ -6,6 +6,8 @@ sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 background_image=${background_image:-~/.dwm-background}
 
+export PATH="$HOME/.local/bin:$PATH"
+
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then

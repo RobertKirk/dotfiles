@@ -1,4 +1,5 @@
 anki
+at
 bat
 brew
 curl
@@ -37,7 +38,9 @@ spotifycli
 ssh
 st
 tar
+tldr
 tmux
+tty-clock
 unzip
 urlview
 vlc

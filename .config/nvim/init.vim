@@ -136,15 +136,10 @@ nnoremap k gk
 " jk is escape
 inoremap jk <esc>
 
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" move to beginning/end of line is B/E not $/^
-nnoremap B ^
-nnoremap E $
-nnoremap $ <nop>
-nnoremap ^ <nop>
-
+" Pressing ss will toggle and untoggle spell checking
+map ss :setlocal spell!<cr>
+" ctrl l recorrects last spelling mistake
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 "}}}
 " FILE SPECIFIC CONFIGS{{{
 augroup configgroup
@@ -205,10 +200,10 @@ command! -range ToTuple <line1>,<line2> call ToTupleFunction()
 " PLUGINS{{{
 " Easymotion{{{
 " <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+map  f <Plug>(easymotion-bd-f)
+nmap f <Plug>(easymotion-overwin-f)
 " s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
+nmap <Leader>s <Plug>(easymotion-overwin-f2)
 " Move to line
 map <Leader>L <Plug>(easymotion-bd-jk)
 nmap <Leader>L <Plug>(easymotion-overwin-line)

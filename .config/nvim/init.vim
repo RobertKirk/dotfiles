@@ -5,24 +5,25 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 scriptencoding utf-8
 set hidden
+set nowrap
 set encoding=UTF-8
 set modelines=1
 set autoread
 set updatetime=100
 set noshowmode
+set lazyredraw
+syntax enable
+set laststatus=1
 
 let g:python3_host_prog = '/usr/bin/python3'
 let g:python_host_prog = '/usr/bin/python'
 "}}}
 " VIEW SETTINGS{{{
-syntax enable
-set background=dark
 colors solarized
 
 highlight EndOfBuffer ctermfg=8
-set cursorcolumn      " highlight current column
-highlight CursorColumn ctermbg=8
-set nowrap
+" set cursorcolumn      " highlight current column
+" highlight CursorColumn ctermbg=8
 
 " Changing cursor shape per mode
 " 1 or 0 -> blinking block
@@ -42,17 +43,12 @@ else
     autocmd VimLeave * silent !echo -ne "\033[0 q"
 endi
 
-" Always show statusline
-set laststatus=2
-
-" No Tab Line
-set showtabline=0
-
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
 
 " keep the cursor on the screen
-set scrolloff=5
+set scrolloff=10
+set scrolljump=2
 
 " Return to last position on opening file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -62,14 +58,10 @@ set foldenable
 set foldlevelstart=10   " open most folds by default
 set foldmethod=indent
 
-" only redraw when we need to
-set lazyredraw
-
 " show paranthesis match
 set showmatch
 
 " show relative line numbers
-set relativenumber
 set number
 
 " TAB SETTINGS
@@ -97,7 +89,7 @@ autocmd VimEnter * call CorrectColorScheme()
 let mapleader=","
 
 " sudo saving
-cmap w!! w !sudo tee > /dev/null %
+cmap W w !sudo tee > /dev/null %
 
 " Move to the next buffer
 nmap <leader>l :bnext<CR>
@@ -129,10 +121,6 @@ nnoremap <CR> za
 " Easy searching
 map <space> /
 
-" move vertically by visual line
-nnoremap j gj
-nnoremap k gk
-
 " jk is escape
 inoremap jk <esc>
 
@@ -155,9 +143,8 @@ augroup configgroup
     autocmd BufEnter *.zsh setlocal shiftwidth=2
     autocmd BufEnter *.zsh setlocal softtabstop=2
 augroup END
-autocmd BufWritePre,BufRead *.c,*.conf,*.cpp,*.css,*.erb,*.js,*.json,*.md,*.php,*.pp,*.py,*.rst,*.sh,*.sql :%s/\s\+$//e
 
-filetype plugin on
+filetype plugin indent on
 syntax on
 
 "}}}
@@ -223,11 +210,6 @@ let NERDTreeMinimalUI=1
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeStatusline = '%#NonText#'
-
-" Nerd tree opens when opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-
 "}}}
 " ALE setup{{{
 let g:ale_completion_enabled = 0
@@ -248,14 +230,22 @@ nnoremap <silent> <C-f> <Plug>(ale-format)
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "}}}
+" deoplete SETUP{{{
+let g:deoplete#enable_at_startup = 1
+" call deoplete#custom#option('camel_case', v:true)
+" call deoplete#custom#option('max_list', 20)
+"}}}
 " YouCompleteMe SETUP{{{
-nnoremap <silent> gd :YcmCompleter GoTo<CR>
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-let g:ycm_min_num_of_chars_for_completion = 3
-let g:ycm_min_num_identifier_candidate_chars = 3
-let g:ycm_max_num_candidates = 20
-let g:ycm_autoclose_preview_window_after_completion = 1
+" nnoremap <silent> gd :YcmCompleter GoTo<CR>
+" let g:ycm_filetype_specific_completion_to_disable = {
+"     \ 'python': 1
+"     \}
+" let g:ycm_enable_diagnostic_signs = 0
+" let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+" let g:ycm_min_num_of_chars_for_completion = 2
+" let g:ycm_min_num_identifier_candidate_chars = 2
+" let g:ycm_max_num_candidates = 20
+" let g:ycm_autoclose_preview_window_after_completion = 1
 "}}}
 "GitGutter setup{{{
 set signcolumn=yes
@@ -293,11 +283,6 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_clear_cache_on_exit = 0
 
 "}}}
-" VirtualEnv{{{
-let g:virtualenv_auto_activate = 1
-let g:virtualenv_directory = '/home/robert/smarkets'
-
-"}}}
 " DevIcons{{{
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
 let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
@@ -325,12 +310,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm'
 Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'plytophogy/vim-virtualenv'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
@@ -339,7 +322,13 @@ Plug 'wellle/targets.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'neomutt/neomutt.vim'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'deoplete-plugins/deoplete-jedi'
+
+Plug 'romainl/vim-cool'
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 Plug 'markonm/traces.vim'
 
@@ -355,8 +344,7 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
 
-Plug 'vim-airline/vim-airline/'
-Plug 'vim-airline/vim-airline-themes/'
+Plug 'itchyny/lightline.vim'
 
 Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'

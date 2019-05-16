@@ -13,6 +13,8 @@
 # Recretion of Pure look and feel in Powerlevel10k was inspired by
 # https://github.com/iboyperson/p9k-theme-pastel.
 
+POWERLEVEL9K_IGNORE_TERM_COLORS=true
+
 () {
   emulate -L zsh && setopt no_unset pipe_fail
 

@@ -46,3 +46,9 @@
 [submodule "repos/dwm"]
 	path = repos/dwm
 	url = git@github.com:RobertKirk/dwm.git
+[submodule "repos/betterlockscreen"]
+	path = repos/betterlockscreen
+	url = git@github.com:pavanjadhaw/betterlockscreen.git
+[submodule "repos/i3lock-color"]
+	path = repos/i3lock-color
+	url = git@github.com:PandorasFox/i3lock-color.git

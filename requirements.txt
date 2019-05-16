@@ -1,6 +1,7 @@
 anki
 at
 bat
+betterlockscreen
 brew
 curl
 diff-so-fancy
@@ -15,6 +16,7 @@ fpp
 fzf
 gdm
 git
+i3lock
 import
 ipython
 make

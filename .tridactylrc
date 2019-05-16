@@ -16,7 +16,7 @@ bind ys composite js "git submodule add -f " + document.location.href.replace(/h
 bind yz composite js "zplug \"" + document.location.href.replace(/https:\/\/github\.com\//,"") + "\"" | clipboard yank
 
 " GitHub vim plug command to paste yank
-bind yv composite js "Plug \"" + document.location.href.replace(/https:\/\/github\.com\//,"") + "\"" | clipboard yank
+bind yv composite js "Plug \'" + document.location.href.replace(/https:\/\/github\.com\//,"") + "\'" | clipboard yank
 
 " document.location.href.replace(/https?:\/\/github\.com\/.+?\//,"").replace(/\.git/,"") 
 " I like wikiwand but I don't like the way it changes URLs

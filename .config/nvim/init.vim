@@ -12,6 +12,7 @@ set autoread
 set updatetime=100
 set noshowmode
 set lazyredraw
+set nolist
 syntax enable
 set laststatus=1
 
@@ -61,7 +62,7 @@ set foldmethod=indent
 " show paranthesis match
 set showmatch
 
-" show relative line numbers
+set norelativenumber
 set number
 
 " TAB SETTINGS
@@ -317,6 +318,8 @@ Plug 'tpope/vim-repeat'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
+
+Plug 'ervandew/supertab'
 
 Plug 'wellle/targets.vim'
 Plug 'sheerun/vim-polyglot'

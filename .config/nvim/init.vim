@@ -20,6 +20,11 @@ let g:python3_host_prog = '/usr/bin/python3'
 let g:python_host_prog = '/usr/bin/python'
 "}}}
 " VIEW SETTINGS{{{
+
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
+
 colors solarized
 
 highlight EndOfBuffer ctermfg=8
@@ -205,12 +210,12 @@ map <C-n> :NERDTreeFind<CR>
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeIgnore=['^__pycache__$[[dir]]', '\.egg-info$[[dir]]']
 let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1
 let NERDTreeNaturalSort=1
-
+let NERDTreeAutoDeleteBuffer=1
 let NERDTreeMinimalUI=1
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
-let g:NERDTreeStatusline = '%#NonText#'
 "}}}
 " ALE setup{{{
 let g:ale_completion_enabled = 0
@@ -226,7 +231,7 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %(code):% %s [%severity%]'
 
-nnoremap <silent> <C-f> <Plug>(ale-format)
+nnoremap <silent> <C-f> :ALEFix<CR>
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -235,18 +240,6 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 let g:deoplete#enable_at_startup = 1
 " call deoplete#custom#option('camel_case', v:true)
 " call deoplete#custom#option('max_list', 20)
-"}}}
-" YouCompleteMe SETUP{{{
-" nnoremap <silent> gd :YcmCompleter GoTo<CR>
-" let g:ycm_filetype_specific_completion_to_disable = {
-"     \ 'python': 1
-"     \}
-" let g:ycm_enable_diagnostic_signs = 0
-" let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-" let g:ycm_min_num_of_chars_for_completion = 2
-" let g:ycm_min_num_identifier_candidate_chars = 2
-" let g:ycm_max_num_candidates = 20
-" let g:ycm_autoclose_preview_window_after_completion = 1
 "}}}
 "GitGutter setup{{{
 set signcolumn=yes
@@ -261,18 +254,6 @@ nmap <Leader>gp <Plug>GitGutterPreviewHunk
 " NoSwapSuck{{{
 so ~/scripts/vim/noswapsuck.vim
 set backupcopy=yes
-
-"}}}
-" airline{{{
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#ale#enabled = 1
-let g:airline_highlighting_cache = 1
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_theme='solarized'
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
 
 "}}}
 " CtrlP{{{

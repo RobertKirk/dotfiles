@@ -52,3 +52,15 @@
 [submodule "repos/i3lock-color"]
 	path = repos/i3lock-color
 	url = git@github.com:PandorasFox/i3lock-color.git
+[submodule "repos/xbanish"]
+	path = repos/xbanish
+	url = git@github.com:jcs/xbanish.git
+[submodule "repos/xkev"]
+	path = repos/xkev
+	url = git@github.com:vlaadbrain/xkev.git
+[submodule "repos/xbmouse"]
+	path = repos/xbmouse
+	url = git@github.com:vlaadbrain/xbmouse.git
+[submodule "repos/spt"]
+	path = repos/spt
+	url = git@github.com:pickfire/spt.git

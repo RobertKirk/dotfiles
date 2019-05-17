@@ -37,6 +37,7 @@ slstatus
 spicetify
 spotify
 spotifycli
+spt
 ssh
 st
 tar
@@ -49,10 +50,13 @@ urlview
 vlc
 wget
 wmctrl
+xbanish
+xbmouse
 xclip
 xdotool
 xfontsel
 xinit
+xkev
 xmodmap
 xsel
 xsv

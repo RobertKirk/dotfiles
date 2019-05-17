@@ -291,9 +291,12 @@ let g:goyo_width = 200
 call plug#begin('~/.vim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm'
+
+Plug 'mcchrish/nnn.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
+
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'w0rp/ale'
@@ -301,10 +304,11 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 
 Plug 'ervandew/supertab'
-
+Plug 'simeji/winresizer'
 Plug 'wellle/targets.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'neomutt/neomutt.vim'
+
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'roxma/nvim-yarp'

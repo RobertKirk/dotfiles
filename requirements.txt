@@ -57,5 +57,6 @@ xmodmap
 xsel
 xsv
 youtube-dl
+z
 zplug
 zsh

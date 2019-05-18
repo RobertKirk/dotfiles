@@ -21,6 +21,7 @@ import
 ipython
 make
 neomutt
+nnn
 node
 nvim
 postman
@@ -44,6 +45,7 @@ tar
 tldr
 tmux
 tmux-autocomplete
+trayer
 tty-clock
 unzip
 urlview

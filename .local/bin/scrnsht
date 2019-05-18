@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dt=$(date '+%d-%m-%YT%H-%M-%S');
+dt=$(date '+%d-%m-%YT%H-%M-%S-%N');
 filename=polar-screenshot-$dt.png
 
 mkdir -p ~/Pictures/polar-shots/

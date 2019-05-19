@@ -48,6 +48,10 @@ addnewlines() {
     git ls-files -z | while IFS= read -rd '' f; do tail -c1 < "$f" | read -r _ || echo >> "$f"; done
 }
 
+gitrmuntracked() {
+  git status -s | rg '?' -F | xargs rm -rf
+}
+
 alias v='nvim'
 alias jpn='jupyter notebook'
 alias album='tizonia --spotify-album'

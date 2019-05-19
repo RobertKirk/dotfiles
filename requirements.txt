@@ -19,6 +19,7 @@ git
 i3lock
 import
 ipython
+jumpapp
 make
 neomutt
 nnn
@@ -53,6 +54,7 @@ vlc
 wget
 wmctrl
 xbanish
+xbindkeys
 xbmouse
 xclip
 xdotool

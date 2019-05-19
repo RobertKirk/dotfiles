@@ -1,5 +1,5 @@
 [global]
-font = Iosevka Term 11
+font = Fura Code Nerd Font Complete
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
@@ -22,7 +22,7 @@ plain_text = no
 #   %I  iconname (without its path)
 #   %p  progress value if set ([  0%] to [100%]) or nothing
 # Markup is allowed
-format = "<b>%s</b>\n%b"
+format = "%s\n%b"
 
 # Sort messages by urgency.
 sort = no
@@ -34,7 +34,7 @@ indicate_hidden = yes
 # Possible values are "left", "center" and "right".
 alignment = right
 
-# The frequency with wich text that is longer than the notification
+# The frequency with which text that is longer than the notification
 # window allows bounces back and forth.
 # This option conflicts with "word_wrap".
 # Set to 0 to disable.
@@ -74,12 +74,12 @@ geometry = "300x50-15+49"
 
 # Shrink window if it's smaller than the width.  Will be ignored if
 # width is 0.
-shrink = no
+shrink = yes
 
 # The transparency of the window.  Range: [0; 100].
 # This option will only work if a compositing windowmanager is
 # present (e.g. xcompmgr, compiz, etc.).
-transparency = 5
+transparency = 0
 
 # Don't remove messages, if the user is idle (no mouse or keyboard input)
 # for longer than idle_threshold seconds.
@@ -110,7 +110,7 @@ sticky_history = yes
 history_length = 15
 
 # Display indicators for URLs (U) and actions (A).
-show_indicators = no
+show_indicators = yes
 
 # The height of a single line.  If the height is smaller than the
 # font height, it will get raised to the font height.
@@ -123,10 +123,10 @@ line_height = 3
 separator_height = 2
 
 # Padding between text and separator.
-padding = 6
+padding = 3
 
 # Horizontal padding.
-horizontal_padding = 6
+horizontal_padding = 3
 
 # Define a color for the separator.
 # possible values are:
@@ -139,10 +139,10 @@ separator_color = frame
 # Print a notification on startup.
 # This is mainly for error detection, since dbus (re-)starts dunst
 # automatically after a crash.
-startup_notification = true
+startup_notification = false
 
 # dmenu path.
-dmenu = /usr/bin/dmenu -p dunst:
+dmenu = /usr/local/bin/dmenu -p dunst:
 
 # Browser for opening urls in context menu.
 browser = /usr/bin/firefox -new-tab
@@ -154,7 +154,7 @@ max_icon_size = 80
 # Paths to default icons.
 icon_path = /usr/share/icons/Adwaita/16x16/mimetypes/:/usr/share/icons/Adwaita/48x48/status/:/usr/share/icons/Adwaita/16x16/devices/:/usr/share/icons/Adwaita/48x48/notifications/:/usr/share/icons/Adwaita/48x48/emblems/
 
-frame_width = 3
+frame_width = 1
 frame_color = "#8EC07C"
 
 [shortcuts]
@@ -181,23 +181,23 @@ context = ctrl+shift+period
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
-frame_color = "#3B7C87"
-foreground = "#3B7C87"
-background = "#191311"
+frame_color = "#859900"
+foreground = "#859900"
+background = "#002B36"
 #background = "#2B313C"
 timeout = 4
 
 [urgency_normal]
-frame_color = "#5B8234"
-foreground = "#5B8234"
-background = "#191311"
+frame_color = "#B58900"
+foreground = "#B58900"
+background = "#002B36"
 #background = "#2B313C"
 timeout = 6
 
 [urgency_critical]
-frame_color = "#B7472A"
-foreground = "#B7472A"
-background = "#191311"
+frame_color = "#DC322F"
+foreground = "#DC322F"
+background = "#002B36"
 #background = "#2B313C"
 timeout = 8
 

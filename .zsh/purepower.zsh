@@ -18,43 +18,21 @@ POWERLEVEL9K_IGNORE_TERM_COLORS=true
 () {
   emulate -L zsh && setopt no_unset pipe_fail
 
-  local mode=${PURE_POWER_MODE:-fancy}
-  case $mode in
-    fancy)
-      local vi_insert=$'\u276F '
-      local vi_cmd=$'\u276E '
-      local vi_vis=$'V '
-      local lock=$'\uF023'
-      local incoming=$'\u21E3'
-      local outgoing=$'\u21E1'
-      local root=$'\uF09C'
-      local jobs=$'\uF013'
-      ;;
-    *)
-      if [[ $mode != portable ]]; then
-        echo -En "purepower: invalid mode: ${(qq)mode}; " >&2
-        echo -E  "valid options are 'fancy' and 'portable'; falling back to 'portable'" >&2
-      fi
-      local vi_insert='>'
-      local vi_cmd='<'
-      local lock='X'
-      local incoming='<'
-      local outgoing='>'
-      local root='#'
-      local jobs='%%'
-      ;;
-  esac
+  local vi_insert=$'\u276F '
+  local vi_cmd=$'\u276E '
+  local vi_vis=$'V '
+  local lock=$'\uF023'
+  local incoming=$'\u21E3'
+  local outgoing=$'\u21E1'
+  local root=$'\uF09C'
+  local jobs=$'\uF013'
 
-  typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator dir_writable dir virtualenv anaconda vcs background_jobs)
+  typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator dir_writable dir virtualenv anaconda vcs background_jobs status)
 
-  typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time custom_rprompt time)
+  typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 
-  if (( ${PURE_POWER_USE_P10K_EXTENSIONS:-1} )); then
-    local p="\${\${\${KEYMAP:-0}:#vicmd}:+${${vi_insert//\\/\\\\}//\}/\\\}}}"
-    p+="\${\${\$((!\${#\${KEYMAP:-0}:#vicmd})):#0}:+${${vi_cmd//\\/\\\\}//\}/\\\}}}"
-  else
-    p=$vi_insert
-  fi
+  local p="\${\${\${KEYMAP:-0}:#vicmd}:+${${vi_insert//\\/\\\\}//\}/\\\}}}"
+  p+="\${\${\$((!\${#\${KEYMAP:-0}:#vicmd})):#0}:+${${vi_cmd//\\/\\\\}//\}/\\\}}}"
 
   typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%(?.%F{015}${p}%f.%F{009}${p}%f)"
   typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=$'\n'
@@ -105,15 +83,6 @@ POWERLEVEL9K_IGNORE_TERM_COLORS=true
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=none
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_COLOR=002
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_ICON=$jobs
-
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=1
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND=none
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=101
-  typeset -g POWERLEVEL9K_EXECUTION_TIME_ICON=
-
-  typeset -g POWERLEVEL9K_TIME_BACKGROUND=none
-  typeset -g POWERLEVEL9K_TIME_FOREGROUND=244
-  typeset -g POWERLEVEL9K_TIME_ICON=
 
   typeset -g POWERLEVEL9K_STATUS_OK=false
   typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND=none

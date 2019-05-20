@@ -208,12 +208,13 @@ nmap <Leader>wo <Plug>(easymotion-overwin-w)
 " Nerdtree{{{
 map <C-n> :NERDTreeFind<CR>
 map <leader>n :NERDTreeToggle<CR>
-let NERDTreeIgnore=['^__pycache__$[[dir]]', '\.egg-info$[[dir]]']
-let NERDTreeShowHidden=1
-let NERDTreeQuitOnOpen=1
-let NERDTreeNaturalSort=1
-let NERDTreeAutoDeleteBuffer=1
-let NERDTreeMinimalUI=1
+let g:NERDTreeIgnore=['^__pycache__$[[dir]]', '\.egg-info$[[dir]]']
+let g:NERDTreeShowHidden=1
+let g:NERDTreeHijackNetrw=0
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeNaturalSort=1
+let g:NERDTreeAutoDeleteBuffer=1
+let g:NERDTreeMinimalUI=1
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
 "}}}
@@ -278,6 +279,23 @@ highlight! link NERDTreeFlags NERDTreeDir
 let g:goyo_width = 200
 
 "}}}
+" nnn.vim{{{
+" Disable default mappings
+let g:nnn#set_default_mappings = 0
+
+" Start nnn in the current file's directory
+nnoremap <leader>n :NnnPicker '%:p:h'<CR>
+
+let g:nnn#layout = { 'left': '~20%' }
+
+let g:nnn#action = {
+        \ '<c-t>': 'tab split',
+        \ '<c-i>': 'split',
+        \ '<c-s>': 'vsplit' }
+
+
+let g:nnn#replace_netrw = 1
+"}}}
 "}}}
 " Autoloading vim plugins{{{
 "if empty(glob('~/.vim/autoload/plug.vim'))
@@ -316,7 +334,6 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'deoplete-plugins/deoplete-jedi'
 
 Plug 'romainl/vim-cool'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 Plug 'markonm/traces.vim'
 

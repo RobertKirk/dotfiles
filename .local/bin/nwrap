@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# If you use pywal, you need to restore the scheme here
+# (cat ~/.cache/wal/sequences &)
+
+export NNN_USE_EDITOR=1
+export NNN_BMS="D:~/Downloads;v:~/Videos"
+export NNN_CONTEXT_COLORS="1234"
+export NNN_NOTE='/home/robert/.note'
+export NNN_OPS_PROG=1
+
+# Start nnn with your preferred options
+nnn -sl "$@"

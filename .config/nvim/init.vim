@@ -327,7 +327,6 @@ Plug 'wellle/targets.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'neomutt/neomutt.vim'
 
-
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'

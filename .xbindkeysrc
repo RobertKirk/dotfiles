@@ -1,0 +1,29 @@
+"jumpapp firefox"
+  Mod4 + f
+
+"jumpapp -r firefox"
+  Mod4 + alt + f
+
+"jumpapp spotify"
+  Mod4 + n
+
+"jumpapp -r spotify"
+  Mod4 + alt + m
+
+"jumpapp -t Slack slack"
+  Mod4 + c
+
+"jumpapp -t Slack -r slack"
+  Mod4 + alt + c
+
+"jumpapp st"
+  Mod4 + t
+
+"jumpapp -r st"
+  Mod4 + alt + t
+
+"jumpapp postman"
+  Mod4 + p
+
+"jumpapp -r postman"
+  Mod4 + alt + p

@@ -80,9 +80,9 @@ function fopen() {
 unalias cdf 2>/dev/null
 function cdf() {
 	while true; do
-		local lsd=$(echo ".." && ls -a -p | grep '/$' | sed 's;/$;;')
+		local lsd=$(ls --color=never -a -p | grep '/$' | sed 's;/$;;')
 		local dir="$(printf '%s\n' "${lsd[@]}" |
-			fzf --reverse --cycle --preview '
+			fzf --select-1 --reverse --cycle --preview '
                 __cd_nxt="$(echo {})";
                 __cd_path="$(echo $(pwd)/${__cd_nxt} | sed "s;//;/;")";
                 echo $__cd_path;

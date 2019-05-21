@@ -131,7 +131,7 @@ map <space> /
 inoremap jk <esc>
 
 " Pressing ss will toggle and untoggle spell checking
-map ss :setlocal spell!<cr>
+map <Leader>s :setlocal spell!<cr>
 " ctrl l recorrects last spelling mistake
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 "}}}
@@ -195,8 +195,8 @@ command! -range ToTuple <line1>,<line2> call ToTupleFunction()
 " <Leader>f{char} to move to {char}
 map  f <Plug>(easymotion-bd-f)
 nmap f <Plug>(easymotion-overwin-f)
-" s{char}{char} to move to {char}{char}
-nmap <Leader>s <Plug>(easymotion-overwin-f2)
+" <leader>s{char}{char} to move to {char}{char}
+" nmap <Leader>s <Plug>(easymotion-overwin-f2)
 " Move to line
 map <Leader>L <Plug>(easymotion-bd-jk)
 nmap <Leader>L <Plug>(easymotion-overwin-line)

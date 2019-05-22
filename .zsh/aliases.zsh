@@ -5,6 +5,10 @@ abbrev-alias -g S="~/smarkets/"
 abbrev-alias -g C="| xclip -sel c"
 abbrev-alias -i
 
+alias -s pdf=zathura
+alias -s html=firefox
+alias -s {csv,js,css,less,md,wiki,rst}=nvim
+
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
     LESS_TERMCAP_me=$'\e[0m' \

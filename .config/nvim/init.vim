@@ -237,11 +237,6 @@ nnoremap <silent> <C-f> :ALEFix<CR>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "}}}
-" deoplete SETUP{{{
-let g:deoplete#enable_at_startup = 1
-" call deoplete#custom#option('camel_case', v:true)
-" call deoplete#custom#option('max_list', 20)
-"}}}
 "GitGutter setup{{{
 set signcolumn=yes
 let g:gitgutter_map_keys = 0
@@ -273,6 +268,26 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
 let g:NERDTreeDirArrowExpandable = "\u00a0"
 let g:NERDTreeDirArrowCollapsible = "\u00a0"
 highlight! link NERDTreeFlags NERDTreeDir
+
+"}}}
+" UltiSnips{{{
+" Configuration for custom snips
+let g:UltiSnipsSnippetsDir = "~/.config/nvim/snips"
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips"]
+
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger='<c-j>'
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit='vertical'
+
+" Use Python Version
+let g:UltiSnipsUsePythonVersion = 3
+"}}}
+" SuperTab {{{
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 "}}}
 " Goyo{{{
@@ -321,6 +336,7 @@ Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 
+Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
 Plug 'simeji/winresizer'
 Plug 'wellle/targets.vim'
@@ -353,5 +369,13 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'
 call plug#end()
+"}}}
+" deoplete, has to come after pluin is loaded{{{
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('camel_case', v:true)
+call deoplete#custom#option('max_list', 20)
+call deoplete#custom#option('sources', {
+\ 'python': ['around', 'file', 'member', 'jedi', 'tag'],
+\})
 "}}}
 " vim:foldmethod=marker:foldlevel=0

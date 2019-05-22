@@ -6,6 +6,6 @@ bindkey -M viins '^S' sudo-command-line
 bindkey -M vicmd '^S' sudo-command-line
 bindkey -M vicmd '^V' edit-command-line
 
-bindkey -M vicmd '' history-substring-search-up
+bindkey -M vicmd '^K' history-substring-search-up
 
-bindkey  history-substring-search-up
+bindkey '^K' history-substring-search-up

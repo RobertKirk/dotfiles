@@ -41,17 +41,10 @@ fi
 xset r rate 200 40 &
 
 xbindkeys &
-
-if which redshift &> /dev/null; then
-        redshift &
-fi
-
-if which slstatus &> /dev/null; then
-        slstatus &
-fi
-
-if which feh &> /dev/null; then
-        feh --bg-scale $background_image
-fi
+redshift &
+slstatus &
+clipmenud &
+xbanish
+feh --bg-scale $background_image
 
 exec dwm

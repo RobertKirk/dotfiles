@@ -3,6 +3,9 @@ at
 bat
 betterlockscreen
 brew
+clipmenu
+clipmenud
+clipnotify
 curl
 diff-so-fancy
 dmenu

@@ -64,3 +64,9 @@
 [submodule "repos/spt"]
 	path = repos/spt
 	url = git@github.com:pickfire/spt.git
+[submodule "repos/clipnotify"]
+	path = repos/clipnotify
+	url = git@github.com:cdown/clipnotify.git
+[submodule "repos/clipmenu"]
+	path = repos/clipmenu
+	url = git@github.com:cdown/clipmenu.git

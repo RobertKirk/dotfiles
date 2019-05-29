@@ -52,7 +52,10 @@ gitrmuntracked() {
   git status -s | rg '?' -F | xargs rm -rf
 }
 
+getkeycods() { xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }' }
+
 alias v='nvim'
+alias e='nvim'
 alias jpn='jupyter notebook'
 alias album='tizonia --spotify-album'
 alias reload='source ~/.zshrc'
@@ -63,6 +66,13 @@ alias fial='alias | ag'
 alias mkst='cd ~/repos/st && sudo make clean install'
 alias vwk='nvim +VimwikiIndex'
 alias peek='bat --pager="less -R~K"'
+alias i='bat --pager="less -R~K"'
+alias m='man'
+alias s='sudo '
+alias d='deactivate'
+alias sudo='sudo '
+alias agi='apt-get install'
+alias ag='apt-get'
 
 alias tsk='cat ~/vimwiki/Tasks.wiki | fzf --layout reverse --height 50%'
 alias neomutt='nocorrect neomutt'
@@ -75,6 +85,5 @@ alias gpuw='watch -n 1 -d -t nvidia-smi'
 alias cplgvfs='nohup cpulimit -e gvfs -l 5  </dev/null >/dev/null 2>&1 & disown'
 alias gentoken='head -c 24 /dev/urandom | base64'
 alias dt='tty-clock -xcsB -C 7'
-getkeycods() { xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }' }
 alias cp='/home/robert/.local/bin/cpg -g'
 alias mv='/home/robert/.local/bin/mvg -g'

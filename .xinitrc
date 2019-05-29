@@ -44,7 +44,7 @@ xbindkeys &
 redshift &
 slstatus &
 clipmenud &
-xbanish
+xbanish &
 feh --bg-scale $background_image
 
 exec dwm

@@ -28,6 +28,7 @@ zplug "zsh-users/zsh-autosuggestions"
   typeset -g ZSH_AUTOSUGGEST_ASYNC_PTY_NAME='zsh_autosuggest_pty'
   typeset -ga ZSH_AUTOSUGGEST_STRATEGY=('history')
 
+zplug "supercrabtree/k"
 zplug "zsh-vi-more/vi-motions"
 zplug "michaelxmcbride/zsh-dircycle"
 zplug "wfxr/forgit", defer:1
@@ -38,3 +39,5 @@ zplug "b4b4r07/zsh-vimode-visual", defer:3
 zplug "zsh-users/zsh-history-substring-search", defer:3
 
 zplug load
+
+unalias k

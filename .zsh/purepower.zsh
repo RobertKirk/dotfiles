@@ -20,7 +20,7 @@ POWERLEVEL9K_IGNORE_TERM_COLORS=true
 
   local vi_insert=$'\u276F '
   local vi_cmd=$'\u276E '
-  local vi_vis=$'V '
+  local vi_vis='V '
   local lock=$'\uF023'
   local incoming=$'\u21E3'
   local outgoing=$'\u21E1'

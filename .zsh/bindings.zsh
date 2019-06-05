@@ -8,7 +8,13 @@ bindkey -M vicmd '^V' edit-command-line
 
 bindkey -M vicmd '^K' history-substring-search-up
 
-bindkey '^K' history-substring-search-up
+upwards() {
+  zle vi-cmd-mode
+  history-substring-search-up
+}
+
+zle -N upwards
+bindkey -M viins '^K' upwards
 
 # Detect empty enter, execute git status if in git dir
 magic-enter () {

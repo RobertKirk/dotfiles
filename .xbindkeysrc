@@ -4,6 +4,12 @@
 "jumpapp -r firefox"
   Mod4 + alt + f
 
+"jumpapp google-chrome"
+  Mod4 + g
+
+"jumpapp -r google-chrome"
+  Mod4 + alt + g
+
 "jumpapp spotify"
   Mod4 + m
 

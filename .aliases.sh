@@ -52,6 +52,10 @@ gitrmuntracked() {
   git status -s | rg '?' -F | xargs rm -rf
 }
 
+-() {
+  cd -
+}
+
 getkeycods() { xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }' }
 
 alias v='nvim'

@@ -294,6 +294,15 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:goyo_width = 200
 
 "}}}
+" vimtex{{{
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+let g:vimtext_fold_enabled = 1
+
+"}}}
 " nnn.vim{{{
 " Disable default mappings
 let g:nnn#set_default_mappings = 0
@@ -324,6 +333,8 @@ let g:nnn#replace_netrw = 1
 call plug#begin('~/.vim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm'
+Plug 'sk1418/HowMuch'
+Plug 'lervag/vimtex'
 
 Plug 'mcchrish/nnn.vim'
 Plug 'scrooloose/nerdtree'

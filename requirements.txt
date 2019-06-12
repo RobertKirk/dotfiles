@@ -17,7 +17,6 @@ fira-code-nerdfont
 firefox
 fpp
 fzf
-gdm
 git
 i3lock
 import
@@ -37,7 +36,6 @@ redshift
 rg
 sddm
 slack
-slock
 slstatus
 spicetify
 spotify
@@ -51,6 +49,7 @@ tmux
 tmux-autocomplete
 trayer
 tty-clock
+ctags
 unzip
 urlview
 vlc

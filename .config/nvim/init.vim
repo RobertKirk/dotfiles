@@ -294,6 +294,16 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:goyo_width = 200
 
 "}}}
+" gutentags{{{
+let g:gutentags_file_list_command = {
+    \ 'markers': {
+        \ '.git': 'git ls-files --ignored',
+        \ },
+    \ }
+
+let g:gutentags_define_advanced_commands = 1
+
+"}}}
 " vimtex{{{
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
@@ -331,53 +341,56 @@ let g:nnn#replace_netrw = 1
 "}}}
 " Loading Plugins{{{
 call plug#begin('~/.vim/plugged')
+" Finding Files
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm'
-Plug 'sk1418/HowMuch'
-Plug 'lervag/vimtex'
+" Plug 'ludovicchabant/vim-gutentags'
+Plug 'jremmen/vim-ripgrep'
 
-Plug 'mcchrish/nnn.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'airblade/vim-gitgutter'
-Plug 'ryanoasis/vim-devicons'
-
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
+" Linting/completion/syntax
 Plug 'w0rp/ale'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-vinegar'
-
-Plug 'SirVer/ultisnips'
-Plug 'ervandew/supertab'
-Plug 'simeji/winresizer'
-Plug 'wellle/targets.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'neomutt/neomutt.vim'
-
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'lervag/vimtex'
+Plug 'SirVer/ultisnips'
+Plug 'ervandew/supertab'
 
+" navigation
+Plug 'mcchrish/nnn.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-vinegar'
+Plug 'majutsushi/tagbar'
+
+" motions/objects/actions
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'wellle/targets.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'bkad/CamelCaseMotion'
 Plug 'romainl/vim-cool'
-
 Plug 'markonm/traces.vim'
 
-Plug 'jremmen/vim-ripgrep'
-
+" folding
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
 
+" Windows/panes/status
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
-
-Plug 'easymotion/vim-easymotion'
-Plug 'bkad/CamelCaseMotion'
-
+Plug 'simeji/winresizer'
+Plug 'junegunn/goyo.vim'
 Plug 'itchyny/lightline.vim'
 
-Plug 'junegunn/goyo.vim'
+" Utils
+Plug 'sk1418/HowMuch'
 Plug 'vimwiki/vimwiki'
 call plug#end()
 "}}}

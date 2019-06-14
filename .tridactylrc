@@ -18,7 +18,6 @@ bind yz composite js "zplug \"" + document.location.href.replace(/https:\/\/gith
 " GitHub vim plug command to paste yank
 bind yv composite js "Plug \'" + document.location.href.replace(/https:\/\/github\.com\//,"") + "\'" | clipboard yank
 
-" document.location.href.replace(/https?:\/\/github\.com\/.+?\//,"").replace(/\.git/,"") 
 " I like wikiwand but I don't like the way it changes URLs
 bindurl wikiwand.com yy composite js document.location.href.replace("wikiwand.com/en","wikipedia.org/wiki") | clipboard yank
 
@@ -39,10 +38,13 @@ unbind --mode=ex <C-a>
 unbind --mode=ex <C-c>
 
 " Postgres docs search
-set searchurls.pg https://www.postgresql.org/search/?u=%2Fdocs%2F10%2F&q=%s
+set searchurls.pg  https://www.google.com/search?q=site:http://www.postgresql.org/docs/10/+%s
+
+" PyTorch docs search
+set searchurls.pyt  https://pytorch.org/docs/stable/search.html?q=%s&check_keywords=yes&area=default
 
 " Pandas docs search (default is bad)
-set searchurls.pd https://www.google.com/search?q=site:http://http://pandas.pydata.org/pandas-docs/version/0.24/+%s
+set searchurls.pd https://www.google.com/search?q=site:http://pandas.pydata.org/pandas-docs/version/0.24/+%s
 
 " set editorcmd to suckless terminal, or use the defaults on other platforms
 js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "st vim" : "auto"; tri.config.set("editorcmd", editorcmd)})

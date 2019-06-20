@@ -24,7 +24,7 @@ let g:python_host_prog = '/usr/bin/python'
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ }
-
+" set background=light
 colors solarized
 
 highlight EndOfBuffer ctermfg=8
@@ -49,9 +49,6 @@ else
     autocmd VimLeave * silent !echo -ne "\033[0 q"
 endi
 
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
-
 " keep the cursor on the screen
 set scrolloff=10
 set scrolljump=2
@@ -65,13 +62,13 @@ set foldlevelstart=10   " open most folds by default
 set foldmethod=indent
 
 " show paranthesis match
-set showmatch
+" set showmatch
 
 set norelativenumber
 set number
 
 " TAB SETTINGS
-set tabstop=4 softtabstop=4 expandtab
+" set tabstop=4 softtabstop=4 expandtab
 
 "}}}
 " SEARCH SETTINGS{{{
@@ -92,10 +89,7 @@ endfunction
 autocmd VimEnter * call CorrectColorScheme()
 "}}}
 " KEYBOARD SHORTCUTS{{{
-let mapleader=","
-
-" sudo saving
-cmap W w !sudo tee > /dev/null %
+let mapleader=" "
 
 " Move to the next buffer
 nmap <leader>l :bnext<CR>
@@ -123,9 +117,6 @@ nmap <leader>q :xa<cr>
 
 " CR open/closes folds
 nnoremap <CR> za
-
-" Easy searching
-map <space> /
 
 " jk is escape
 inoremap jk <esc>
@@ -344,7 +335,7 @@ call plug#begin('~/.vim/plugged')
 " Finding Files
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm'
-" Plug 'ludovicchabant/vim-gutentags'
+Plug 'wsdjeg/FlyGrep.vim'
 Plug 'jremmen/vim-ripgrep'
 
 " Linting/completion/syntax

@@ -24,7 +24,7 @@ let g:python_host_prog = '/usr/bin/python'
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ }
-" set background=light
+set background=light
 colors solarized
 
 highlight EndOfBuffer ctermfg=8

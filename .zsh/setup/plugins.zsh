@@ -13,9 +13,6 @@ zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
 zplug "plugins/kubectl", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
-  ZSH_TMUX_AUTOSTART="true"
-  ZSH_TMUX_FIXTERM="true"
-  ZSH_TMUX_AUTOQUIT="false"
 zplug "plugins/fancy-ctrl-z", from:oh-my-zsh
 
 zplug "romkatv/powerlevel10k", use:powerlevel10k.zsh-theme

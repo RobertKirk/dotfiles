@@ -34,7 +34,7 @@ POWERLEVEL9K_IGNORE_TERM_COLORS=true
   local p="\${\${\${KEYMAP:-0}:#vicmd}:+${${vi_insert//\\/\\\\}//\}/\\\}}}"
   p+="\${\${\$((!\${#\${KEYMAP:-0}:#vicmd})):#0}:+${${vi_cmd//\\/\\\\}//\}/\\\}}}"
 
-  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%(?.%F{015}${p}%f.%F{009}${p}%f)"
+  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%(?.%F{14}${p}%f.%F{001}${p}%f)"
   typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=$'\n'
   typeset -g POWERLEVEL9K_PROMPT_ON_NEWLINE=true
   typeset -g POWERLEVEL9K_RPROMPT_ON_NEWLINE=false

@@ -3,6 +3,9 @@ sanitise tridactyllocal tridactylsync
 " colour scheme
 colors dark
 
+bind J tabnext
+bind K tabprev
+
 " Comment toggler for Reddit and Hacker News
 bind ;c hint -c [class*="expand"],[class="togg"]
 

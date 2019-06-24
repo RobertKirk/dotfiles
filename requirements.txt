@@ -6,6 +6,7 @@ brew
 clipmenu
 clipmenud
 clipnotify
+ctags
 curl
 diff-so-fancy
 dmenu
@@ -18,15 +19,19 @@ firefox
 fpp
 fzf
 git
+i3
+i3blocks
 i3lock
 import
 ipython
 jumpapp
+kitty
 make
 neomutt
 nnn
 node
 nvim
+pgcli
 postman
 psql
 python
@@ -49,7 +54,6 @@ tmux
 tmux-autocomplete
 trayer
 tty-clock
-ctags
 unzip
 urlview
 vlc

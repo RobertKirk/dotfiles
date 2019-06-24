@@ -22,10 +22,10 @@
 "jumpapp -t Slack -r slack"
   Mod4 + alt + s
 
-"jumpapp st"
+"jumpapp kitty"
   Mod4 + t
 
-"jumpapp -r st"
+"jumpapp -r kitty"
   Mod4 + alt + t
 
 "jumpapp postman"

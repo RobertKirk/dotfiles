@@ -1,0 +1,12 @@
+super + shift + {f,g,m,t,p}
+	jumpapp -r {firefox,google-chrome,spotify,kitty,postman}
+
+super + {f,g,m,t,p}
+	jumpapp {firefox,google-chrome,spotify,kitty,postman}
+
+super + s
+	jumpapp -t Slack slack
+
+super + shift + s
+	jumpapp -rt Slack slack
+

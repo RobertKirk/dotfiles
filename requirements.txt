@@ -48,6 +48,7 @@ spotifycli
 spt
 ssh
 st
+sxhkd 
 tar
 tldr
 tmux

@@ -40,7 +40,7 @@ fi
 
 xset r rate 200 40 &
 
-xbindkeys &
+sxhkd &
 redshift &
 slstatus &
 clipmenud &

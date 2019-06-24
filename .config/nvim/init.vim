@@ -349,6 +349,7 @@ Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
+Plug 'kovetskiy/sxhkd-vim'
 
 " navigation
 Plug 'mcchrish/nnn.vim'

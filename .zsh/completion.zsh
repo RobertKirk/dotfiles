@@ -13,6 +13,7 @@ autoload -U +X bashcompinit && bashcompinit
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=253,bold"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
+ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path $ZDOTDIR/completion-cache

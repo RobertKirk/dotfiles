@@ -6,8 +6,8 @@ colors dark
 bind J tabnext
 bind K tabprev
 
-" Comment toggler for Reddit and Hacker News
-bind ;c hint -c [class*="expand"],[class="togg"]
+bind --mode=ignore <C-z> mode normal
+bind --mode=normal <C-z> mode ignore
 
 " Git{Hub,Lab} git clone via SSH yank
 bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
@@ -21,18 +21,12 @@ bind yz composite js "zplug \"" + document.location.href.replace(/https:\/\/gith
 " GitHub vim plug command to paste yank
 bind yv composite js "Plug \'" + document.location.href.replace(/https:\/\/github\.com\//,"") + "\'" | clipboard yank
 
-" I like wikiwand but I don't like the way it changes URLs
-bindurl wikiwand.com yy composite js document.location.href.replace("wikiwand.com/en","wikipedia.org/wiki") | clipboard yank
-
-" Make gu take you back to subreddit from comments
-bindurl reddit.com gu urlparent 4
- 
 " find mode commands
-" bind / fillcmdline find
-" bind ? fillcmdline find -?
-" bind n findnext 1
-" bind N findnext -1
-" bind ,<Space> nohlsearch
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext -1
+bind <Space><Space> nohlsearch
 
 " Allow Ctrl-a to select all in the commandline
 unbind --mode=ex <C-a>
@@ -40,26 +34,23 @@ unbind --mode=ex <C-a>
 " Let Ctrl-c to copy in the commandline
 unbind --mode=ex <C-c>
 
-" Postgres docs search
+" Search urls
 set searchurls.pg  https://www.google.com/search?q=site:http://www.postgresql.org/docs/10/+%s
-
-" PyTorch docs search
 set searchurls.pyt  https://pytorch.org/docs/stable/search.html?q=%s&check_keywords=yes&area=default
-
-" Pandas docs search (default is bad)
 set searchurls.pd https://www.google.com/search?q=site:http://pandas.pydata.org/pandas-docs/version/0.24/+%s
 
-" set editorcmd to suckless terminal, or use the defaults on other platforms
-js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "st vim" : "auto"; tri.config.set("editorcmd", editorcmd)})
+" https://quinoa42.github.io/blog/2019/tridactyl-edtiorcmd-with-tmux/
+set editorcmd tmux new-window -n firefox 'nvim -f %f; tmux wait-for -S firefox-neww-done' \; wait-for firefox-neww-done
+
+autocmd DocStart mail.google.com mode ignore
+autocmd TabEnter mail.google.com mode ignore
 
 " Make Tridactyl work on more sites at the expense of some security
 set csp clobber
 fixamo_quiet
 
-" New reddit is bad
-"autocmd DocStart www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
-
-" Mosquito nets won't make themselves
-"autocmd DocStart www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")
+" Url modifications
+autocmd DocStart www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
+autocmd DocStart www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")
 
 " vim: set filetype=vim:

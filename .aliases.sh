@@ -19,8 +19,8 @@ alias gsthpm='git stash push -m'
 alias gsthd='git stash drop'
 alias grs='git reset'
 alias gupdb='git checkout master && git pull && git checkout - && git rebase master'
-alias gd='git diff | diff-so-fancy | sed "s/^\([^-+]*\)[-+]/\1/" | less -R~FX'
-alias gdp='git diff | diff-so-fancy | sed "s/^\([^-+]*\)[-+]/\1/" | less -R~'
+alias gd='git diff | diff-so-fancy | less -R~FX'
+alias gdp='git diff | diff-so-fancy | less -R~'
 
 lastpasscp() {
     lpass show -c --password $(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')

@@ -61,14 +61,11 @@ set foldenable
 set foldlevelstart=10   " open most folds by default
 set foldmethod=indent
 
-" show paranthesis match
-" set showmatch
-
 set norelativenumber
 set number
 
 " TAB SETTINGS
-" set tabstop=4 softtabstop=4 expandtab
+set tabstop=2 softtabstop=2 expandtab
 
 "}}}
 " SEARCH SETTINGS{{{
@@ -78,15 +75,8 @@ set smartcase
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
-nnoremap <leader>g :lgrep<Space>
+nnoremap <leader>g :Rg<CR>
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-"}}}
-" POST lOAD fIXED{{{
-function! CorrectColorScheme()
-  highlight EndOfBuffer ctermfg=8
-endfunction
-
-autocmd VimEnter * call CorrectColorScheme()
 "}}}
 " KEYBOARD SHORTCUTS{{{
 let mapleader=" "
@@ -100,9 +90,6 @@ nmap <leader>h :bprevious<CR>
 nmap <leader>bq :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
-
-" leader <space> to turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
 
 " Pasting from system keyboard easily
 noremap <leader>y "+y
@@ -122,7 +109,7 @@ nnoremap <CR> za
 inoremap jk <esc>
 
 " Pressing ss will toggle and untoggle spell checking
-map <Leader>s :setlocal spell!<cr>
+map <leader>s :setlocal spell!<cr>
 " ctrl l recorrects last spelling mistake
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 "}}}
@@ -228,7 +215,7 @@ nnoremap <silent> <C-f> :ALEFix<CR>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "}}}
-"GitGutter setup{{{
+" GitGutter setup{{{
 set signcolumn=yes
 let g:gitgutter_map_keys = 0
 nmap ]h <Plug>GitGutterNextHunk
@@ -283,16 +270,6 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 "}}}
 " Goyo{{{
 let g:goyo_width = 200
-
-"}}}
-" gutentags{{{
-let g:gutentags_file_list_command = {
-    \ 'markers': {
-        \ '.git': 'git ls-files --ignored',
-        \ },
-    \ }
-
-let g:gutentags_define_advanced_commands = 1
 
 "}}}
 " vimtex{{{

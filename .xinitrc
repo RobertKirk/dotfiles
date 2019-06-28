@@ -46,5 +46,6 @@ slstatus &
 clipmenud &
 xbanish &
 feh --bg-scale $background_image
+betterlockscreen -w &
 
 exec dwm

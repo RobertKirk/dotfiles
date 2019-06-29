@@ -4,7 +4,6 @@ userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
-background_image=${background_image:-~/.dwm-background}
 
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -48,4 +47,4 @@ xbanish &
 feh --bg-scale $background_image
 betterlockscreen -w &
 
-exec dwm
+exec i3

@@ -73,3 +73,6 @@
 [submodule "repos/dmenu"]
 	path = repos/dmenu
 	url = git@github.com:RobertKirk/dmenu.git
+[submodule "repos/i3blocks-contrib"]
+	path = repos/i3blocks-contrib
+	url = git@github.com:vivien/i3blocks-contrib.git

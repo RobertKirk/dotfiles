@@ -63,6 +63,6 @@ DECIMALS=2
 
 [time]
 interval=1
-STRFTIME_FORMAT= %R %a %d %b %
+STRFTIME_FORMAT= %R %a %d %b %Y
 TZONES=$DEFAULT_TZ,Brazil/East
 TZ_LABELS=,Brazil

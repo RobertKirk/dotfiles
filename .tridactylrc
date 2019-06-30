@@ -50,7 +50,7 @@ set csp clobber
 fixamo_quiet
 
 " Url modifications
-autocmd DocStart www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
-autocmd DocStart www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")
+" autocmd DocStart www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
+" autocmd DocStart www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")
 
 " vim: set filetype=vim:

@@ -44,7 +44,7 @@ redshift &
 slstatus &
 clipmenud &
 xbanish &
-feh --bg-scale $background_image
+mathpix-snipping-tool &
 betterlockscreen -w &
 
 exec i3

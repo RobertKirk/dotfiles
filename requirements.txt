@@ -27,6 +27,7 @@ ipython
 jumpapp
 kitty
 make
+mathpix-snipping-tool
 neomutt
 nnn
 node

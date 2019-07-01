@@ -7,3 +7,4 @@
 \pset format wrapped
 \pset null ¤
 \timing
+\setenv PAGER 'pspg --line-numbers --no-mouse --bold-labels --no-sound -i -s 16'

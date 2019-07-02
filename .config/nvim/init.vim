@@ -309,7 +309,7 @@ let g:nnn#replace_netrw = 1
 
 "}}}
 " Loading Plugins{{{
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 " Finding Files
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm'

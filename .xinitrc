@@ -46,5 +46,6 @@ clipmenud &
 xbanish &
 mathpix-snipping-tool &
 betterlockscreen -w &
+dunst &
 
 exec i3

@@ -22,7 +22,7 @@ plain_text = no
 #   %I  iconname (without its path)
 #   %p  progress value if set ([  0%] to [100%]) or nothing
 # Markup is allowed
-format = "%s\n%b"
+format = "%a: %s\n%b"
 
 # Sort messages by urgency.
 sort = no
@@ -70,11 +70,11 @@ hide_duplicates_count = yes
 # The width can be negative.  In this case the actual width is the
 # screen width minus the width defined in within the geometry option.
 #geometry = "250x50-40+40"
-geometry = "300x50-15+49"
+geometry = "350x80-15+49"
 
 # Shrink window if it's smaller than the width.  Will be ignored if
 # width is 0.
-shrink = yes
+shrink = no
 
 # The transparency of the window.  Range: [0; 100].
 # This option will only work if a compositing windowmanager is
@@ -134,7 +134,7 @@ horizontal_padding = 3
 #  * foreground: use the same color as the foreground;
 #  * frame: use the same color as the frame;
 #  * anything else will be interpreted as a X color.
-separator_color = frame
+separator_color = auto
 
 # Print a notification on startup.
 # This is mainly for error detection, since dbus (re-)starts dunst
@@ -148,7 +148,7 @@ dmenu = /usr/local/bin/dmenu -p dunst:
 browser = /usr/bin/firefox -new-tab
 
 # Align icons left/right/off
-icon_position = off
+icon_position = left
 max_icon_size = 80
 
 # Paths to default icons.
@@ -182,25 +182,21 @@ context = ctrl+shift+period
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
 frame_color = "#859900"
-foreground = "#859900"
-background = "#002B36"
-#background = "#2B313C"
-timeout = 4
+foreground = "#657B83"
+background = "#FDF6E3"
+timeout = 8
 
 [urgency_normal]
 frame_color = "#B58900"
-foreground = "#B58900"
-background = "#002B36"
-#background = "#2B313C"
-timeout = 6
+foreground = "#657B83"
+background = "#FDF6E3"
+timeout = 10
 
 [urgency_critical]
 frame_color = "#DC322F"
-foreground = "#DC322F"
-background = "#002B36"
-#background = "#2B313C"
-timeout = 8
-
+foreground = "#657B83"
+background = "#FDF6E3"
+timeout = 12
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.

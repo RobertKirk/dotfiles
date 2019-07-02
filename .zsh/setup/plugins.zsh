@@ -1,3 +1,4 @@
+touch $ZPLUG_LOADFILE
 eval $( dircolors -b $HOME/.dircolors )
 eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced once fzf)"
 source ~/anaconda3/etc/profile.d/conda.sh
@@ -31,7 +32,6 @@ zplug "michaelxmcbride/zsh-dircycle"
 zplug "wfxr/forgit", defer:1
 zplug "momo-lab/zsh-abbrev-alias"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "hlissner/zsh-autopair", defer:2
 zplug "b4b4r07/zsh-vimode-visual", defer:3
 zplug "zsh-users/zsh-history-substring-search", defer:3
 

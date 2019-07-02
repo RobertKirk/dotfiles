@@ -7,8 +7,10 @@ LS_COLORS+='*.gz=01;34:*.tar=01;34:*.zip=01;34:'
 LS_COLORS+='*.pdf=01;32:*makefile=01;32:*.html=01;32:'
 export LS_COLORS
 
-autoload -U +X compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
+autoload -U compinit
+if (( ! $+functions[_zplug] )); then
+    compinit -d "$ZPLUG_HOME/zcompdump"
+fi
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=253,bold"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)

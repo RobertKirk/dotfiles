@@ -62,8 +62,8 @@ set show-hidden true
 
 map d scroll half-down
 map u scroll half-up
+map K zoom in
+map J zoom out
 map x toggle_page_mode
 map <C-r> rotate
 map r recolor
-map <S-Up> zoom in
-map <S-Down> zoom out

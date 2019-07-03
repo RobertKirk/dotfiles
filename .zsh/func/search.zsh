@@ -64,23 +64,20 @@ function f() {
 	files=$(fzf --cycle --preview-window=right:70% --preview '[[ $(file --mime {}) =~ binary ]] &&
                  echo {} is a binary file ||
                  bat {} 2> /dev/null | head -500')
-	[[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+	[[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"
 }
 
-# Open file with the VS Code
-#   - Bypass fuzzy finder if there's only one match (--select-1)
-#   - Exit if there's no match (--exit-0)
 function fopen() {
 	local files
 	IFS=$'\n' files=($(fzf-tmux --cycle --reverse --height=90% --query="$1" --multi --select-1 --exit-0))
-	[[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+	[[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"
 }
 
 # Like normal cd but opens an interactive navigation window when called with no arguments.
 unalias cdf 2>/dev/null
 function cdf() {
 	while true; do
-		local lsd=$(ls --color=never -a -p | grep '/$' | sed 's;/$;;')
+		local lsd=$(ls --color=never -a -p | grep '...*/$' | sed 's;/$;;')
 		local dir="$(printf '%s\n' "${lsd[@]}" |
 			fzf --select-1 --reverse --cycle --preview '
                 __cd_nxt="$(echo {})";

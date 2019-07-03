@@ -26,21 +26,25 @@
 # Each block command defaults to the script name to avoid boilerplate.
 # Change $SCRIPT_DIR to the location of your scripts!
 command=/home/robert/repos/i3blocks-contrib/$BLOCK_NAME/$BLOCK_NAME
-separator_block_width=15
 markup=none
+align=center
+separator=false
+separator_block_width=15
 
 [mediaplayer]
 instance=spotify
+label= 
 interval=5
 signal=10
 
 [volume]
-label=♪
+command=/home/robert/.local/bin/volume
+label=墳 
 interval=once
 signal=10
 
 [memory]
-label=MEM
+label= 
 interval=1
 
 [bandwidth2]
@@ -56,13 +60,22 @@ CRIT_TX=51200
 markup=pango
 interval=persist
 REFRESH_TIME=1
-LABEL=CPU 
+LABEL= 
 WARN_PERCENT=50
 CRIT_PERCENT=80
 DECIMALS=2
 
 [time]
+label= 
+color=#cb4b16
 interval=1
-STRFTIME_FORMAT= %R %a %d %b %Y
+STRFTIME_FORMAT=%R
+TZONES=$DEFAULT_TZ,Brazil/East
+TZ_LABELS=,Brazil
+
+[time]
+label= 
+interval=100
+STRFTIME_FORMAT= %a %d %b %Y
 TZONES=$DEFAULT_TZ,Brazil/East
 TZ_LABELS=,Brazil

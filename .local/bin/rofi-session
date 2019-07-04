@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+choice_by_rofi() {
+    output=(
+        '1: Lock'
+        '2: Suspend'
+        '3: Logout'
+        '4: Reboot'
+        '5: Poweroff'
+    )
+
+    choice=$(printf '%s\n' "${output[@]}" \
+        | rofi -i -lines 6 -dmenu -p 'session' \
+        | cut -d ':' -f 1)
+}
+
+[[ -z "$DISPLAY" ]] && exit 1
+
+choice_by_rofi
+
+[[ -z "$choice" ]] && exit 1
+
+case "$choice" in
+    1) betterlockscreen -l & ;;
+    2) betterlockscreen -s & ;;
+    3) systemctl kill "$(pgrep X)" & ;;
+    4) systemctl reboot & ;;
+    5) systemctl poweroff & ;;
+esac

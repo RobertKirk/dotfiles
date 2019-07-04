@@ -1,9 +1,12 @@
 #!/bin/zsh
 
 ssh-history() {
-  cat "$HISTFILE" | grep -E ";ssh\s" | sed -e 's/\s*$//' | sort | uniq -c | sort -nr | sed -e "s/^\s*[0-9]*\s//"
+  (cat "$HISTFILE" | awk '/;ssh / { print $3" "$4" "$5" "$6}' | grep -v awk; awk '{ print $1 }' ~/.ssh/known_hosts | awk -F',' '{ print $1 }') | sort | uniq -w 10
 }
 
 ssh-connect() {
-  ssh-history | cut -d ";" -f 2- | fzf --height 30%
+  command=$(ssh-history | fzf --height 30%)
+  ssh $command
 }
+
+alias sc='ssh-connect'

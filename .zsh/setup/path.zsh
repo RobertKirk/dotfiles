@@ -1,8 +1,7 @@
-export PATH="$HOME/.local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-export PYENV_ROOT="$HOME/repos/pyenv" 
-export PATH="$PYENV_ROOT/bin:$PATH"
+PATH="$HOME/.local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+PATH="$HOME/.rbenv/bin:$PATH"
+PYENV_ROOT="$HOME/repos/pyenv" 
+PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin"
 # eval "$(pyenv init -)"
+eval "$(rbenv init -)"

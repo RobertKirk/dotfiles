@@ -4,20 +4,10 @@ set -g pane-active-border-style "fg=colour2"
 set -g message-style "fg=colour7,bg=colour14"
 set -g message-command-style "fg=colour4,bg=colour14"
 
-status_right="︎ %R | %a %d %b "
-status_right="$status_right | CPU #{cpu_percentage}"
-status_right="$status_right | RAM #{ram}"
+status_right=" %R | %a %d %b | CPU #{cpu_percentage} | RAM #{ram} |"
 
 set -g status-right-length 400
 set -g status-right "$status_right"
-
-green='#98c379'
-dark_green='#00af87'
-white='#abb2bf'
-black='#282c34'
-comment_grey='#5c6370'
-menu_grey='#3e4452'
-special_grey='#3b4048'
 
 set -g mode-style 'bg=#3e4452'
 

@@ -186,6 +186,7 @@ bar {
 hide_edge_borders smart
 focus_on_window_activation focus
 workspace_auto_back_and_forth yes
+mouse_warping none
 
 # bindsym $mod+b bar hidden_state toggle
 # bindsym $mod+Shift+t border toggle

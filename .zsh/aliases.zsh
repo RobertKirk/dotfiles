@@ -19,9 +19,7 @@ man() {
     command man "$@"
 }
 
-if [[ $TERM = xterm-kitty ]]; then
-  alias icat="kitty +kitten icat"
-fi;
+alias icat="kitty +kitten icat"
 
 [ -f ~/repos/home/.aliases.sh ] && . ~/repos/home/.aliases.sh
 

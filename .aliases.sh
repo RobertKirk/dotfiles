@@ -22,6 +22,10 @@ alias gupdb='git checkout master && git pull && git checkout - && git rebase mas
 alias gd='git diff | diff-so-fancy | less -R~FX'
 alias gdp='git diff | diff-so-fancy | less -R~'
 
+gstatall() {
+  (git status -s .; (git status -s . | awk '{ print $2 }'; git ls-files) | sort | uniq -c | grep 1 | awk '{ print " \033[34mU \033[0m" $2 }')
+}
+
 lastpasscp() {
     lpass show -c --password $(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')
 }

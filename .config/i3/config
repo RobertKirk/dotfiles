@@ -140,6 +140,7 @@ focus_on_window_activation focus
 # Windows without titlebars
 for_window [class="^.*"] border pixel 0
 for_window [class="kitty"] border pixel 1
+for_window [instance="__scratchpad"] move scratchpad
 for_window [class="Mathpix Snipping Tool"] floating enable
 for_window [class="Mathpix Snipping Tool"] resize set 640 420
 

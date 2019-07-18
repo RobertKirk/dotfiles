@@ -35,6 +35,10 @@ toolbarbutton.bookmark-item[type="menu"] .toolbarbutton-icon[label]:not([label="
   clip-width: 1em !important;
 }
 
+/* .tabbrowser-tab[visuallyselected="true"] { */
+/*     color: #ff0505; */
+/* } */
+
 .tabs-newtab-button{
   margin: var(--newtab-margin) !important;
 }

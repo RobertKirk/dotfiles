@@ -1,5 +1,6 @@
 API
 CHANGELOG
+Dockerfile
 GiST
 GitHub
 GitLab
@@ -16,9 +17,13 @@ Ubuntu
 api
 async
 auth
+backend
 css
 datatype
+deregister
+frontend
 gdpr
+grafana
 jinja
 join's
 json
@@ -37,6 +42,7 @@ stream
 stream-api
 sudo
 systemd
+websocket
 websockets
 wiki
 wikipedia

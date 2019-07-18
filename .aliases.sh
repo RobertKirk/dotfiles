@@ -19,11 +19,26 @@ alias gsthpm='git stash push -m'
 alias gsthd='git stash drop'
 alias grs='git reset'
 alias gupdb='git checkout master && git pull && git checkout - && git rebase master'
-alias gd='git diff | diff-so-fancy | less -R~FX'
-alias gdp='git diff | diff-so-fancy | less -R~'
+
+unalias gd
+gd() {
+  git diff "$@" | diff-so-fancy | less -R~FX
+}
+
+gdp() {
+  git diff "$@" | diff-so-fancy | less -R~
+}
 
 gstatall() {
   (git status -s .; (git status -s . | awk '{ print $2 }'; git ls-files) | sort | uniq -c | grep 1 | awk '{ print " \033[34mU \033[0m" $2 }')
+}
+
+addnewlines() {
+    git ls-files -z | while IFS= read -rd '' f; do tail -c1 < "$f" | read -r _ || echo >> "$f"; done
+}
+
+gitrmuntracked() {
+  git status -s | rg '?' -F | xargs rm -rf
 }
 
 lastpasscp() {
@@ -46,14 +61,6 @@ get_colors() {
 mkalias() {
     echo "alias $1='$2'" >> ~/.aliases.sh
     source ~/.aliases.sh
-}
-
-addnewlines() {
-    git ls-files -z | while IFS= read -rd '' f; do tail -c1 < "$f" | read -r _ || echo >> "$f"; done
-}
-
-gitrmuntracked() {
-  git status -s | rg '?' -F | xargs rm -rf
 }
 
 -() {

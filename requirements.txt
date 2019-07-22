@@ -12,6 +12,7 @@ diff-so-fancy
 dmenu
 dunst
 dwm
+exa
 fd
 feh
 fira-code-nerdfont
@@ -57,6 +58,7 @@ tmux-autocomplete
 trayer
 tty-clock
 unzip
+up
 urlview
 vlc
 wget

@@ -18,7 +18,7 @@ alias gsthl='git stash list'
 alias gsthpm='git stash push -m'
 alias gsthd='git stash drop'
 alias grs='git reset'
-alias gupdb='git checkout master && git pull && git checkout - && git rebase master'
+alias gupdb='git fetch origin master:master && git rebase master'
 
 unalias gd
 gd() {

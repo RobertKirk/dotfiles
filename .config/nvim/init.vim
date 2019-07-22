@@ -18,7 +18,8 @@ set title
 syntax enable
 filetype plugin indent on
 
-let g:python3_host_prog = '/usr/bin/python3.7'
+let g:python_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
 "}}}
 " VIEW SETTINGS{{{
 set signcolumn=yes

@@ -1,6 +1,5 @@
 setopt autocd
 setopt correct
-setopt globdots
 setopt chasedots
 setopt nobeep
 setopt autolist

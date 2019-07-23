@@ -91,8 +91,15 @@ alias ag='apt-get'
 alias tsk='cat ~/vimwiki/Tasks.wiki | fzf --layout reverse --height 50%'
 alias neomutt='nocorrect neomutt'
 alias ls='ls --color=always'
-alias ll='ls --color=always -al'
-alias l='ls --color=always -l'
+alias ll='ls -la'
+alias l='ls -l'
+if which exa > /dev/null 2&>1; then
+  unalias ll
+  unalias l
+  alias ll='exa -la'
+  alias l='exa -l'
+  alias lt='exa -lT --group-directories-first -L 3 -I __pycache__'
+fi;
 alias mkdir='mkdir -p'
 alias tree='tree -I '__pycache__''
 alias gpuw='watch -n 1 -d -t nvidia-smi'
@@ -104,3 +111,4 @@ alias mv='/home/robert/.local/bin/mvg -g'
 alias gpuw='watch -n 1 -d -t nvidia-smi'
 alias gotop='gotop -c rob-solarized'
 alias b='buku --suggest'
+alias rg='rg -uu'

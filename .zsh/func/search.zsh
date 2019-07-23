@@ -1,4 +1,4 @@
-#!/usr/bin/env bash zsh
+#!/usr/bin/env zsh
 # https://gitlab.com/hankchanocd/dotfiles/.script/.search
 # A collection of useful search scripts
 
@@ -29,20 +29,20 @@ function antideepsearch() { # L searches for files not containing the given patt
 
 # fuzzy list all aliases
 function aliases() {
-	command=$(alias |
+	local command=$(alias |
 		rg --color always --no-line-number --colors=match:fg:blue --passthru '^[^=]+' |
 		fzf-tmux --cycle --ansi --reverse --height=90% --query="$1" --multi --select-1 --exit-0 --tac |
 		cut -d "=" -f 1)
-	echo $command
+	print -z $command
 }
 
 # fuzzy list all commands with manual
 function cmd() {
-	compgen -ca |
+	local command=$(compgen -ca |
 		sort --unique |
 		grep --invert-match '^_' | # Remove all hidden commands that start with '_'
-		fzf --ansi --reverse --cycle --height=90% --preview='man {}' --preview-window=right:75%
-	# Only use `man {}` for preview since using `{} -h` may result in invoking the command
+    fzf --ansi --reverse --cycle --height=90% --preview='man {}' --preview-window=right:75%)
+  print -z $command 
 }
 
 function path() {
@@ -63,7 +63,7 @@ function path() {
 function f() {
 	files=$(fzf --cycle --preview-window=right:70% --preview '[[ $(file --mime {}) =~ binary ]] &&
                  echo {} is a binary file ||
-                 bat {} 2> /dev/null | head -500')
+                 bat --color "always" {} 2> /dev/null')
 	[[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"
 }
 
@@ -74,8 +74,11 @@ function fopen() {
 }
 
 # Like normal cd but opens an interactive navigation window when called with no arguments.
-unalias cdf 2>/dev/null
-function cdf() {
+function c() {
+  if [ $# -ne 0 ]; then
+    cd $@
+    return 0
+  fi
 	while true; do
 		local lsd=$(ls --color=never -a -p | grep '...*/$' | sed 's;/$;;')
 		local dir="$(printf '%s\n' "${lsd[@]}" |
@@ -84,7 +87,7 @@ function cdf() {
                 __cd_path="$(echo $(pwd)/${__cd_nxt} | sed "s;//;/;")";
                 echo $__cd_path;
                 echo;
-                ls -a -p "${__cd_path}";
+                exa -a1 --group-directories-first --colour=always "${__cd_path}";
         ')"
 		[[ ${#dir} != 0 ]] || return 0
 		cd "$dir" &>/dev/null

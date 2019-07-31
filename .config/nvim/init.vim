@@ -185,7 +185,6 @@ nmap <Leader>wo <Plug>(easymotion-overwin-w)
 
 "}}}
 " Nerdtree{{{
-map <C-n> :NERDTreeFind<CR>
 map <leader>n :NERDTreeToggle<CR>
 let g:NERDTreeIgnore=['^__pycache__$[[dir]]', '\.egg-info$[[dir]]']
 let g:NERDTreeShowHidden=1
@@ -336,6 +335,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-vinegar'
 Plug 'majutsushi/tagbar'
 Plug 'Shougo/defx.nvim'
+Plug 'kristijanhusak/defx-git'
+Plug 'kristijanhusak/defx-icons'
 
 " motions/objects/actions
 Plug 'tpope/vim-surround'
@@ -365,7 +366,7 @@ Plug 'vimwiki/vimwiki'
 call plug#end()
 "}}}
 " PLUGINS POST LOAD{{{
-" deopleted{{{
+" deoplete{{{
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('camel_case', v:true)
 call deoplete#custom#option('max_list', 20)
@@ -373,12 +374,21 @@ call deoplete#custom#option('sources', {
 \ 'python': ['around', 'file', 'member', 'jedi', 'tag'],
 \})
 "}}}
-" defx{{{
+" defx-{git|icons|}{{{
 " from https://github.com/taigacute/ThinkVim/blob/master/core/plugins/defx.vim
+map <C-n> :Defx -search=`expand('%:p')` -toggle -ignored-files='.*,__pycache__' -columns=indent:git:icons:filename:type<CR>
+
+let g:defx_icons_enable_syntax_highlight = 0
+
 call defx#custom#option('_', {
 \ 'winwidth': 30,
 \ 'split': 'vertical',
 \ 'direction': 'topleft',
+\ 'root_marker': ':',
+\ })
+
+call defx#custom#column('filename', {
+\ 'root_marker_highlight': 'Ignore',
 \ })
 
 let g:defx_git#indicators = {
@@ -403,10 +413,10 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> l  defx#do_action('drop')
   nnoremap <silent><buffer><expr> <CR>     <sid>defx_toggle_tree()
 	nnoremap <silent><buffer><expr> s     defx#do_action('open', 'botright vsplit')
-	nnoremap <silent><buffer><expr> i     defx#do_action('open', 'topleft split')
-  nnoremap <silent><buffer><expr> st    defx#do_action('multi', [['drop', 'tabnew'], 'quit'])
-	nnoremap <silent><buffer><expr> sg    defx#do_action('multi', [['drop', 'vsplit'], 'quit'])
-	nnoremap <silent><buffer><expr> sv    defx#do_action('multi', [['drop', 'split'], 'quit'])
+	nnoremap <silent><buffer><expr> i     defx#do_action('open', 'botright split')
+  nnoremap <silent><buffer><expr> ts    defx#do_action('multi', [['drop', 'tabnew'], 'quit'])
+	nnoremap <silent><buffer><expr> gs    defx#do_action('multi', [['drop', 'vsplit'], 'quit'])
+	nnoremap <silent><buffer><expr> vs    defx#do_action('multi', [['drop', 'split'], 'quit'])
   nnoremap <silent><buffer><expr> P     defx#do_action('open', 'pedit')
 	nnoremap <silent><buffer><expr> K     defx#do_action('new_directory')
 	nnoremap <silent><buffer><expr> N     defx#do_action('new_multiple_files')
@@ -424,9 +434,8 @@ function! s:defx_my_settings() abort
 	nnoremap <silent><buffer><expr><nowait> m  defx#do_action('move')
 	nnoremap <silent><buffer><expr><nowait> p  defx#do_action('paste')
 
-	nnoremap <silent><buffer><expr><nowait> <Space>defx#do_action('toggle_select') . 'j'
+	nnoremap <silent><buffer><expr><nowait> <Space> defx#do_action('toggle_select') . 'j'
 
-	nnoremap <silent><buffer><expr> '      defx#do_action('toggle_select') . 'j'
 	nnoremap <silent><buffer><expr> *      defx#do_action('toggle_select_all')
 	nnoremap <silent><buffer><expr> <C-r>  defx#do_action('redraw')
 	nnoremap <silent><buffer><expr> <C-g>  defx#do_action('print')
@@ -439,8 +448,7 @@ function! s:defx_toggle_tree() abort
   if defx#is_directory()
     return defx#do_action('open_or_close_tree')
   endif
-  return defx#do_action('drop')
-  "return defx#do_action('multi', ['drop', 'quit'])
+  return defx#do_action('multi', ['drop', 'quit'])
 endfunction
 
 "}}}

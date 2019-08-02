@@ -39,7 +39,8 @@ xset r rate 200 40 &
 
 sxhkd &
 redshift &
-slstatus &
+export $CM_HISTLENGTH=10
+export $CM_LAUNCHER=rofi
 clipmenud &
 xbanish &
 mathpix-snipping-tool &

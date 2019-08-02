@@ -67,26 +67,56 @@ mkalias() {
   cd -
 }
 
+command_freq() {
+  if [ $# -eq 0 ]; then
+    local segments=3
+  else
+    local segments=$1
+  fi
+  cat .zsh_history | awk -F':' '/: / { print $3 }' | cut -c 3- | cut -d' ' -f -$segments | sort | uniq -c | sort -bg | tail -n 100
+}
+
 getkeycods() { xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }' }
 
-alias v='nvim'
-alias e='nvim'
-alias jpn='jupyter notebook'
-alias album='tizonia --spotify-album'
-alias reload='source ~/.zshrc'
-alias album='tizonia --spotify-album'
-alias repo='cd ~/repos'
-alias fial='alias | ag'
-alias mkst='cd ~/repos/st && sudo make clean install'
-alias vwk='nvim +VimwikiIndex'
-alias peek='bat --pager="less -R~K"'
-alias i='bat --pager="less -R~K"'
-alias m='man'
-alias s='sudo '
+# single letter aliases:
+# alias a=
+alias b='buku --suggest'
+# alias c='shell command, for directories'
 alias d='deactivate'
-alias sudo='sudo '
-alias agi='apt-get install'
+alias e='nvim'
+# alias f=
+alias g='git'
+# alias h=
+# alias i=
+# alias j=
+alias k='kubectl'
+alias l='exa -l'
+alias m='man'
+# alias n=
+# alias o=
+# alias p=
+# alias q=
+# alias r=shell build-in command
+alias s='sudo'
+# alias t=
+# alias u=
+alias v='nvim'
+# alias w=
+alias x='extract'
+# alias y=
+alias z='_zlua'
+
 alias ag='apt-get'
+alias agi='apt-get install'
+alias album='tizonia --spotify-album'
+alias album='tizonia --spotify-album'
+alias fial='alias | ag'
+alias jpn='jupyter notebook'
+alias mkst='cd ~/repos/st && sudo make clean install'
+alias peek='bat --pager="less -R~K"'
+alias reload='source ~/.zshrc'
+alias repo='cd ~/repos'
+alias vwk='nvim +VimwikiIndex'
 
 alias tsk='cat ~/vimwiki/Tasks.wiki | fzf --layout reverse --height 50%'
 alias neomutt='nocorrect neomutt'
@@ -105,9 +135,8 @@ alias tree='tree -I '__pycache__''
 alias gpuw='watch -n 1 -d -t nvidia-smi'
 alias cplgvfs='nohup cpulimit -e gvfs -l 5  </dev/null >/dev/null 2>&1 & disown'
 alias gentoken='head -c 24 /dev/urandom | base64'
-alias dt='tty-clock -xcsB -C 7'
+alias dt='tty-clock -xcsB'
 alias cp='/home/robert/.local/bin/cpg -g'
 alias mv='/home/robert/.local/bin/mvg -g'
 alias gpuw='watch -n 1 -d -t nvidia-smi'
 alias gotop='gotop -c rob-solarized'
-alias b='buku --suggest'

@@ -33,24 +33,24 @@ separator_block_width=15
 
 [mediaplayer]
 instance=spotify
-label= 
+label=
 interval=5
 signal=10
 
 [volume]
 command=/home/robert/.local/bin/volume
-label=墳 
+label=
 interval=once
 signal=10
 
 [memory]
-label= 
+label=MEM:
 interval=1
 
 [bandwidth2]
 interval=persist
 markup=pango
-label=
+label=NET:
 WARN_RX=307200
 WARN_TX=30720
 CRIT_RX=512000
@@ -60,13 +60,13 @@ CRIT_TX=51200
 markup=pango
 interval=persist
 REFRESH_TIME=1
-LABEL= 
+LABEL=CPU:
 WARN_PERCENT=50
 CRIT_PERCENT=80
 DECIMALS=2
 
 [time]
-label= 
+label=
 color=#cb4b16
 interval=1
 STRFTIME_FORMAT=%R
@@ -74,7 +74,7 @@ TZONES=$DEFAULT_TZ,Brazil/East
 TZ_LABELS=,Brazil
 
 [time]
-label= 
+label=
 interval=100
 STRFTIME_FORMAT= %a %d %b %Y
 TZONES=$DEFAULT_TZ,Brazil/East

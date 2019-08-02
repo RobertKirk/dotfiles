@@ -22,14 +22,14 @@ alias gupdb='git fetch origin master:master && git rebase master'
 alias :x='exit'
 alias :q='exit'
 
-unalias gd
-gd() {
-  git diff "$@" | diff-so-fancy | less -R~FX
-}
+# unalias gd
+# gd() {
+#   git diff "$@" | diff-so-fancy | less -R~FX
+# }
 
-gdp() {
-  git diff "$@" | diff-so-fancy | less -R~
-}
+# gdp() {
+#   git diff "$@" | diff-so-fancy | less -R~
+# }
 
 gstatall() {
   (git status -s .; (git status -s . | awk '{ print $2 }'; git ls-files) | sort | uniq -c | grep 1 | awk '{ print " \033[34mU \033[0m" $2 }')

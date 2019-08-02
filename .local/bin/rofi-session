@@ -23,7 +23,7 @@ choice_by_rofi
 case "$choice" in
     1) betterlockscreen -l & ;;
     2) betterlockscreen -s & ;;
-    3) systemctl kill "$(pgrep X)" & ;;
+    3) i3-msg exit &;;
     4) systemctl reboot & ;;
     5) systemctl poweroff & ;;
 esac

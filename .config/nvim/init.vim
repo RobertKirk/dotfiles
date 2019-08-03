@@ -15,6 +15,7 @@ set lazyredraw
 set nolist
 syntax enable
 set laststatus=1
+set shellcmdflag=-ic
 
 let g:python3_host_prog = '/usr/bin/python3.7'
 "}}}
@@ -97,6 +98,7 @@ noremap <leader>y "+y
 noremap <leader>p "+p
 noremap <leader>Y "*y
 noremap <leader>P "*p
+nnoremap mp :!mdtex2pdf % <CR><CR>
 
 " leader x closes the buffer
 nmap <leader>x :bp<bar>sp<bar>bn<bar>bd<CR>

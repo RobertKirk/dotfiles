@@ -16,6 +16,7 @@ set nolist
 syntax enable
 set laststatus=1
 set shellcmdflag=-ic
+set title
 
 let g:python3_host_prog = '/usr/bin/python3.7'
 "}}}
@@ -28,8 +29,10 @@ let g:lightline = {
 set background=light
 colors solarized
 
-highlight EndOfBuffer ctermfg=8
+highlight EndOfBuffer ctermfg=7
 highlight SignColumn ctermbg=7
+highlight VertSplit ctermbg=15
+highlight VertSplit ctermfg=15
 " set cursorcolumn      " highlight current column
 " highlight CursorColumn ctermbg=8
 
@@ -64,7 +67,7 @@ set foldlevelstart=10   " open most folds by default
 set foldmethod=indent
 
 set norelativenumber
-set number
+set nonumber
 
 " TAB SETTINGS
 set tabstop=2 softtabstop=2 expandtab
@@ -110,6 +113,8 @@ nnoremap <CR> za
 
 " jk is escape
 inoremap jk <esc>
+
+nnoremap <leader>n :set number!<CR>
 
 " Pressing ss will toggle and untoggle spell checking
 map <leader>s :setlocal spell!<cr>
@@ -186,18 +191,6 @@ map  <Leader>wo <Plug>(easymotion-bd-w)
 nmap <Leader>wo <Plug>(easymotion-overwin-w)
 
 "}}}
-" Nerdtree{{{
-map <leader>n :NERDTreeToggle<CR>
-let g:NERDTreeIgnore=['^__pycache__$[[dir]]', '\.egg-info$[[dir]]']
-let g:NERDTreeShowHidden=1
-let g:NERDTreeHijackNetrw=0
-let g:NERDTreeQuitOnOpen=1
-let g:NERDTreeNaturalSort=1
-let g:NERDTreeAutoDeleteBuffer=1
-let g:NERDTreeMinimalUI=1
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
-"}}}
 " ALE setup{{{
 let g:ale_completion_enabled = 0
 let g:ale_linters = {
@@ -240,15 +233,6 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_clear_cache_on_exit = 0
 
 "}}}
-" DevIcons{{{
-let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
-let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
-" Disable arrow icons at the left side of folders for NERDTree.
-let g:NERDTreeDirArrowExpandable = "\u00a0"
-let g:NERDTreeDirArrowCollapsible = "\u00a0"
-highlight! link NERDTreeFlags NERDTreeDir
-
-"}}}
 " UltiSnips{{{
 " Configuration for custom snips
 let g:UltiSnipsSnippetsDir = "~/.config/nvim/snips"
@@ -282,23 +266,6 @@ let g:tex_conceal='abdmg'
 let g:vimtext_fold_enabled = 1
 
 "}}}
-" nnn.vim{{{
-" Disable default mappings
-let g:nnn#set_default_mappings = 0
-
-" Start nnn in the current file's directory
-nnoremap <leader>n :NnnPicker '%:p:h'<CR>
-
-let g:nnn#layout = { 'left': '~20%' }
-
-let g:nnn#action = {
-        \ '<c-t>': 'tab split',
-        \ '<c-i>': 'split',
-        \ '<c-s>': 'vsplit' }
-
-
-let g:nnn#replace_netrw = 1
-"}}}
 "}}}
 " Autoloading vim plugins{{{
 "if empty(glob('~/.vim/autoload/plug.vim'))
@@ -313,40 +280,30 @@ call plug#begin('~/.config/nvim/plugged')
 " Finding Files
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm'
-Plug 'wsdjeg/FlyGrep.vim'
 Plug 'jremmen/vim-ripgrep'
 
 " Linting/completion/syntax
 Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
-Plug 'neomutt/neomutt.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
-Plug 'kovetskiy/sxhkd-vim'
+Plug 'kovetskiy/sxhkd-vim', { 'for': 'sxhkd' }
+Plug 'neomutt/neomutt.vim', { 'for': 'neomuttrc' }
 
 " navigation
-Plug 'mcchrish/nnn.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tpope/vim-vinegar'
-Plug 'majutsushi/tagbar'
 Plug 'Shougo/defx.nvim'
-Plug 'kristijanhusak/defx-git'
-Plug 'kristijanhusak/defx-icons'
+" Plug 'kristijanhusak/defx-git'
+" Plug 'kristijanhusak/defx-icons'
 
 " motions/objects/actions
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'wellle/targets.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'bkad/CamelCaseMotion'
 Plug 'romainl/vim-cool'
 Plug 'markonm/traces.vim'
 
@@ -369,7 +326,7 @@ call plug#end()
 "}}}
 " PLUGINS POST LOAD{{{
 " deoplete{{{
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 call deoplete#custom#option('camel_case', v:true)
 call deoplete#custom#option('max_list', 20)
 call deoplete#custom#option('sources', {
@@ -378,7 +335,7 @@ call deoplete#custom#option('sources', {
 "}}}
 " defx-{git|icons|}{{{
 " from https://github.com/taigacute/ThinkVim/blob/master/core/plugins/defx.vim
-map <C-n> :Defx -search=`expand('%:p')` -toggle -ignored-files='.*,__pycache__' -columns=indent:git:icons:filename:type<CR>
+map <silent> <C-n> :Defx -search=`expand('%:p')` -toggle -ignored-files='.mypy_cache,__pycache__' -columns=indent:mark:filename:type<CR>
 
 let g:defx_icons_enable_syntax_highlight = 0
 
@@ -415,7 +372,7 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> l  defx#do_action('drop')
   nnoremap <silent><buffer><expr> <CR>     <sid>defx_toggle_tree()
 	nnoremap <silent><buffer><expr> s     defx#do_action('multi', [['open', 'vsplit'], 'quit'])
-	nnoremap <silent><buffer><expr> i     defx#do_action('multi', [['open', 'split'], 'quit'])
+	nnoremap <silent><buffer><expr> i     defx#do_action('multi', [['drop', 'split'], 'quit'])
   nnoremap <silent><buffer><expr> ts    defx#do_action('multi', [['drop', 'tabnew'], 'quit'])
 	nnoremap <silent><buffer><expr> gs    defx#do_action('multi', [['drop', 'botright vsplit'], 'quit'])
 	nnoremap <silent><buffer><expr> vs    defx#do_action('multi', [['drop', 'botright split'], 'quit'])

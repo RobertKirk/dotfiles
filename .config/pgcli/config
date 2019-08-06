@@ -81,7 +81,7 @@ search_path_filter = False
 
 # Default pager.
 # By default 'PAGER' environment variable is used
-pager = pspg --line-numbers --no-mouse --bold-labels --no-sound -i -s 16
+pager = pspg --line-numbers --no-mouse --bold-labels --no-bars -F --no-sound -i -s 16
 
 # Timing of sql statments and table rendering.
 timing = True

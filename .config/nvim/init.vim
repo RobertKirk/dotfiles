@@ -15,7 +15,6 @@ set lazyredraw
 set nolist
 syntax enable
 set laststatus=1
-set shellcmdflag=-ic
 set title
 
 let g:python3_host_prog = '/usr/bin/python3.7'
@@ -295,7 +294,7 @@ Plug 'neomutt/neomutt.vim', { 'for': 'neomuttrc' }
 
 " navigation
 Plug 'airblade/vim-gitgutter'
-Plug 'Shougo/defx.nvim'
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'kristijanhusak/defx-git'
 " Plug 'kristijanhusak/defx-icons'
 
@@ -316,12 +315,12 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'simeji/winresizer'
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'itchyny/lightline.vim'
 
 " Utils
-Plug 'sk1418/HowMuch'
-Plug 'vimwiki/vimwiki'
+Plug 'sk1418/HowMuch', { 'on': 'HowMuch' }
+Plug 'vimwiki/vimwiki', { 'on': 'VimwikiIndex' }
 call plug#end()
 "}}}
 " PLUGINS POST LOAD{{{

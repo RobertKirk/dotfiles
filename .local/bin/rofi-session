@@ -10,7 +10,7 @@ choice_by_rofi() {
     )
 
     choice=$(printf '%s\n' "${output[@]}" \
-        | rofi -i -lines 6 -dmenu -p 'session' \
+        | rofi -m -1 -i -lines 6 -dmenu -p 'session' \
         | cut -d ':' -f 1)
 }
 

@@ -146,12 +146,16 @@ workspace_auto_back_and_forth yes
 # bindsym $mod+Shift+t border toggle
 
 # Windows without titlebars
+default_border pixel
+default_floating_border none
 for_window [class="kitty"] border pixel 1
 for_window [class="Zathura"] border pixel 1
 for_window [class="Alacritty"] border pixel 1
 for_window [instance="__scratchpad"] move scratchpad
 for_window [class="Mathpix Snipping Tool"] floating enable
 for_window [class="Mathpix Snipping Tool"] resize set 640 420
+for_window [class=".*ipykernel.*"] floating enable
+# for_window [class=".*ipykernel.*"] resize set 640 420
 
 #                       border  background  text    indicator
 client.focused          #dc322f #268bd2     #fdf6e3 #dc322f

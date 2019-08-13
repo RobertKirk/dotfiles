@@ -27,7 +27,7 @@ bindsym $mod+p exec "rofi -show drun -m -1"
 bindsym $mod+Shift+p exec "rofi -show run -m -1"
 bindsym $mod+v exec "quickvim"
 
-bindsym $mod+Ctrl+o exec rofi-session
+bindsym $mod+Ctrl+o exec "rofi-session"
 bindsym $mod+c exec clipmenu
 
 # change focus

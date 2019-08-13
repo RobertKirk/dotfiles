@@ -256,6 +256,10 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:goyo_width = 200
 
 "}}}
+" Pandoc{{{
+let g:pandoc#command#latex_engine = 'pdflatex'
+
+"}}}
 " vimtex{{{
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
@@ -291,6 +295,8 @@ Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
 Plug 'kovetskiy/sxhkd-vim', { 'for': 'sxhkd' }
 Plug 'neomutt/neomutt.vim', { 'for': 'neomuttrc' }
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc'
 
 " navigation
 Plug 'airblade/vim-gitgutter'
@@ -317,6 +323,7 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'simeji/winresizer'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'itchyny/lightline.vim'
+Plug 'termhn/i3-vim-nav'
 
 " Utils
 Plug 'sk1418/HowMuch', { 'on': 'HowMuch' }
@@ -330,6 +337,10 @@ call deoplete#custom#option('camel_case', v:true)
 call deoplete#custom#option('max_list', 20)
 call deoplete#custom#option('sources', {
 \ 'python': ['around', 'file', 'member', 'jedi', 'tag'],
+\})
+
+call deoplete#custom#var('omni', 'input_patterns', {
+\ 'pandoc': '@'
 \})
 "}}}
 " defx-{git|icons|}{{{

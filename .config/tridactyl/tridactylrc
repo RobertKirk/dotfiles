@@ -1,7 +1,7 @@
 sanitise tridactyllocal tridactylsync
 
 " colour scheme
-colors dark
+colors base16-solarized-light
 
 bind J tabnext
 bind K tabprev

@@ -137,7 +137,9 @@
 " Terminals that support italics
 let s:terms_italic=[
             \"rxvt",
-            \"gnome-terminal"
+            \"gnome-terminal",
+            \"alacritty",
+            \"Alacritty"
             \]
 " For reference only, terminals are known to be incomptible.
 " Terminals that are in neither list need to be tested.
@@ -998,7 +1000,7 @@ function! s:SolarizedHiTrail()
         syn match solarizedTrailingSpace "\s*$"
         exe "hi! solarizedTrailingSpace " .s:fmt_undr .s:fg_red .s:bg_none .s:sp_red
     endif
-endfunction  
+endfunction
 augroup SolarizedHiTrail
     autocmd!
     if g:solarized_hitrail==1

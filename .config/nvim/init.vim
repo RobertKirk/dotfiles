@@ -13,14 +13,19 @@ set updatetime=100
 set noshowmode
 set lazyredraw
 set nolist
-syntax enable
 set laststatus=1
 set title
+syntax enable
+filetype plugin indent on
 
 let g:python3_host_prog = '/usr/bin/python3.7'
 "}}}
 " VIEW SETTINGS{{{
 set signcolumn=yes
+let g:solarized_menu = 0
+" let g:solarized_visibility = 'high'
+let g:indentLine_char_list= ['|', '¦', '┆', '┊']
+let g:solarized_hitrail = 1
 
 let g:lightline = {
       \ 'colorscheme': 'solarized',
@@ -28,7 +33,7 @@ let g:lightline = {
 set background=light
 colors solarized
 
-highlight EndOfBuffer ctermfg=7
+highlight EndOfBuffer ctermfg=15
 highlight SignColumn ctermbg=7
 highlight VertSplit ctermbg=15
 highlight VertSplit ctermfg=15
@@ -63,7 +68,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " folding
 set foldenable
 set foldlevelstart=10   " open most folds by default
-set foldmethod=indent
+set foldmethod=indent          
 
 set norelativenumber
 set nonumber
@@ -134,9 +139,6 @@ augroup configgroup
     autocmd BufEnter *.zsh setlocal shiftwidth=2
     autocmd BufEnter *.zsh setlocal softtabstop=2
 augroup END
-
-filetype plugin indent on
-syntax on
 
 "}}}
 " VIM BACKUP{{{
@@ -285,6 +287,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm'
 Plug 'jremmen/vim-ripgrep'
 
+Plug 'Yggdroot/indentLine'
+
 " Linting/completion/syntax
 Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
@@ -311,6 +315,7 @@ Plug 'tpope/vim-commentary'
 Plug 'wellle/targets.vim'
 Plug 'romainl/vim-cool'
 Plug 'markonm/traces.vim'
+" Plug 'tpope/vim-unimpaired'
 
 " folding
 Plug 'Konfekt/FastFold'

@@ -49,6 +49,17 @@ autocmd TabEnter mail.google.com mode ignore
 set csp clobber
 fixamo_quiet
 
+set smoothscroll true
+
+" Ctrl-F should use the browser's native 'find' functionality.
+unbind <C-f>
+
+" Stupid workaround to let hint -; be used with composite which steals semi-colons
+command hint_focus hint -;
+
+" Open right click menu on links
+bind ;C composite hint_focus; !s xdotool key Menu
+
 " Url modifications
 " autocmd DocStart www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
 " autocmd DocStart www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")

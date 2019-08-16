@@ -51,16 +51,17 @@ SOFTWARE.
     --tridactyl-hintspan-bg: var(--base0A) !important;
 
     /* Element Highlights */
-    --tridactyl-hint-active-fg: none;
-    --tridactyl-hint-active-bg: none;
-    --tridactyl-hint-active-outline: none;
-    --tridactyl-hint-bg: none;
-    --tridactyl-hint-outline: none;
+    --tridactyl-hint-active-fg: var(--base0B);
+    --tridactyl-hint-active-bg: var(--base0B);
+    --tridactyl-hint-active-outline: var(--base0B);
+    --tridactyl-hint-bg: var(--base00);
+    --tridactyl-hint-outline: var(--base00);
 }
 
 #command-line-holder {    order: 1;
     border: 2px solid var(--base0B);
     color: var(--tridactyl-bg);
+    opacity: 0.9;
 }
 
 #tridactyl-input {    padding: 1rem;
@@ -71,6 +72,7 @@ SOFTWARE.
     background: var(--tridactyl-bg);
     padding-left: unset;
     padding: 1rem;
+    opacity: 0.8;
 }
 
 #completions table {    font-size: 0.8rem;
@@ -80,6 +82,7 @@ SOFTWARE.
     padding: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    opacity: 0.8;
 }
 
 #completions > div {    max-height: calc(20 * var(--option-height));
@@ -98,6 +101,7 @@ SOFTWARE.
     width: 100%;
     border-top: unset;
     order: 2;
+    opacity: 0.8;
 }
 
 /* Olie doesn't know how CSS inheritance works */
@@ -129,11 +133,13 @@ SOFTWARE.
 }
 
 #completions table tr .title {    width: 50%;
+    opacity: 1 !important;
 }
 
 #completions table tr {    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    opacity: 1 !important;
 }
 
 #completions .sectionHeader {    background: unset;
@@ -163,12 +169,16 @@ SOFTWARE.
     padding: 0.8ex !important;
 }
 
-#completions .focused {    background: var(--base0B);
+#completions .focused {
+    background: var(--base0B);
     color: var(--base00);
+    opacity: 1 !important;
 }
 
-#completions .focused .url {    background: var(--base0B);
+#completions .focused .url {
+    background: var(--base0B);
     color: var(--base00);
+    opacity: 1 !important;
 }
 /* #Ocean-normal { */
 /*  border-color: green !important; */

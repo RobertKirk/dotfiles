@@ -75,6 +75,7 @@ set nonumber
 
 " TAB SETTINGS
 set tabstop=2 softtabstop=2 expandtab
+set shiftwidth=2
 
 "}}}
 " SEARCH SETTINGS{{{
@@ -258,8 +259,47 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:goyo_width = 200
 
 "}}}
+" Yoink and Cutlass{{{
+" yoink
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+nmap y <plug>(YoinkYankPreserveCursorPosition)
+xmap y <plug>(YoinkYankPreserveCursorPosition)
+
+nmap [y <plug>(YoinkRotateBack)
+nmap ]y <plug>(YoinkRotateForward)
+
+nmap <c-w> <plug>(YoinkPostPasteSwapBack)
+nmap <c-s> <plug>(YoinkPostPasteSwapForward)
+
+nmap y <plug>(YoinkYankPreserveCursorPosition)
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+
+let g:yoinkIncludeDeleteOperations = 1
+let g:yoinkSyncSystemClipboardOnFocus = 0
+
+" cutlass
+xnoremap x d
+nnoremap x d
+
+nnoremap xx dd
+nnoremap X D
+
+"}}}
 " Pandoc{{{
 let g:pandoc#command#latex_engine = 'pdflatex'
+
+"}}}
+" unimpaired{{{
+nmap < [
+nmap > ]
+
+omap < [
+omap > ]
+
+xmap < [
+xmap > ]
 
 "}}}
 " vimtex{{{
@@ -315,7 +355,9 @@ Plug 'tpope/vim-commentary'
 Plug 'wellle/targets.vim'
 Plug 'romainl/vim-cool'
 Plug 'markonm/traces.vim'
-" Plug 'tpope/vim-unimpaired'
+Plug 'svermeulen/vim-cutlass'
+Plug 'svermeulen/vim-yoink'
+Plug 'tpope/vim-unimpaired'
 
 " folding
 Plug 'Konfekt/FastFold'

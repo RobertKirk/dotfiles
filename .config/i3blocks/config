@@ -51,7 +51,7 @@ interval=1
 markup=pango
 interval=persist
 REFRESH_TIME=1
-LABEL= 
+LABEL= 
 WARN_PERCENT=50
 CRIT_PERCENT=80
 DECIMALS=2
@@ -66,7 +66,7 @@ CRIT_RX=512000
 CRIT_TX=51200
 
 [time]
-label= 
+label= 
 color=#cb4b16
 interval=1
 STRFTIME_FORMAT=%R

@@ -18,6 +18,7 @@ bindsym $mod+Shift+c kill
 
 bindsym $mod+p exec "rofi -show drun -m -1"
 bindsym $mod+Shift+p exec "rofi -show run -m -1"
+bindsym $mod+v exec "quickvim"
 
 bindsym $mod+Ctrl+o exec rofi-session
 bindsym $mod+c exec clipmenu
@@ -108,10 +109,20 @@ mode "resize" {
 	bindsym $down resize grow down 10 px or 10 ppt
 	bindsym $right resize grow right 10 px or 10 ppt
 
+	bindsym Shift+$left resize grow left 40 px or 40 ppt
+	bindsym Shift+$up resize grow up 40 px or 40 ppt
+	bindsym Shift+$down resize grow down 40 px or 40 ppt
+	bindsym Shift+$right resize grow right 40 px or 40 ppt
+
 	bindsym $mod+$left resize shrink right 10 px or 10 ppt
 	bindsym $mod+$up resize shrink down 10 px or 10 ppt
 	bindsym $mod+$down resize shrink up 10 px or 10 ppt
 	bindsym $mod+$right resize shrink left 10 px or 10 ppt
+
+	bindsym Shift+$mod+$left resize shrink right 40 px or 40 ppt
+	bindsym Shift+$mod+$up resize shrink down 40 px or 40 ppt
+	bindsym Shift+$mod+$down resize shrink up 40 px or 40 ppt
+	bindsym Shift+$mod+$right resize shrink left 40 px or 40 ppt
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
@@ -120,6 +131,25 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+mode "movew" {
+	bindsym $left move left 10 px
+	bindsym $up move up 10 px
+	bindsym $down move down 10 px
+	bindsym $right move right 10 px
+
+	bindsym Shift+$left move left 40 px
+	bindsym Shift+$up move up 40 px
+	bindsym Shift+$down move down 40 px
+	bindsym Shift+$right move right 40 px
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+m mode "default"
+	bindsym q mode "default"
+}
+
+bindsym $mod+m focus floating; mode "movew"
 
 bar {
 	position top
@@ -149,6 +179,7 @@ workspace_auto_back_and_forth yes
 default_border pixel
 default_floating_border none
 for_window [class="^.*"] border none
+for_window [title="floating_terminal"] floating enable border pixel 1 resize set 500 200
 for_window [class="kitty"] border pixel 1
 for_window [class="Zathura"] border pixel 1
 for_window [class="Alacritty"] border pixel 1

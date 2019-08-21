@@ -91,6 +91,7 @@ Sarsa
 Shahar
 Shapley
 Smarkets
+Srivastava
 TD3
 TODO
 TRPO
@@ -98,6 +99,7 @@ Tensorflow
 ToMnet
 Ubuntu
 VAE
+VGG
 VNM
 VPG
 VQA
@@ -130,6 +132,7 @@ deregister
 directedness
 drosphilia
 dualize
+e
 elegans
 et
 etc
@@ -147,6 +150,7 @@ grafana
 gridworld
 human's
 hyperparameters
+i
 imagenet
 incentivised
 inverse_reinforcement_learning
@@ -186,7 +190,9 @@ refactored
 regulariser
 reparameterisation
 reparameterization
+resnet
 respawn
+robustified
 robustified
 rollout
 rollouts

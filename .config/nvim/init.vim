@@ -29,6 +29,20 @@ let g:solarized_hitrail = 1
 
 let g:lightline = {
       \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste', 'spell' ],
+      \             [ 'readonly', 'relativepath', 'modified', 'branchicon', 'gitbranch' ] ],
+      \ },
+      \ 'inactive': {
+      \   'left': [ [ 'relativepath' ],
+      \             [ 'lineinfo', 'percent' ] ],
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ 'component': {
+      \   'branchicon': '',
+      \ },
       \ }
 set background=light
 colors solarized
@@ -326,7 +340,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm'
 Plug 'jremmen/vim-ripgrep'
-
 Plug 'Yggdroot/indentLine'
 
 " Linting/completion/syntax
@@ -371,6 +384,7 @@ Plug 'simeji/winresizer'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'itchyny/lightline.vim'
 Plug 'termhn/i3-vim-nav'
+Plug 'itchyny/vim-gitbranch'
 
 " Utils
 Plug 'sk1418/HowMuch', { 'on': 'HowMuch' }
@@ -392,7 +406,7 @@ call deoplete#custom#var('omni', 'input_patterns', {
 "}}}
 " defx-{git|icons|}{{{
 " from https://github.com/taigacute/ThinkVim/blob/master/core/plugins/defx.vim
-map <silent> <C-n> :Defx -search=`expand('%:p')` -toggle -ignored-files='.mypy_cache,__pycache__' -columns=indent:mark:filename:type<CR>
+map <silent> <C-n> :Defx -search=`expand('%:p')` -toggle -ignored-files='.mypy_cache,__pycache__' -columns=indent:icon:filename:type<CR>
 
 let g:defx_icons_enable_syntax_highlight = 0
 

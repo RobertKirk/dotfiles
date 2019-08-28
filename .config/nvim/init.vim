@@ -27,21 +27,38 @@ let g:solarized_menu = 0
 let g:indentLine_char_list= ['|', '¦', '┆', '┊']
 let g:solarized_hitrail = 1
 
+function! LightlineReadonly()
+  return &readonly && &filetype !=# 'help' ? 'RO' : ''
+endfunction
+
+function! LightlineGitbranch()
+  return &filetype !~# '\v(help|defx|ctrlp)' ? ' ' . gitbranch#name() : 'help'
+endfunction
+
+function! LightlineFilename()
+  let filename = expand('%:~:.') !=# '' ? expand('%:~:.') : '[No Name]'
+  let modified = &modified ? ' +' : ''
+  return &filetype !~# '\v(help|defx|ctrlp)' ? filename . modified : expand('%:t')
+endfunction
+
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste', 'spell' ],
-      \             [ 'readonly', 'relativepath', 'modified', 'branchicon', 'gitbranch' ] ],
+      \             [ 'readonly', 'relativepath' ],
+      \             [ 'gitbranchnew' ] ],
       \ },
       \ 'inactive': {
-      \   'left': [ [ 'relativepath' ],
-      \             [ 'lineinfo', 'percent' ] ],
+      \   'left': [ [ 'relativepath' ] ],
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
+      \   'gitbranch': 'gitbranch#name',
+      \   'gitbranchnew': 'LightlineGitbranch',
+      \   'relativepath': 'LightlineFilename',
+      \   'readonly': 'LightlineReadonly',
       \ },
       \ 'component': {
-      \   'branchicon': '',
+      \   'relativepathproper': '%:~:.'
       \ },
       \ }
 set background=light
@@ -193,20 +210,6 @@ command! -range ToTuple <line1>,<line2> call ToTupleFunction()
 
 "}}}
 " PLUGINS PRE LOAD{{{
-" Easymotion{{{
-" <Leader>f{char} to move to {char}
-map  f <Plug>(easymotion-bd-f)
-nmap f <Plug>(easymotion-overwin-f)
-" <leader>s{char}{char} to move to {char}{char}
-" nmap <Leader>s <Plug>(easymotion-overwin-f2)
-" Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
-" move to word
-map  <Leader>wo <Plug>(easymotion-bd-w)
-nmap <Leader>wo <Plug>(easymotion-overwin-w)
-
-"}}}
 " ALE setup{{{
 let g:ale_completion_enabled = 0
 let g:ale_linters = {
@@ -305,17 +308,6 @@ nnoremap X D
 let g:pandoc#command#latex_engine = 'pdflatex'
 
 "}}}
-" unimpaired{{{
-nmap < [
-nmap > ]
-
-omap < [
-omap > ]
-
-xmap < [
-xmap > ]
-
-"}}}
 " vimtex{{{
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
@@ -358,8 +350,6 @@ Plug 'vim-pandoc/vim-pandoc'
 " navigation
 Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'kristijanhusak/defx-git'
-" Plug 'kristijanhusak/defx-icons'
 
 " motions/objects/actions
 Plug 'tpope/vim-surround'
@@ -371,6 +361,7 @@ Plug 'markonm/traces.vim'
 Plug 'svermeulen/vim-cutlass'
 Plug 'svermeulen/vim-yoink'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
 
 " folding
 Plug 'Konfekt/FastFold'
@@ -389,6 +380,7 @@ Plug 'itchyny/vim-gitbranch'
 " Utils
 Plug 'sk1418/HowMuch', { 'on': 'HowMuch' }
 Plug 'vimwiki/vimwiki', { 'on': 'VimwikiIndex' }
+Plug 'tpope/vim-fugitive'
 call plug#end()
 "}}}
 " PLUGINS POST LOAD{{{

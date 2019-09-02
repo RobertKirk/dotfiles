@@ -179,7 +179,7 @@ workspace_auto_back_and_forth yes
 default_border pixel
 default_floating_border none
 for_window [class="^.*"] border none
-for_window [title="floating_terminal"] floating enable border pixel 1 resize set 500 200
+for_window [title="floating_terminal"] floating enable border pixel 1 resize set 600 200
 for_window [class="kitty"] border pixel 1
 for_window [class="Zathura"] border pixel 1
 for_window [class="Alacritty"] border pixel 1

@@ -16,7 +16,8 @@ set nolist
 syntax enable
 filetype plugin indent on
 
-let g:python3_host_prog = '/usr/bin/python3.7'
+let g:python3_host_prog = '/usr/bin/python3.6'
+let g:loaded_python_provider = 1
 "}}}
 " VIEW SETTINGS{{{
 let g:solarized_menu = 0

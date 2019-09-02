@@ -199,6 +199,7 @@ rollouts
 rst
 scorels
 softmaxed
+sqlalchemy
 stanford
 stream
 stream-api

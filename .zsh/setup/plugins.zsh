@@ -1,7 +1,7 @@
 _rob_zplug_load_file=${ZLPUG_LOADFILE:-$HOME/.zplug/packages.zsh}
 touch $_rob_zplug_load_file
 eval $( dircolors -b $HOME/.dircolors )
-eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced once fzf)"
+# eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced once fzf)"
 
 source ~/.zplug/init.zsh
 

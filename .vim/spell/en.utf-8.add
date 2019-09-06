@@ -34,6 +34,8 @@ GitHub
 GitLab
 Goodhart
 Goodhart's
+GoogLeNet
+Greydanus
 HIRL
 HRL
 Hanabi
@@ -154,13 +156,16 @@ i
 imagenet
 incentivised
 inverse_reinforcement_learning
+j
 jinja
 jist
+jittered
 join's
 json
 k8s
 kyc
 leaderboard
+logits
 mds
 mediod
 mediods
@@ -168,6 +173,7 @@ minibatch
 moloch
 mujoco
 multiplayer
+n
 neomin
 neuro
 neurosymbolic
@@ -175,11 +181,13 @@ newyork
 oneshot
 optimisable
 orgs
+pixelwise
 postgres
 postgresql
 pretraining
 protobuf
 psycopg2
+px
 pyms
 pytorch
 quantilal
@@ -198,6 +206,7 @@ rollout
 rollouts
 rst
 scorels
+softmax
 softmaxed
 sqlalchemy
 stanford
@@ -208,8 +217,11 @@ sudo
 supremum
 surprisal
 systemd
+t
 tensorflow
+timestep
 uninfluenceable
+upsampling
 videogames
 websocket
 websockets
@@ -218,3 +230,5 @@ wikipedia
 wildcard
 wireheading
 wrt
+y
+z

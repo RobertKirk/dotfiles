@@ -4,6 +4,7 @@ AI's
 AIRD
 AIs
 API
+Affordances
 CAIS
 CFAR
 CHAI
@@ -11,9 +12,12 @@ CHANGELOG
 CIFAR
 CSER
 CTF
+Corrigibility
 DDPG
 DQL
 DQN
+DQNs
+DeepLab
 DeepMind
 DeepMind's
 Delegative
@@ -28,6 +32,7 @@ Friston
 GANs
 GOFAI
 GPT
+GPipe
 GRU
 GiST
 GitHub
@@ -37,6 +42,7 @@ Goodhart's
 GoogLeNet
 Greydanus
 HIRL
+HRI
 HRL
 Hanabi
 I2A
@@ -47,6 +53,7 @@ IRL
 Imagenet
 JSON
 Jsx
+KeyPoint
 Kosoy
 Kubernetes
 Kulveit
@@ -79,6 +86,7 @@ PostgreSQL
 PreQN
 Psycopg2
 Pytorch
+Quadrotors
 Quantilisation
 Quantiliser
 Quantilisers
@@ -94,6 +102,7 @@ Shahar
 Shapley
 Smarkets
 Srivastava
+Superintelligence
 TD3
 TODO
 TRPO
@@ -163,9 +172,11 @@ jittered
 join's
 json
 k8s
+kPAM
 kyc
 leaderboard
 logits
+matrixes
 mds
 mediod
 mediods

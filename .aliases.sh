@@ -36,33 +36,46 @@ gstatall() {
 }
 
 addnewlines() {
-    git ls-files -z | while IFS= read -rd '' f; do tail -c1 < "$f" | read -r _ || echo >> "$f"; done
+  git ls-files -z | while IFS= read -rd '' f; do tail -c1 < "$f" | read -r _ || echo >> "$f"; done
 }
 
 gitrmuntracked() {
   git status -s | rg '?' -F | xargs rm -rf
 }
 
+gitfixup() {
+  if [ $# -eq 0 ]; then;
+    echo You must specify a prefix for the commit
+    return 1
+  fi;
+  local prefix="$1:"
+  local commit=$(git log --oneline | head -n 10 | rg $prefix -F | head -n 1 | awk '{ print $1 }')
+  git commit . --fixup=$commit
+  EDITOR=true VISUAL=true git rebase --interactive --autosquash $commit~1
+  echo fixup done, state:
+  git log --oneline | head -n 10
+}
+
 lastpasscp() {
-    lpass show --clip --password $(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')
+  lpass show --clip --password $(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')
 }
 
 iconecho() {
-    echo -e "\\u$1"
+  echo -e "\\u$1"
 }
 
 get_colors() {
-    for i in {0..255};
-        do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ;
-        if ! (( ($i + 1 ) % 8 ));
-            then echo ;
-        fi ;
-    done
+  for i in {0..255};
+    do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ;
+    if ! (( ($i + 1 ) % 8 ));
+      then echo ;
+    fi ;
+  done
 }
 
 mkalias() {
-    echo "alias $1='$2'" >> ~/.aliases.sh
-    source ~/.aliases.sh
+  echo "alias $1='$2'" >> ~/.aliases.sh
+  source ~/.aliases.sh
 }
 
 -() {

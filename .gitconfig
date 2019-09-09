@@ -3,7 +3,6 @@
 	name = Robert Kirk
 
 [core]
-    editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -R
 
 [diff]

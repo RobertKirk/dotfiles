@@ -217,8 +217,16 @@ let g:ale_linters = {
     \ }
 let g:ale_sign_column_always = 1
 let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_enter = 0
+let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
+let g:ale_virtualtext_cursor = 1
+let g:ale_virtualenv_dir_names = ['.smkenv', '.env', '.venv', 'env', 've-py3', 've', 'virtualenv', 'venv']
+let g:ale_virtualtext_prefix = ' ♦ '
+hi link ALEVirtualTextError DiffDelete
+hi link ALEVirtualTextStyleError DiffDelete
+hi link ALEVirtualTextWarning DiffChange
+hi link ALEVirtualTextStyleWarning DiffChange
+hi link ALEVirtualTextInfo DiffAdd
 
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'

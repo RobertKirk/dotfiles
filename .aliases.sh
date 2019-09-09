@@ -69,6 +69,11 @@ mkalias() {
   cd -
 }
 
+get_tags() {
+  rm tags tags.temp tags.lock 2&>1 > /dev/null
+  rg --files | ctags -R --links=no --options-maybe=~/.ctags.d/ -L -
+}
+
 command_freq() {
   if [ $# -eq 0 ]; then
     local segments=3

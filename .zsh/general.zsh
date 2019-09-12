@@ -4,6 +4,7 @@ setopt chasedots
 setopt nobeep
 setopt autolist
 setopt recexact
+unsetopt nomatch
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_TITLE="true"

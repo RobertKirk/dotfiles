@@ -143,7 +143,7 @@ alias neomutt='nocorrect neomutt'
 alias ls='ls --color=always'
 alias ll='ls -la'
 alias l='ls -l'
-if which exa > /dev/null 2&>1; then
+if which exa > /dev/null 2>&1; then
   unalias ll
   unalias l
   alias ll='exa -la'

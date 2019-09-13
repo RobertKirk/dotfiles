@@ -11,4 +11,3 @@ fi
 # Key bindings
 # ------------
 source "/home/robert/.fzf/shell/key-bindings.zsh"
-

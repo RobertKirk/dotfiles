@@ -32,4 +32,4 @@ zle -N zle-line-init      # When a new line starts
 
 # Fix backspace not working after returning from cmd mode
 bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char 
+bindkey '^h' backward-delete-char

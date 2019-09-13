@@ -22,7 +22,7 @@ get_ram_readable() {
 # $ ram safari
 # # => safari uses 154.69 MBs of RAM.
 # from https://github.com/paulmillr/dotfiles
-function ram() {
+ram() {
 	local sum
 	local items
 	local app="$1"

@@ -1,4 +1,5 @@
-" Check Python files with flake8 and pylint.
+setlocal foldmethod=indent
+" Check Python files with flake8, pylint and mypy
 let b:ale_linters = ['flake8', 'pylint', 'mypy']
 
 " Fix Python files with autopep8 and yapf.

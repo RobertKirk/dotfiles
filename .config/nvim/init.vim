@@ -24,7 +24,6 @@ let g:python3_host_prog = '/usr/bin/python3.7'
 set signcolumn=yes
 let g:solarized_menu = 0
 " let g:solarized_visibility = 'high'
-let g:indentLine_char_list= ['|', '¦', '┆', '┊']
 let g:solarized_hitrail = 1
 
 function! LightlineReadonly()
@@ -99,7 +98,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " folding
 set foldenable
 set foldlevelstart=10   " open most folds by default
-set foldmethod=indent          
 
 set norelativenumber
 set nonumber
@@ -215,6 +213,9 @@ let g:ale_completion_enabled = 0
 let g:ale_linters = {
     \ 'sh': ['language_server'],
     \ }
+let g:ale_fixers = {
+    \ 'json': ['jq'],
+    \ }
 let g:ale_sign_column_always = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 1
@@ -320,7 +321,6 @@ let g:pandoc#command#latex_engine = 'pdflatex'
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-set conceallevel=1
 let g:tex_conceal='abdmg'
 let g:vimtext_fold_enabled = 1
 
@@ -340,7 +340,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm'
 Plug 'jremmen/vim-ripgrep'
-Plug 'Yggdroot/indentLine'
 
 " Linting/completion/syntax
 Plug 'w0rp/ale'

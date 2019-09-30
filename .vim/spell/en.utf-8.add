@@ -17,6 +17,7 @@ DDPG
 DQL
 DQN
 DQNs
+DataScience
 DeepLab
 DeepMind
 DeepMind's
@@ -93,6 +94,7 @@ Quantilisers
 README
 RL
 RNN
+Reckonator
 Regressional
 S
 SGD
@@ -132,9 +134,12 @@ bayesian
 berkely
 blog
 brown
+cli
+conda
 conv
 convolutional
 counterfactual
+cscs
 css
 datatype
 deconfuse
@@ -167,6 +172,7 @@ imagenet
 incentivised
 inverse_reinforcement_learning
 j
+jaeger
 jinja
 jist
 jittered
@@ -174,13 +180,16 @@ join's
 json
 k8s
 kPAM
+kafka
 kyc
 leaderboard
 logits
+mailchimp
 matrixes
 mds
 mediod
 mediods
+metaclass
 minibatch
 moloch
 msg
@@ -207,6 +216,7 @@ pytorch
 quantilal
 quantilise
 quantilisers
+redis
 refactor
 refactored
 regulariser
@@ -234,6 +244,7 @@ systemd
 t
 tensorflow
 timestep
+ui
 uninfluenceable
 unsubscribe
 upsampling

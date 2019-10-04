@@ -15,6 +15,7 @@ set lazyredraw
 set nolist
 set laststatus=1
 set title
+set completeopt-=preview
 syntax enable
 filetype plugin indent on
 
@@ -174,7 +175,7 @@ augroup END
 " VIM BACKUP{{{
 " backup to separate folder
 set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupdir=~/.config/nvim/tmp/backup,~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
@@ -285,6 +286,12 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:goyo_width = 200
 
 "}}}
+" float preview{{{
+let g:float_preview#docked = 1
+let g:float_preview#max_height = 300
+let g:float_preview#max_width = 130
+
+"}}}
 " Yoink and Cutlass{{{
 " yoink
 nmap p <plug>(YoinkPaste_p)
@@ -353,6 +360,7 @@ Plug 'kovetskiy/sxhkd-vim', { 'for': 'sxhkd' }
 Plug 'neomutt/neomutt.vim', { 'for': 'neomuttrc' }
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-pandoc'
+Plug 'ncm2/float-preview.nvim'
 
 " navigation
 Plug 'airblade/vim-gitgutter'
@@ -392,9 +400,12 @@ call plug#end()
 "}}}
 " PLUGINS POST LOAD{{{
 " deoplete{{{
-let g:deoplete#enable_at_startup = 0
+let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('camel_case', v:true)
+call deoplete#custom#option('smart_case', v:true)
 call deoplete#custom#option('max_list', 20)
+call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
+call deoplete#custom#source('_', 'sorters', [])
 call deoplete#custom#option('sources', {
 \ 'python': ['around', 'file', 'member', 'jedi', 'tag'],
 \})
@@ -405,15 +416,15 @@ call deoplete#custom#var('omni', 'input_patterns', {
 "}}}
 " defx-{git|icons|}{{{
 " from https://github.com/taigacute/ThinkVim/blob/master/core/plugins/defx.vim
-map <silent> <C-n> :Defx -search=`expand('%:p')` -toggle -ignored-files='.mypy_cache,__pycache__' -columns=indent:icon:filename:type<CR>
+map <silent> <C-n> :Defx -search=`expand('%:p')` -toggle -listed -resume -ignored-files='.mypy_cache,__pycache__,.*'<CR>
 
 let g:defx_icons_enable_syntax_highlight = 0
 
 call defx#custom#option('_', {
-\ 'winwidth': 30,
-\ 'split': 'vertical',
+\ 'winwidth': 40,
+\ 'split': 'floating',
 \ 'direction': 'topleft',
-\ 'root_marker': ':',
+\ 'columns': 'indent:icon:filename:type',
 \ })
 
 call defx#custom#column('filename', {

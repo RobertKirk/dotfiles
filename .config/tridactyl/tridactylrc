@@ -38,8 +38,10 @@ unbind --mode=ex <C-c>
 
 " Search urls
 set searchurls.pg  https://www.google.com/search?q=site:http://www.postgresql.org/docs/10/+%s
-set searchurls.pyt  https://pytorch.org/docs/stable/search.html?q=%s&check_keywords=yes&area=default
+set searchurls.th  https://pytorch.org/docs/stable/search.html?q=%s&check_keywords=yes&area=default
 set searchurls.pd https://www.google.com/search?q=site:http://pandas.pydata.org/pandas-docs/version/0.24/+%s
+set searchurls.py https://www.google.com/search?q=site:https://docs.python.org/3.6/+%s
+set searchurls.pypi https://pypi.org/search/?q=%s
 
 " https://quinoa42.github.io/blog/2019/tridactyl-edtiorcmd-with-tmux/
 set editorcmd tmux new-window -n firefox 'nvim -f %f; tmux wait-for -S firefox-neww-done' \; wait-for firefox-neww-done

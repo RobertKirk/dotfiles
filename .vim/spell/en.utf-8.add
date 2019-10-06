@@ -65,6 +65,7 @@ MDP
 MDPs
 MILA
 MIRI
+MLP
 MNIST
 MNist
 MarketBookClient
@@ -74,6 +75,7 @@ Mikulik
 Multiagent
 NLP
 Neuropsychology
+Olah's
 OpenAI
 OpenPhil
 Orseau
@@ -102,6 +104,7 @@ SOTA
 Sarsa
 Shahar
 Shapley
+Shimon
 Smarkets
 Srivastava
 Superintelligence
@@ -116,6 +119,8 @@ VGG
 VNM
 VPG
 VQA
+WhiRL
+Whiteson
 adversarially
 al
 al's
@@ -159,12 +164,14 @@ expressivity
 featurisation
 featurised
 frontend
+gameplay
 gdpr
 github
 google
 googlebrain
 grafana
 gridworld
+https
 human's
 hyperparameters
 i
@@ -204,10 +211,14 @@ notification
 oneshot
 optimisable
 orgs
+overfitted
 pixelwise
 postgres
 postgresql
+predinet
+pretrained
 pretraining
+prolog
 protobuf
 psycopg2
 px
@@ -230,6 +241,7 @@ rollout
 rollouts
 rst
 scorels
+sensorimotor
 softmax
 softmaxed
 sqlalchemy

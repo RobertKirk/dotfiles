@@ -68,6 +68,7 @@ highlight EndOfBuffer ctermfg=15
 highlight SignColumn ctermbg=7
 highlight VertSplit ctermbg=15
 highlight VertSplit ctermfg=15
+highlight NormalFloat ctermfg=11 ctermbg=7
 " set cursorcolumn      " highlight current column
 " highlight CursorColumn ctermbg=8
 
@@ -421,7 +422,8 @@ map <silent> <C-n> :Defx -search=`expand('%:p')` -toggle -listed -resume -ignore
 let g:defx_icons_enable_syntax_highlight = 0
 
 call defx#custom#option('_', {
-\ 'winwidth': 40,
+\ 'winwidth': 80,
+\ 'winheight': 40,
 \ 'split': 'floating',
 \ 'direction': 'topleft',
 \ 'columns': 'indent:icon:filename:type',

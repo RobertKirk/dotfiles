@@ -1,13 +1,14 @@
+abbrev-alias -g X="| xargs"
 abbrev-alias -g G="| rg"
 abbrev-alias -g L="| less"
-abbrev-alias -g nv="| xargs nvim"
-abbrev-alias -g S="~/smarkets/"
+abbrev-alias -g V="| xargs nvim"
 abbrev-alias -g C="| xclip -sel c"
+abbrev-alias -g S="| xargs sed -i"
 abbrev-alias -i
 
 alias -s pdf=zathura
 alias -s html=firefox
-alias -s {csv,js,css,less,md,wiki,rst}=nvim
+alias -s {csv,js,css,less,md,wiki,rst,py,yml,yaml,toml,txt}=nvim
 
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \

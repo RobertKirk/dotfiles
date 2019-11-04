@@ -38,7 +38,8 @@ function worktree() {
     # a worktree from it.
     git worktree add -b $BRANCHNAME $BASEDIR/$BRANCHNAME master
   fi
-  cd $BASEDIR/$BRANCHNAME
+  cp $(git rev-parse --show-toplevel)/tags $BASEDIR/$BRANCHNAME/
+  cd $BASEDIR/$BRANCHNAME/$(git rev-parse --show-prefix)
 }
 
 export GIT_WORKTREE_DIR="/home/robert/git-worktrees"

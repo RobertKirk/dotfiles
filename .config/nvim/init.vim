@@ -392,6 +392,7 @@ Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'itchyny/lightline.vim'
 Plug 'termhn/i3-vim-nav'
 Plug 'itchyny/vim-gitbranch'
+Plug 'tpope/vim-obsession'
 
 " Utils
 Plug 'sk1418/HowMuch', { 'on': 'HowMuch' }

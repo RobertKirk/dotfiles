@@ -120,7 +120,15 @@ alias m='man'
 alias s='sudo'
 # alias t=
 # alias u=
-alias v='nvim'
+v() {
+  if test $# -gt 0; then
+    env nvim "$@"
+  elif test -f Session.vim; then
+    env nvim -S
+  else
+    env nvim -c Obsession
+  fi
+}
 # alias w=
 alias x='extract'
 # alias y=

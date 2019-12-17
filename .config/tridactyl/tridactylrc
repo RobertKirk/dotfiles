@@ -49,10 +49,6 @@ set editorcmd tmux new-window -n firefox 'nvim -f %f; tmux wait-for -S firefox-n
 autocmd DocStart mail.google.com mode ignore
 autocmd TabEnter mail.google.com mode ignore
 
-" Make Tridactyl work on more sites at the expense of some security
-set csp clobber
-fixamo_quiet
-
 set smoothscroll true
 
 " Ctrl-F should use the browser's native 'find' functionality.

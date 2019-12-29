@@ -8,7 +8,7 @@ bind K tabprev
 
 bind m mute toggle
 
-bind --mode=ignore <C-z> mode normal
+bind --mode=ignore <C-Z> mode normal
 bind --mode=normal <C-z> mode ignore
 
 " Git{Hub,Lab} git clone via SSH yank
@@ -46,10 +46,20 @@ set searchurls.pypi https://pypi.org/search/?q=%s
 " https://quinoa42.github.io/blog/2019/tridactyl-edtiorcmd-with-tmux/
 set editorcmd tmux new-window -n firefox 'nvim -f %f; tmux wait-for -S firefox-neww-done' \; wait-for firefox-neww-done
 
-autocmd DocStart mail.google.com mode ignore
-autocmd TabEnter mail.google.com mode ignore
+" Gmail
+autocmd DocStart mail.google.com  mode ignore
+autocmd TabEnter mail.google.com  mode ignore
+" jupyter
+autocmd DocStart localhost:8888   mode ignore
+autocmd TabEnter localhost:8888   mode ignore
+" Roam
+autocmd DocStart roamresearch.com mode ignore
+autocmd TabEnter roamresearch.com mode ignore
+" Tensorboard
+autocmd DocStart basementpc:6006  mode ignore
+autocmd TabEnter basementpc:6006  mode ignore
 
-set smoothscroll true
+set smoothscroll false
 
 " Ctrl-F should use the browser's native 'find' functionality.
 unbind <C-f>

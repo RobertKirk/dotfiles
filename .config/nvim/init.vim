@@ -116,7 +116,7 @@ set smartcase
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
-nnoremap <leader>g :Rg<CR>
+nnoremap <leader>r :Rg<CR>
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 "}}}
 " KEYBOARD SHORTCUTS{{{
@@ -247,6 +247,17 @@ nmap [h <Plug>(GitGutterPrevHunk)
 nmap <Leader>ga <Plug>(GitGutterStageHunk)
 nmap <Leader>gu <Plug>(GitGutterUndoHunk)
 nmap <Leader>gp <Plug>(GitGutterPreviewHunk)
+
+"}}}
+" fugitive setup{{{
+nmap <Leader>gs :G<CR>
+nmap <Leader>gg :G
+nmap <Leader>gc :Gcommit
+nmap <Leader>gw :Gwrite
+nmap <Leader>gp :Gpush
+nmap <Leader>grb :Grebase
+nmap <Leader>gd :Gdiff
+nmap <Leader>gl :Glog! -n 100<CR>
 
 "}}}
 " NoSwapSuck{{{

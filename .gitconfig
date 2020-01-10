@@ -6,12 +6,12 @@
 	pager = diff-so-fancy | less --tabs=4 -R
 
 [diff]
-    compactHeuristic = true
-    colorMoved = zebra
+  compactHeuristic = true
+  colorMoved = zebra
 
 [push]
-    default = current
-    followTags = true
+  default = current
+  followTags = true
 
 [colour]
 	ui = true
@@ -29,3 +29,15 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+
+[alias]
+  co = checkout
+  b = branch
+  c = commit
+  s = status
+  rb = rebase
+  a = add
+  pl = pull
+  p = push
+  fixup = !gitfixup
+  updb = !git fetch origin master:master && git rebase master

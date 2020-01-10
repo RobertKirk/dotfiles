@@ -255,7 +255,8 @@ nmap <Leader>gp <Plug>(GitGutterPreviewHunk)
 " fugitive setup{{{
 nmap <Leader>gs :G<CR>
 nmap <Leader>gg :G
-nmap <Leader>gc :Gcommit
+nmap <Leader>gc :Gcommit --verbose
+nmap <Leader>gb :Gblame
 nmap <Leader>gw :Gwrite
 nmap <Leader>gp :Gpush
 nmap <Leader>grb :Grebase

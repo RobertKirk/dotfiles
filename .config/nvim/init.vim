@@ -27,6 +27,9 @@ let g:solarized_menu = 0
 " let g:solarized_visibility = 'high'
 let g:solarized_hitrail = 1
 
+" open help as a vertical window to the left
+autocmd FileType help wincmd L
+
 function! LightlineReadonly()
   return &readonly && &filetype !=# 'help' ? 'RO' : ''
 endfunction

@@ -119,7 +119,7 @@ set smartcase
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
-nnoremap <leader>r :Rg<CR>
+nnoremap <leader>r :Rg
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 "}}}
 " KEYBOARD SHORTCUTS{{{

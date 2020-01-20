@@ -393,6 +393,7 @@ Plug 'svermeulen/vim-cutlass'
 Plug 'svermeulen/vim-yoink'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
+Plug 'machakann/vim-highlightedyank'
 
 " folding
 Plug 'Konfekt/FastFold'

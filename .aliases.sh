@@ -83,7 +83,7 @@ mkalias() {
 }
 
 get_tags() {
-  rm tags tags.temp tags.lock 2&>1 > /dev/null
+  rm tags tags.temp tags.lock &> /dev/null
   rg --files | ctags -R --links=no --options-maybe=~/.ctags.d/ -L -
 }
 
@@ -151,7 +151,7 @@ alias neomutt='nocorrect neomutt'
 alias ls='ls --color=always'
 alias ll='ls -la'
 alias l='ls -l'
-if which exa > /dev/null 2>&1; then
+if which exa &> /dev/null; then
   unalias ll
   unalias l
   alias ll='exa -la'
@@ -161,7 +161,7 @@ fi;
 alias mkdir='mkdir -p'
 alias tree='tree -I '__pycache__''
 alias gpuw='watch -n 1 -d -t nvidia-smi'
-alias cplgvfs='nohup cpulimit -e gvfs -l 5  </dev/null >/dev/null 2>&1 & disown'
+alias cplgvfs='nohup cpulimit -e gvfs -l 5  </dev/null >/dev/null &> & disown'
 alias gentoken='head -c 24 /dev/urandom | base64'
 alias dt='tty-clock -xcsB'
 alias cp='/home/robert/.local/bin/cpg -g'

@@ -4,6 +4,13 @@ eval $( dircolors -b $HOME/.dircolors )
 eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced once fzf)"
 source ~/anaconda3/etc/profile.d/conda.sh
 
+zmodload zsh/zpty
+zmodload zsh/mathfunc
+
+# https://stackoverflow.com/questions/10847255/how-to-make-zsh-forward-word-behaviour-same-as-in-bash-emacs
+autoload -U select-word-style
+select-word-style bash
+
 source ~/.zplug/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
@@ -21,11 +28,13 @@ zplug "romkatv/powerlevel10k", use:powerlevel10k.zsh-theme
 
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
-  typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
-  typeset -g ZSH_AUTOSUGGEST_ORIGINAL_WIDGET_PREFIX='autosuggest-orig-'
-  typeset -g ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE='20'
-  typeset -g ZSH_AUTOSUGGEST_ASYNC_PTY_NAME='zsh_autosuggest_pty'
-  typeset -ga ZSH_AUTOSUGGEST_STRATEGY=('history')
+  typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
+  typeset -g ZSH_AUTOSUGGEST_ORIGINAL_WIDGET_PREFIX="autosuggest-orig-"
+  typeset -g ZSH_AUTOSUGGEST_USE_ASYNC=1
+  typeset -g ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="30"
+  typeset -g ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
+  typeset -g ZSH_AUTOSUGGEST_ASYNC_PTY_NAME="zsh_autosuggest_pty"
+  typeset -g ZSH_AUTOSUGGEST_STRATEGY=(history autocomplete)
 
 zplug "zsh-vi-more/vi-motions"
 zplug "michaelxmcbride/zsh-dircycle"

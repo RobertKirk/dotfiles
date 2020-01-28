@@ -8,3 +8,4 @@ export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin"
 eval "$(rbenv init -)"
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
+export fpath=( $HOME/.zsh/functions $fpath )

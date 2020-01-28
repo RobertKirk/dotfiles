@@ -16,6 +16,9 @@ upwards() {
 zle -N upwards
 bindkey -M viins '^K' upwards
 
+bindkey -M viins '^L' forward-word
+bindkey -M viins '^H' backward-word
+
 # Detect empty enter, execute git status if in git dir
 # magic-enter () {
 #   if [[ -z $BUFFER ]]; then

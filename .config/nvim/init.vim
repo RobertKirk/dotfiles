@@ -437,8 +437,8 @@ let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
 call deoplete#custom#option('camel_case', v:true)
 call deoplete#custom#option('smart_case', v:true)
 call deoplete#custom#option('max_list', 20)
-call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
-call deoplete#custom#source('_', 'sorters', [])
+" call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
+" call deoplete#custom#source('_', 'sorters', [])
 call deoplete#custom#option('sources', {
 \ 'python': ['around', 'file', 'member', 'jedi', 'tag'],
 \})

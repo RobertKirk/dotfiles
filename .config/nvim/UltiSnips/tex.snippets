@@ -25,6 +25,8 @@ snippet template "Basic template" b
 \usepackage{textcomp}
 \usepackage{amsmath, amssymb}
 \usepackage{titling}
+\usepackage{graphicx}
+\usepackage[font=small]{caption}
 \newcommand{\subtitle}[1]{%
   \posttitle{%
     \par\end{center}
@@ -35,6 +37,11 @@ snippet template "Basic template" b
 \begin{document}
 	$0
 \end{document}
+endsnippet
+
+snippet bib "bibliography" b
+\bibliography{$1.bib}{}
+\bibliographystyle{plain}
 endsnippet
 
 snippet beg "begin{} / end{}" bA

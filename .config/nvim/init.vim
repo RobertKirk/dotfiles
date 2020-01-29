@@ -280,8 +280,8 @@ let g:ctrlp_clear_cache_on_exit = 0
 "}}}
 " UltiSnips{{{
 " Configuration for custom snips
-let g:UltiSnipsSnippetsDir = "~/.config/nvim/snips"
-let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snips"]
+let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips"
+let g:UltiSnipsSnippetDirectories = ["UltiSnips"]
 
 " Trigger configuration.
 let g:UltiSnipsExpandTrigger='<c-j>'

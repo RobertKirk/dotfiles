@@ -6,6 +6,7 @@ AIs
 API
 Affordances
 CAIS
+CAVIA
 CFAR
 CHAI
 CHANGELOG
@@ -30,6 +31,7 @@ Explainability
 FHI
 FROGs
 Facebook
+FiLM
 Friston
 GANs
 GOFAI
@@ -42,6 +44,7 @@ GitLab
 Goodhart
 Goodhart's
 GoogLeNet
+GrBAL
 Greydanus
 HIRL
 HRI
@@ -61,17 +64,22 @@ Kubernetes
 Kulveit
 LSTM
 Leike
+MAML
 MAPO
 MDP
 MDPs
 MILA
 MIRI
+ML1
+ML10
+ML45
 MLP
 MNIST
 MNist
 MarketBookClient
 Markoz
 Merwijk
+MetaWorld
 Mikulik
 Multiagent
 NLP
@@ -96,6 +104,7 @@ Quantiliser
 Quantilisers
 README
 RL
+RL2
 RNN
 Reckonator
 Regressional
@@ -181,6 +190,7 @@ i
 imagenet
 incentivised
 inverse_reinforcement_learning
+isn
 j
 jaeger
 jinja
@@ -215,6 +225,7 @@ oneshot
 optimisable
 orgs
 overfitted
+parallelizability
 pixelwise
 postgres
 postgresql
@@ -274,11 +285,3 @@ wireheading
 wrt
 y
 z
-MetaWorld
-RL2
-MAML
-isn
-FiLM
-CAVIA
-GrBAL
-parallelizability

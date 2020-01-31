@@ -8,7 +8,7 @@ abbrev-alias -i
 
 alias -s pdf=zathura
 alias -s html=firefox
-alias -s {csv,js,css,less,md,wiki,rst,py,yml,yaml,toml,txt}=nvim
+alias -s {csv,js,css,less,md,wiki,rst,yml,yaml,toml,txt}=nvim
 
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \

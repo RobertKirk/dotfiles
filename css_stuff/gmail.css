@@ -1,0 +1,207 @@
+/* adpated from https://gist.github.com/kellishouts/e733874f7510934c4def87adf221016d */
+/* New Tab Label Font */
+.aAy.aIf-aLe .aKx:after,
+.aAy.aJi-aLe .aKx:after,
+.aAy.aH2-aLe .aKx:after,
+.aAy.aHE-aLe .aKx:after{
+  display:block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Google Sans',Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+  font-size: .875rem;
+  color: #5f6368;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 16px;
+  order: 0;
+}
+
+/* Tab: Active Font Color */
+.aAy.aIf-aLe.J-KU-KO .aKx:after,
+.aAy.aJi-aLe.J-KU-KO .aKx:after,
+.aAy.aH2-aLe.J-KU-KO .aKx:after,
+.aAy.aHE-aLe.J-KU-KO .aKx:after{
+  color: #3eb1ad;
+}
+
+/* Tab: Active Underline Color */
+.aAy.aIf-aLe.J-KU-KO:before,
+.aAy.aJi-aLe.J-KU-KO:before,
+.aAy.aH2-aLe.J-KU-KO:before,
+.aAy.aHE-aLe.J-KU-KO:before{
+  background-color: #3eb1ad;
+}
+
+/* Tab: Hides "New" Count */
+.aKx>.aDG{
+  display: none;
+}
+
+.aJi-aLe .aDG, 
+.aAy.J-KU-JW.aAy.aJi-aLe .aKo, 
+.aAy.J-KU-KO.aAy.aJi-aLe .aKo{
+   display: none;
+  
+}
+
+/* Tab: Important Icon */
+.aAy.aIf-aLe .aKp.aIf-aLf{
+  background-image: url('https://res.cloudinary.com/airship/image/upload/v1553030473/media/email_t4wvmi.svg');
+  background-size:18px;
+}
+
+/* Tab: Important Icon Active */
+.aAy.aIf-aLe.J-KU-KO  .aKp.aIf-aLf{
+  background-image: url('https://res.cloudinary.com/airship/image/upload/v1553032741/media/email-teal_ip8ci6.svg');
+  background-size:18px;
+}
+
+/*--- #4. Get rid of Hangouts ---*/
+
+/* Hides Line & Shadow */
+.aeO{
+  display: none;
+}
+
+.aji::after{
+  display:none;
+}
+
+/* Hides Hangouts */
+.akc.aZ6{
+  display: none;
+  height: auto;
+}
+
+/*--- #5. Get rid of Ads ---*/
+.BltHke.nH.oy8Mbf.aE3 .aKB{
+  display: none;
+}
+
+/*--- #5.1 Nov 5, 2019 Google updated & ads are showing again. ---*/
+
+.aDP .ae4.aDM + .ae4.aDM .Cp{
+  display: none;
+}
+
+.aDP .ae4.aDM + .ae4.aDM .Cp + div + .Cp{
+  display: block;
+}
+
+/*--- #6. Even MORE line-height for Emails ---*/
+.Cp tr{
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+/*--- #7. Minimal Sidebar ---*/
+
+/* Change Inbox icon to Envelope Icon */
+.aHS-bnt .qj {
+    background-image: url('https://res.cloudinary.com/airship/image/upload/v1553030473/media/email_t4wvmi.svg') !important;
+    background-size: 18px !important;
+}
+
+.nZ>.aHS-bnt .qj, 
+.aHS-bnt .qj::before{
+  background-image: url('https://res.cloudinary.com/airship/image/upload/v1553030473/media/email_t4wvmi.svg')  !important;
+  background-size: 18px !important;
+}
+
+/* Set Grey Sidebar Highlight */
+.byl .TO.nZ>.aHS-bnt .n0, 
+.nZ>.aHS-bnt .bsU{
+  color: #333333 !important;
+}
+
+.wT>.n3 .byl:first-child .aim:first-child .nZ {
+  background-color: #e8eaed !important;
+}
+
+/* Hide Sidebar Label Icons */
+.zw .TK .qj.qr{
+  display: none;
+}
+
+/* Add space between sidebar labels */
+.aim, .ain {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 0;
+}
+
+/* Simplify "More" */
+.n6 span.ait {
+    display: none;
+}
+
+/* Adjust Compose Button Margin */
+.aeN .z0>.L3{
+  margin-left: 8px;
+}
+
+/*--- #8. Get rid of Notification Dots and Unread Counts ---*/
+.zw .TK .aio.aip .bsU{
+  display: none;
+}
+
+/*--- #11. Bring back the delightful cleared inbox graphic ---*/
+.DVI7hd .aRu{
+  background-image: url('https://res.cloudinary.com/airship/image/upload/f_auto/v1553218540/media/airship-unicorny_gpgyga.png');
+  background-size: 240px auto;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 200px;
+  margin-top: 40px;
+}
+
+.DVI7hd .aRu .aRv{
+  display: none;
+}
+
+.DVI7hd .aRu .aRv + p{
+  display: none;
+}
+
+.DVI7hd .aRu .aRv + p + p{
+  display: none;
+}
+
+/*--- #12. Use "Product Sans" in the sidebar ---*/
+/* Set Sidebar Label Font */
+.TO .nU>.n0, .TO.NQ .nU>.n0, 
+.TO.nZ .nU>.n0, .ah9>.CJ, 
+.n3>.CL>.CK{
+  font-family: 'Google Sans',Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: .85rem;
+  color: #333;
+}
+
+/* Hide Gmail Logo */
+.gb_ja:not(.gb_ka) .gb_qc .gb_Rb,
+.a.gb_Vd.gb_Tb.gb_ce{
+  display: none !important;
+}
+
+/* Hides Gmail Footer */
+.l2.pfiaof {
+  display: none;
+}
+
+/* Hide Gmail Logo */
+.gb_Sc.gb_0c.gb_1c {
+  display: none !important;
+}
+
+/* Centre search bar */
+.gb_Re.gb_pf {
+  margin: auto !important;
+}
+
+/* remove right side bar */
+.nH.bAw.nn{
+  display: none !important;
+}

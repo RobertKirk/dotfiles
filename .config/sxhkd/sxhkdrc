@@ -1,8 +1,8 @@
-super + shift + {f,g,m,t,p,z}
-	jumpapp -r {firefox,google-chrome,spotify,alacritty,postman,zathura}
+super + shift + {f,g,m,t,p,z,a}
+	jumpapp -r {firefox,google-chrome,spotify,alacritty,postman,zathura,anki}
 
-super + {f,g,m,t,p,z}
-	jumpapp {firefox,google-chrome,spotify,alacritty,postman,zathura}
+super + {f,g,m,t,p,z,a}
+	jumpapp {firefox,google-chrome,spotify,alacritty,postman,zathura,anki}
 
 super + s
 	jumpapp -t Slack slack

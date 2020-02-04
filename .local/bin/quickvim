@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
-tempfile=$(mktemp)
-alacritty -t floating_terminal -e nvim -u ~/.config/nvim/minimal_init.vim +star $tempfile
-cat $tempfile | xclip -sel c
-rm $tempfile
+if [ $# -eq 0 ]; then
+  file=$(mktemp)
+  file_given=0
+else
+  file=$1
+  file_given=1
+fi
+alacritty -t floating_terminal -e nvim -u ~/.config/nvim/minimal_init.vim +star $file
+if [ $file_given = 0 ]; then
+  cat $file | xclip -sel c
+  rm $file
+fi

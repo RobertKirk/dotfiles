@@ -53,6 +53,7 @@ noremap <leader>Y "*y
 noremap <leader>P "*p
 
 nmap <leader>q :wq!<cr>
+imap <C-c> <esc>:wq!<CR>
 "
 " jk is escape
 inoremap jk <esc>

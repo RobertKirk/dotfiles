@@ -7,6 +7,7 @@ bind J tabnext
 bind K tabprev
 
 bind m mute toggle
+bind p pin
 
 bind --mode=ignore <C-Z> mode normal
 bind --mode=normal <C-z> mode ignore
@@ -45,7 +46,7 @@ set searchurls.pypi https://pypi.org/search/?q=%s
 set searchurls.gs https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%s
 
 " https://quinoa42.github.io/blog/2019/tridactyl-edtiorcmd-with-tmux/
-set editorcmd tmux new-window -n firefox 'nvim -f %f; tmux wait-for -S firefox-neww-done' \; wait-for firefox-neww-done
+set editorcmd quickvim
 
 " Gmail
 autocmd DocStart mail.google.com  mode ignore

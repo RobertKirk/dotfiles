@@ -45,6 +45,7 @@
       vcs                     # git status
       status
       background_jobs         # presence of background jobs
+      command_execution_time  # duration of the last command
       # =========================[ Line #2 ]=========================
       newline
       prompt_char             # prompt symbol
@@ -56,7 +57,6 @@
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
       # =========================[ Line #1 ]=========================
-      command_execution_time  # duration of the last command
       # direnv                  # direnv status (https://direnv.net/)
       # goenv                   # go environment (https://github.com/syndbg/goenv)
       # nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
@@ -72,9 +72,9 @@
       # luaenv                  # lua version from luaenv (https://github.com/cehoffman/luaenv)
       # jenv                    # java version from jenv (https://github.com/jenv/jenv)
       # plenv                   # perl version from plenv (https://github.com/tokuhirom/plenv)
-      kubecontext             # current kubernetes context (https://kubernetes.io/)
-      terraform               # terraform workspace (https://www.terraform.io)
-      aws                     # aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
+      # kubecontext             # current kubernetes context (https://kubernetes.io/)
+      # terraform               # terraform workspace (https://www.terraform.io)
+      # aws                     # aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
       # aws_eb_env            # aws elastic beanstalk environment (https://aws.amazon.com/elasticbeanstalk/)
       # azure                 # azure account name (https://docs.microsoft.com/en-us/cli/azure)
       # gcloud                # google cloud cli acccount and project (https://cloud.google.com/)

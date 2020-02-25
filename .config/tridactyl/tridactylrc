@@ -6,11 +6,19 @@ colors base16-solarized-light
 bind J tabnext
 bind K tabprev
 
+bind --mode=ignore J tabnext
+bind --mode=ignore K tabprev
+
 bind m mute toggle
 bind p pin
 
 bind --mode=ignore <C-Z> mode normal
 bind --mode=normal <C-z> mode ignore
+
+" to use for TST
+unbind <F1>
+
+bind <C-j> tabopen about:downloads
 
 " Git{Hub,Lab} git clone via SSH yank
 bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
@@ -51,6 +59,9 @@ set editorcmd quickvim
 " Gmail
 autocmd DocStart mail.google.com  mode ignore
 autocmd TabEnter mail.google.com  mode ignore
+" Calendar
+autocmd DocStart calendar.google.com mode ignore
+autocmd TabEnter calendar.google.com mode ignore
 " jupyter
 autocmd DocStart localhost:8888   mode ignore
 autocmd TabEnter localhost:8888   mode ignore

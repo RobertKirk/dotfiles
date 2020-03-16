@@ -133,10 +133,10 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bl :ls<CR>
 
 " Pasting from system keyboard easily
-noremap <leader>y "+y
-noremap <leader>p "+p
-noremap <leader>Y "*y
-noremap <leader>P "*p
+map <leader>y "+y
+map <leader>p "+p
+map <leader>Y "*y
+map <leader>P "*p
 nnoremap mp :!mdtex2pdf % <CR><CR>
 
 " leader x closes the buffer
@@ -537,4 +537,8 @@ endfunction
 
 "}}}
 "}}}
+map <leader>y "+y
+map <leader>p "+p
+map <leader>Y "*y
+map <leader>P "*p
 " vim:foldmethod=marker:foldlevel=0

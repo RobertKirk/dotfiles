@@ -6,8 +6,8 @@ colors base16-solarized-light
 bind J tabnext
 bind K tabprev
 
-bind --mode=ignore J tabnext
-bind --mode=ignore K tabprev
+" bind --mode=ignore J tabnext
+" bind --mode=ignore K tabprev
 
 bind m mute toggle
 bind p pin

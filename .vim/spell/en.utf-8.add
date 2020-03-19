@@ -77,6 +77,8 @@ ML45
 MLP
 MNIST
 MNist
+MT10
+MT50
 MarketBookClient
 Markoz
 Merwijk
@@ -225,6 +227,7 @@ neurosymbolic
 newyork
 notification
 oneshot
+operationalise
 optimisable
 orgs
 overfitted

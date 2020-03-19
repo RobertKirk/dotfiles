@@ -346,6 +346,7 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abdmg'
 let g:vimtext_fold_enabled = 1
+let g:polyglot_disabled = ['latex']
 
 "}}}
 "}}}

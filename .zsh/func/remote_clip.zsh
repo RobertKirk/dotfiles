@@ -3,7 +3,12 @@
 SSH_REMOTE_CLIPBOARD_PORT=5556
 
 remote_clip_daemon() {
-  while (true); do echo "Waiting..." ;  nc -l $SSH_REMOTE_CLIPBOARD_PORT | xclip; echo "Copied: "; xclip -o | sed 's/^/  /'; done
+  while (true); do
+    echo "Waiting..."
+    nc -l -p $SSH_REMOTE_CLIPBOARD_PORT localhost | xclip
+    echo "Copied: "
+    xclip -o | sed 's/^/  /'
+  done
 }
 
 start_clip_daemon() {

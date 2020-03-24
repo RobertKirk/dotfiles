@@ -32,6 +32,9 @@ bind yz composite js "zplug \"" + document.location.href.replace(/https:\/\/gith
 " GitHub vim plug command to paste yank
 bind yv composite js "Plug \'" + document.location.href.replace(/https:\/\/github\.com\//,"") + "\'" | clipboard yank
 
+" AWS Login SAMLResponse copy
+bind yas composite js document.getElementById("saml_form")[1].value | clipboard yank
+
 " find mode commands
 bind / fillcmdline find
 bind ? fillcmdline find -?

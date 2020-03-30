@@ -19,6 +19,12 @@ sudo dpkg -i ripgrep_11.0.2_amd64.deb
 curl -LO https://github.com/sharkdp/fd/releases/download/v7.5.0/fd_7.5.0_amd64.deb
 sudo dpkg -i fd_7.5.0_amd64.deb
 
+# bat
+curl -LO https://github.com/sharkdp/bat/releases/download/v0.13.0/bat_0.13.0_amd64.deb
+sudo dpkg -i bat_0.13.0_amd64.deb
+
+rm *.deb
+
 git submodule init
 git submodule update
 

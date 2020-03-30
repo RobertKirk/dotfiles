@@ -1,5 +1,10 @@
 # i3 config file (v4)
 
+exec --no-startup-id nm-applet
+exec --no-startup-id redshift
+exec --no-startup-id mathpix-snipping-tool
+exec --no-startup-id dunst
+
 set $left h
 set $right l
 set $up k

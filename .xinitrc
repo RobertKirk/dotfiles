@@ -9,7 +9,6 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 export PATH="$HOME/.local/bin:$PATH"
 
 # merge in defaults and keymaps
-
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
 fi
@@ -23,11 +22,10 @@ if [ -f "$userresources" ]; then
 fi
 
 if [ -f "$usermodmap" ]; then
-        xmodmap $usermodmap
+    xmodmap $usermodmap
 fi
 
 # start some nice programs
-
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
   [ -x "$f" ] && . "$f"
@@ -35,16 +33,29 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+# Faster typing and repeating
 xset r rate 200 40 &
 
-sxhkd &
-redshift &
-export CM_HISTLENGTH=10
-export CM_LAUNCHER=rofi
-clipmenud &
-xbanish &
-mathpix-snipping-tool &
+# Wallpaper
 betterlockscreen -w &
-dunst &
 
+# keyboard shortcuts
+sxhkd &
+
+# clipboard management
+CM_HISTLENGTH=10 CM_LAUNCHER=rofi clipmenud &
+
+# disappear the mouse
+xbanish &
+
+# authentication agent
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+
+# Started in i3 for system tray support
+# dunst &  # notifications
+# mathpix-snipping-tool &  # latex snipping
+# nm-applet &  # network manager
+# redshift &  # better looking screen
+
+# Start i3, nothing will execute after this
 exec i3

@@ -57,5 +57,8 @@ xbanish &
 # nm-applet &  # network manager
 # redshift &  # better looking screen
 
+# Starting ssh agent
+eval $(ssh-agent)
+
 # Start i3, nothing will execute after this
 exec i3

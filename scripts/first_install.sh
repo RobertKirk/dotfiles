@@ -1,5 +1,5 @@
 sudo apt-get update
-sudo apt-get install zsh tmux lua5.3
+sudo apt-get install zsh tmux lua5.3 urlview
 
 # zplug
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
@@ -30,3 +30,6 @@ pip install --user pynvim neovim
 pip3 install --user pynvim neovim
 
 nvim -c 'UpdateRemotePlugins' -c qa
+
+# tmux plugins
+tmux run-shell "$HOME/.tmux/plugins/tpm/bindings/install_plugins"

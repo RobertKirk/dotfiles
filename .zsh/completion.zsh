@@ -26,5 +26,5 @@ zstyle ':completion:*:warnings' format '%F{202}%BNo matches for: %F{214}%d%b'
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /home/robert/.local/bin
 setopt interactivecomments
 
-kitty + complete setup zsh | source /dev/stdin
+# kitty + complete setup zsh | source /dev/stdin
 zmodload zsh/complist

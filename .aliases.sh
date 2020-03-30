@@ -22,15 +22,6 @@ alias gupdb='git fetch origin master:master && git rebase master'
 alias :x='exit'
 alias :q='exit'
 
-unalias gd
-gd() {
-  git diff "$@" | diff-so-fancy | less -R~FX
-}
-
-gdp() {
-  git diff "$@" | diff-so-fancy | less -R~
-}
-
 gstatall() {
   (git status -s .; (git status -s . | awk '{ print $2 }'; git ls-files) | sort | uniq -c | grep 1 | awk '{ print " \033[34mU \033[0m" $2 }')
 }
@@ -165,7 +156,5 @@ alias gpuw='watch -n 1 -d -t nvidia-smi'
 alias cplgvfs='nohup cpulimit -e gvfs -l 5  </dev/null >/dev/null &> & disown'
 alias gentoken='head -c 24 /dev/urandom | base64'
 alias dt='tty-clock -xcsB'
-alias cp='/home/robert/.local/bin/cpg -g'
-alias mv='/home/robert/.local/bin/mvg -g'
 alias gpuw='watch -n 1 -d -t nvidia-smi'
 alias gotop='gotop -c rob-solarized'

@@ -56,6 +56,7 @@ IDF
 IPv4
 IPv6
 IRL
+ImageNet
 Imagenet
 JSON
 Jsx
@@ -65,6 +66,7 @@ Kubernetes
 Kulveit
 LSTM
 Leike
+MAESN
 MAML
 MAPO
 MDP
@@ -124,6 +126,7 @@ Smarkets
 Srivastava
 Superintelligence
 TD3
+TESP
 TODO
 TRPO
 Tensorflow
@@ -230,6 +233,7 @@ oneshot
 operationalise
 optimisable
 orgs
+overfit
 overfitted
 parallelizability
 pixelwise
@@ -274,6 +278,7 @@ supremum
 surprisal
 systemd
 t
+templated
 tensorflow
 timestep
 ui

@@ -104,7 +104,7 @@ alias b='buku --suggest'
 # alias c='shell command, for directories'
 alias d='deactivate'
 alias e='nvim'
-alias f='fd-find'
+alias f='fd'
 alias g='git'
 # alias h=
 # alias i=
@@ -145,7 +145,6 @@ alias reload='source ~/.zshrc'
 alias repo='cd ~/repos'
 alias vwk='nvim +VimwikiIndex'
 alias sudo='sudo '
-alias fd='fd-find'
 
 alias tsk='cat ~/vimwiki/Tasks.wiki | fzf --layout reverse --height 50%'
 alias neomutt='nocorrect neomutt'

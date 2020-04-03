@@ -4,6 +4,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id redshift
 exec --no-startup-id mathpix-snipping-tool
 exec --no-startup-id dunst
+exec --no-startup-id kdeconnect-indicator
 
 set $left h
 set $right l

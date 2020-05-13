@@ -1,2 +1,17 @@
-#!/bin/sh
-amixer set Master toggle
+#!/bin/bash
+
+MIXER="default"
+if command -v pulseaudio >/dev/null 2>&1 && pulseaudio --check ; then
+    # pulseaudio is running, but not all installations use "pulse"
+    if amixer -D pulse info >/dev/null 2>&1 ; then
+        MIXER="pulse"
+    fi
+fi
+if lsmod | grep -q jack; then
+  MIXER="jackplug"
+fi;
+MIXER="${2:-$MIXER}"
+
+SCONTROL="$(amixer -D "$MIXER" scontrols | sed -n "s/Simple mixer control '\([^']*\)',0/\1/p" | head -n1)"
+
+amixer -q -D "$MIXER" sset "$SCONTROL" toggle

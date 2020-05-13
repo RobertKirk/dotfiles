@@ -56,7 +56,7 @@ bindsym $mod+s scratchpad show
 bindsym $mod+Shift+s move scratchpad
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -99,7 +99,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # change volume or toggle mute
-bindsym XF86AudioRaiseVolume exec volup && pkill -RTMIN+10 i3blocks 
+bindsym XF86AudioRaiseVolume exec volup && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioLowerVolume exec voldown && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec volmute && pkill -RTMIN+10 i3blocks
 
@@ -193,6 +193,7 @@ for_window [instance="__scratchpad"] move scratchpad
 for_window [class="Mathpix Snipping Tool"] floating enable
 for_window [class="Mathpix Snipping Tool"] resize set 640 420
 for_window [class=".*ipykernel.*"] floating enable
+for_window [class="Yad"] floating enable
 # for_window [class=".*ipykernel.*"] resize set 640 420
 
 #                       border  background  text    indicator

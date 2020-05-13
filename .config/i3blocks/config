@@ -35,10 +35,10 @@ separator_block_width=15
 instance=spotify
 label= 
 interval=5
-signal=10
 
 [volume]
 command=/home/robert/.local/bin/volume
+STEP=5%
 label=墳 
 interval=once
 signal=10
@@ -46,15 +46,6 @@ signal=10
 [memory]
 label= 
 interval=1
-
-[bandwidth2]
-interval=persist
-markup=pango
-label=
-WARN_RX=307200
-WARN_TX=30720
-CRIT_RX=512000
-CRIT_TX=51200
 
 [cpu_usage2]
 markup=pango
@@ -65,17 +56,24 @@ WARN_PERCENT=50
 CRIT_PERCENT=80
 DECIMALS=2
 
+[bandwidth2]
+interval=persist
+markup=pango
+label=
+WARN_RX=307200
+WARN_TX=30720
+CRIT_RX=512000
+CRIT_TX=51200
+
 [time]
 label= 
 color=#cb4b16
 interval=1
 STRFTIME_FORMAT=%R
-TZONES=$DEFAULT_TZ,Brazil/East
-TZ_LABELS=,Brazil
+TZONES=$DEFAULT_TZ,Europe/East
+TZ_LABELS=,Europe/East
 
-[time]
+[calendar]
+interval=3600
+DATEFMT=+ %a %d %b %Y
 label= 
-interval=100
-STRFTIME_FORMAT= %a %d %b %Y
-TZONES=$DEFAULT_TZ,Brazil/East
-TZ_LABELS=,Brazil

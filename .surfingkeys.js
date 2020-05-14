@@ -2,9 +2,11 @@
 
 settings.hintAlign = "left";
 
-settings.blacklistPattern = /https?:\/\/((roamresearch.com)|(mail.google.com)|(calendar.google.com)|(localhost:8888))\/*/
+settings.scrollStepSize = 225
 
-map('<Ctrl-z>', '<Alt-i>')  // ignore mode (escape to exit)
+Hints.characters = 'asdfghjkl;eruitybnvm,c';
+
+map('<Ctrl-z>', '<Alt-i>');  // ignore mode (escape to exit)
 
 map('K', 'E');  // tab focus left
 map('J', 'R');  // tab focus right
@@ -74,3 +76,8 @@ addSearchAliasX('w', 'Wikipedia', 'http://en.wikipedia.org/wiki/Special:Search?s
 addSearchAliasX('pg', 'Postgres', 'https://www.google.com/search?q=site:http://www.postgresql.org/docs/10/+');
 addSearchAliasX('th', 'Pytorch', 'https://pytorch.org/docs/stable/search.html?q=%s&check_keywords=yes&area=default');
 addSearchAliasX('gs', 'Google Scholar', 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=');
+
+unmapAllExcept(['j', 'k', 'J', 'K', 'H', 'L', 'B', 'F', 'i', 'gi'], /roamresearch.com/);
+unmapAllExcept(['J', 'K', 'H', 'L', 'B', 'F'], /mail.google.com|calendar.google.com/);
+
+// settings.blacklistPattern = /https?:\/\/((roamresearch.com)|(mail.google.com)|(calendar.google.com)|(localhost:8888))\/*/;

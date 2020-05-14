@@ -25,9 +25,6 @@
 [submodule "repos/st"]
 	path = repos/st
 	url = git@github.com:RobertKirk/st.git
-[submodule "repos/zsh-vimode-visual"]
-	path = repos/zsh-vimode-visual
-	url = git@github.com:b4b4r07/zsh-vimode-visual.git
 [submodule "repos/fancy-ctrl-z"]
 	path = repos/fancy-ctrl-z
 	url = git@github.com:mdumitru/fancy-ctrl-z.git

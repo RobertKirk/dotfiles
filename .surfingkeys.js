@@ -11,8 +11,8 @@ map('<Ctrl-z>', '<Alt-i>');  // ignore mode (escape to exit)
 map('K', 'E');  // tab focus left
 map('J', 'R');  // tab focus right
 
-map('H', 'B');  // back in history
-map('L', 'F');  // forward in history
+map('H', 'S');  // back in history
+map('L', 'D');  // forward in history
 
 map('F', 'gf');  // open link in new tab without focus
 
@@ -77,7 +77,7 @@ addSearchAliasX('pg', 'Postgres', 'https://www.google.com/search?q=site:http://w
 addSearchAliasX('th', 'Pytorch', 'https://pytorch.org/docs/stable/search.html?q=%s&check_keywords=yes&area=default');
 addSearchAliasX('gs', 'Google Scholar', 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=');
 
-unmapAllExcept(['j', 'k', 'J', 'K', 'H', 'L', 'B', 'F', 'i', 'gi'], /roamresearch.com/);
-unmapAllExcept(['J', 'K', 'H', 'L', 'B', 'F'], /mail.google.com|calendar.google.com/);
+unmapAllExcept(['j', 'k', 'J', 'K', 'H', 'L', 'S', 'D', 'i', 'gi'], /roamresearch.com/);
+unmapAllExcept(['J', 'K', 'H', 'L', 'S', 'D'], /mail.google.com|calendar.google.com/);
 
 // settings.blacklistPattern = /https?:\/\/((roamresearch.com)|(mail.google.com)|(calendar.google.com)|(localhost:8888))\/*/;

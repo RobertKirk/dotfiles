@@ -34,9 +34,6 @@
 [submodule "repos/fancy-ctrl-z"]
 	path = repos/fancy-ctrl-z
 	url = git@github.com:mdumitru/fancy-ctrl-z.git
-[submodule "repos/zsh-abbrev-alias"]
-	path = repos/zsh-abbrev-alias
-	url = git@github.com:momo-lab/zsh-abbrev-alias.git
 [submodule "repos/pyenv"]
 	path = repos/pyenv
 	url = git@github.com:pyenv/pyenv.git

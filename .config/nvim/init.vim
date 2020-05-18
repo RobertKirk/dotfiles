@@ -30,6 +30,7 @@ let g:solarized_hitrail = 1
 " open help as a vertical window to the left
 autocmd FileType help wincmd L
 
+" Lightline {{{
 function! LightlineReadonly()
   return &readonly && &filetype !=# 'help' ? 'RO' : ''
 endfunction
@@ -64,6 +65,8 @@ let g:lightline = {
       \   'relativepathproper': '%:~:.'
       \ },
       \ }
+"}}}
+
 set background=light
 colors solarized
 
@@ -110,6 +113,9 @@ set nonumber
 " TAB SETTINGS
 set tabstop=2 softtabstop=2 expandtab
 set shiftwidth=2
+
+set splitbelow
+set splitright
 
 "}}}
 " SEARCH SETTINGS{{{
@@ -378,6 +384,7 @@ Plug 'neomutt/neomutt.vim', { 'for': 'neomuttrc' }
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'ncm2/float-preview.nvim'
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 
 " navigation
 Plug 'airblade/vim-gitgutter'
@@ -410,16 +417,22 @@ Plug 'itchyny/lightline.vim'
 Plug 'termhn/i3-vim-nav'
 Plug 'itchyny/vim-gitbranch'
 Plug 'tpope/vim-obsession'
+Plug 'majutsushi/tagbar'
 
 " Utils
 Plug 'sk1418/HowMuch', { 'on': 'HowMuch' }
 Plug 'vimwiki/vimwiki', { 'on': 'VimwikiIndex' }
 Plug 'tpope/vim-fugitive'
+Plug 'neomake/neomake'
 call plug#end()
 "}}}
 " PLUGINS POST LOAD{{{
 " deoplete{{{
 let g:deoplete#enable_at_startup = 1
+
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
+
 call deoplete#custom#option('camel_case', v:true)
 call deoplete#custom#option('smart_case', v:true)
 call deoplete#custom#option('max_list', 20)

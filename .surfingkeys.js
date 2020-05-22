@@ -19,8 +19,8 @@ map('F', 'gf');  // open link in new tab without focus
 map('p', '<Alt-p>');  // pin tab (toggle)
 map('m', '<Alt-m>');  // mute tab (toggle)
 
-map('d', 'x');  // restore closed tab
-map('u', '<Alt-p>');  // tab focus right
+map('d', 'x');  // close tab
+map('u', 'X');  // restore closed tab
 
 mapkey('gi', '#1Go to edit box', function() {
     var inputs = document.getElementsByTagName('input');
@@ -37,7 +37,7 @@ mapkey('gi', '#1Go to edit box', function() {
     }
 });
 
-mapkey('p', "Open the clipboard's URL in the current tab", function() {
+mapkey('<Ctrl-p>', "Open the clipboard's URL in the current tab", function() {
     navigator.clipboard.readText().then(
         text => {
             if (text.startsWith("http://") || text.startsWith("https://")) {
@@ -49,7 +49,7 @@ mapkey('p', "Open the clipboard's URL in the current tab", function() {
     );
 });
 
-mapkey('P', 'Open link from clipboard', function() {
+mapkey('<Ctrl-P>', 'Open link from clipboard', function() {
     navigator.clipboard.readText().then(
         text => {
             if (text.startsWith("http://") || text.startsWith("https://")) {
@@ -61,6 +61,9 @@ mapkey('P', 'Open link from clipboard', function() {
     );
 });
 
+function get_arxiv_link_markdown() {
+    return '[' + document.title.replace(/\[\d{3,5}\.\d{3,5}\] /gi, '') + '](' + window.location.href + ')';
+}
 
 function get_link_markdown() {
     return '[' + document.title + '](' + window.location.href + ')';
@@ -68,6 +71,9 @@ function get_link_markdown() {
 
 mapkey('ym', "#7Copy current page's URL as markdown", function() {
     var text = get_link_markdown();
+    if (window.location.href.slice(0, "https://arxiv.org".length) === "https://arxiv.org") {
+        text = get_arxiv_link_markdown()
+    }
     Clipboard.write(text);
 });
 
@@ -77,7 +83,8 @@ addSearchAliasX('pg', 'Postgres', 'https://www.google.com/search?q=site:http://w
 addSearchAliasX('th', 'Pytorch', 'https://pytorch.org/docs/stable/search.html?q=%s&check_keywords=yes&area=default');
 addSearchAliasX('gs', 'Google Scholar', 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=');
 
-unmapAllExcept(['j', 'k', 'J', 'K', 'H', 'L', 'S', 'D', 'i', 'gi'], /roamresearch.com/);
+unmapAllExcept(['j', 'k', 'J', 'K', 'H', 'L', 'S', 'D', 'i', 'gi', 'gg', 'G', 'PgUp', 'PgDown'], /roamresearch.com/);
 unmapAllExcept(['J', 'K', 'H', 'L', 'S', 'D'], /mail.google.com|calendar.google.com/);
 
 // settings.blacklistPattern = /https?:\/\/((roamresearch.com)|(mail.google.com)|(calendar.google.com)|(localhost:8888))\/*/;
+settings.blacklistPattern = /alt.org\/*/

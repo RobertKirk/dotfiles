@@ -1,5 +1,7 @@
 " Robert Kirk
 " GENERIC SETTINGS{{{
+let mapleader=" "
+set termguicolors
 set mouse=a
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
@@ -23,12 +25,9 @@ let g:python3_host_prog = '/usr/bin/python3.7'
 "}}}
 " VIEW SETTINGS{{{
 set signcolumn=yes
-let g:solarized_menu = 0
-" let g:solarized_visibility = 'high'
-let g:solarized_hitrail = 1
-
-" open help as a vertical window to the left
-autocmd FileType help wincmd L
+set background=light
+let g:solarized_extra_hi_groups = 1
+let g:solarized_statusline = "low"
 
 " Lightline {{{
 function! LightlineReadonly()
@@ -67,17 +66,6 @@ let g:lightline = {
       \ }
 "}}}
 
-set background=light
-colors solarized
-
-highlight EndOfBuffer ctermfg=15
-highlight SignColumn ctermbg=7
-highlight VertSplit ctermbg=15
-highlight VertSplit ctermfg=15
-highlight NormalFloat ctermfg=11 ctermbg=7
-" set cursorcolumn      " highlight current column
-" highlight CursorColumn ctermbg=8
-
 " Changing cursor shape per mode
 " 1 or 0 -> blinking block
 " 2 -> solid block
@@ -95,6 +83,9 @@ else
     let &t_EI .= "\<Esc>[2 q"
     autocmd VimLeave * silent !echo -ne "\033[0 q"
 endi
+
+" open help as a vertical window to the left
+autocmd FileType help wincmd L
 
 " keep the cursor on the screen
 set scrolloff=10
@@ -117,7 +108,6 @@ set shiftwidth=2
 set splitbelow
 set splitright
 
-"}}}
 " SEARCH SETTINGS{{{
 " Ignore case when searching
 set ignorecase
@@ -128,8 +118,8 @@ set hlsearch            " highlight matches
 nnoremap <leader>r :Rg
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 "}}}
+"}}}
 " KEYBOARD SHORTCUTS{{{
-let mapleader=" "
 
 " Move to the next buffer
 nmap <leader>l :bnext<CR>
@@ -308,6 +298,14 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:goyo_width = 200
 
 "}}}
+" Tagbar {{{
+let g:tagbar_autofocus = 1
+let g:tagbar_show_linenumbers = -1
+let g:tagbar_autoshowtag = 1
+
+nmap <leader>tb :TagbarOpen j<CR>
+
+"}}}
 " float preview{{{
 let g:float_preview#docked = 1
 let g:float_preview#max_height = 300
@@ -357,11 +355,11 @@ let g:polyglot_disabled = ['latex']
 "}}}
 "}}}
 " Autoloading vim plugins{{{
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+" if empty(glob('~/.vim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
 
 "}}}
 " Loading Plugins{{{
@@ -407,7 +405,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
 
-" Windows/panes/status
+" Windows/panes/status/sessions/colors
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
@@ -418,12 +416,15 @@ Plug 'termhn/i3-vim-nav'
 Plug 'itchyny/vim-gitbranch'
 Plug 'tpope/vim-obsession'
 Plug 'majutsushi/tagbar'
+Plug 'lifepillar/vim-solarized8'
 
 " Utils
 Plug 'sk1418/HowMuch', { 'on': 'HowMuch' }
 Plug 'vimwiki/vimwiki', { 'on': 'VimwikiIndex' }
 Plug 'tpope/vim-fugitive'
 Plug 'neomake/neomake'
+Plug 'norcalli/nvim-colorizer.lua'
+
 call plug#end()
 "}}}
 " PLUGINS POST LOAD{{{
@@ -445,6 +446,15 @@ call deoplete#custom#option('sources', {
 call deoplete#custom#var('omni', 'input_patterns', {
 \ 'pandoc': '@'
 \})
+"}}}
+" Colorscheme {{{
+colors solarized8
+
+hi EndOfBuffer guifg=#fdf6e3 guibg=#fdf6e3
+hi VertSplit   guifg=#eee8d5 guibg=#eee8d5
+"}}}
+" Colorizer {{{
+lua require'colorizer'.setup()
 "}}}
 " defx-{git|icons|}{{{
 " from https://github.com/taigacute/ThinkVim/blob/master/core/plugins/defx.vim

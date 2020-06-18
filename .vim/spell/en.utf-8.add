@@ -124,6 +124,7 @@ Shahar
 Shapley
 Shimon
 Smarkets
+Solarized
 Srivastava
 Superintelligence
 TD3
@@ -220,6 +221,7 @@ mediod
 mediods
 metaclass
 minibatch
+mins
 moloch
 msg
 mujoco
@@ -252,12 +254,15 @@ pytorch
 quantilal
 quantilise
 quantilisers
+reauth
+reauthentication
 redis
 refactor
 refactored
 regulariser
 reparameterisation
 reparameterization
+repo
 resnet
 respawn
 robustified
@@ -297,6 +302,3 @@ wireheading
 wrt
 y
 z
-reauth
-reauthentication
-mins

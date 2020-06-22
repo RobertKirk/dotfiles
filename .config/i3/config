@@ -5,6 +5,7 @@ exec --no-startup-id redshift
 exec --no-startup-id mathpix-snipping-tool
 exec --no-startup-id dunst
 exec --no-startup-id kdeconnect-indicator
+exec --no-startup-id rescuetime
 
 set $left h
 set $right l

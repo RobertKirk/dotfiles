@@ -17,6 +17,8 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 
+zstyle ':completion:*' menu select
+zstyle ':completion:*' rehash on
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path $ZDOTDIR/completion-cache
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -25,6 +27,8 @@ zstyle ':completion:*:corrections' format '%U%F{green}%d (errors: %e)%f%u'
 zstyle ':completion:*:warnings' format '%F{202}%BNo matches for: %F{214}%d%b'
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /home/robert/.local/bin
 setopt interactivecomments
+setopt listpacked
+setopt menucomplete
 
 kitty + complete setup zsh | source /dev/stdin
 zmodload zsh/complist

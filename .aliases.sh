@@ -44,7 +44,7 @@ gitrmuntracked() {
 }
 
 gitfixup() {
-  if [ $# -eq 0 ]; then;
+  if [ $# -eq 0 ]; then
     echo You must specify a prefix for the commit
     return 1
   fi;
@@ -79,7 +79,7 @@ mkalias() {
 }
 
 -() {
-  cd -
+  popd
 }
 
 get_tags() {

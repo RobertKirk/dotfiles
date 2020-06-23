@@ -35,11 +35,11 @@ bindkey -M viins '^H' backward-word
 # zle -N magic-enter
 
 # Completion Mode
-bindkey -M menuselect '^?' undo # Backspace for deleting suggesting completion as a whole.
-bindkey -M menuselect '+' accept-and-hold # Accept the selection but keep the completion list open.
-bindkey -M menuselect '^K' up-line-or-history # Navigate up completion.
-bindkey -M menuselect '^J' down-line-or-history # Navigate down completion.
-bindkey -M menuselect '^L' forward-char # Navigate right completion.
-bindkey -M menuselect '^H' backward-char # Navigate left completion.
-bindkey -M menuselect '^I' down-line-or-history # <Tab> to selection completion forward.
-bindkey -M menuselect '^[[Z' reverse-menu-complete # <S-Tab> to select completion backward. bindkey "^M" magic-enter
+# bindkey -M menuselect '^?' undo # Backspace for deleting suggesting completion as a whole.
+# bindkey -M menuselect '+' accept-and-hold # Accept the selection but keep the completion list open.
+# bindkey -M menuselect '^K' up-line-or-history # Navigate up completion.
+# bindkey -M menuselect '^J' down-line-or-history # Navigate down completion.
+# bindkey -M menuselect '^L' forward-char # Navigate right completion.
+# bindkey -M menuselect '^H' backward-char # Navigate left completion.
+# bindkey -M menuselect '^I' down-line-or-history # <Tab> to selection completion forward.
+# bindkey -M menuselect '^[[Z' reverse-menu-complete # <S-Tab> to select completion backward. bindkey "^M" magic-enter

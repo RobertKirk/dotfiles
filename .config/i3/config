@@ -48,6 +48,12 @@ bindsym $mod+backslash split h
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+# Always tabbed
+workspace_layout tabbed
+
+# popup break fullscreen
+popup_during_fullscreen leave_fullscreen
+
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
@@ -161,14 +167,16 @@ bindsym $mod+m focus floating; mode "movew"
 bar {
 	position top
   status_command i3blocks
-	modifier none
+	modifier Mod4
+  mode hide
+  hidden_state hide
 
 	colors {
 		separator #dc322f
 		background #fdf6e3
 		statusline #657b83
     #                   border  background  text
-		focused_workspace   #fdf6e3 #d33682     #fdf6e3
+		focused_workspace   #fdf6e3 #859900     #fdf6e3
 		active_workspace    #fdf6e3 #eee8d5     #657b83
 		inactive_workspace  #fdf6e3 #eee8d5     #6c71c4
 		urgent_workspace    #fdf6e3 #cb4b16     #fdf6e3
@@ -198,7 +206,7 @@ for_window [class="Yad"] floating enable
 # for_window [class=".*ipykernel.*"] resize set 640 420
 
 #                       border  background  text    indicator
-client.focused          #dc322f #268bd2     #fdf6e3 #dc322f
+client.focused          #eee8d5 #859900     #fdf6e3 #dc322f
 client.focused_inactive #eee8d5 #eee8d5     #eee8d5 #6c71c4
 client.unfocused        #eee8d5 #eee8d5     #93a1a1 #586e75
-client.urgent           #d33682 #d33682     #fdf6e3 #dc322f
+client.urgent           #eee8d5 #cb4b16     #fdf6e3 #dc322f

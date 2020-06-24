@@ -35,7 +35,7 @@ function! LightlineReadonly()
 endfunction
 
 function! LightlineGitbranch()
-  return &filetype !~# '\v(help|defx|ctrlp)' ? ' ' . gitbranch#name() : 'help'
+  return &filetype !~# '\v(help|defx|ctrlp)' ? ' ' . FugitiveHead() : 'help'
 endfunction
 
 function! LightlineFilename()
@@ -55,7 +55,7 @@ let g:lightline = {
       \   'left': [ [ 'relativepath' ] ],
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name',
+      \   'gitbranch': 'FugitiveHead',
       \   'gitbranchnew': 'LightlineGitbranch',
       \   'relativepath': 'LightlineFilename',
       \   'readonly': 'LightlineReadonly',

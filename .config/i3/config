@@ -42,8 +42,8 @@ bindsym $mod+Ctrl+$down move down
 bindsym $mod+Ctrl+$up move up
 bindsym $mod+Ctrl+$right move right
 
-bindsym $mod+minus split v
-bindsym $mod+backslash split h
+bindsym $mod+u splitv
+bindsym $mod+i splith
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -199,6 +199,7 @@ for_window [class="kitty"] border pixel 1
 for_window [class="Zathura"] border pixel 1
 for_window [class="Alacritty"] border pixel 1
 for_window [instance="__scratchpad"] move scratchpad
+for_window [window_role="pop-up" title!="Daily Notes"] floating enable
 for_window [class="Mathpix Snipping Tool"] floating enable
 for_window [class="Mathpix Snipping Tool"] resize set 640 420
 for_window [class=".*ipykernel.*"] floating enable

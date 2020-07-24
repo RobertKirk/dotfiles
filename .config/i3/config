@@ -6,6 +6,9 @@ exec --no-startup-id mathpix-snipping-tool
 exec --no-startup-id dunst
 exec --no-startup-id kdeconnect-indicator
 exec --no-startup-id rescuetime
+# Roam
+exec "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=gmhpgfbjacdocjngbdbmhkgcpochhnge"
+exec --no-startup-id  "sleep 0.5; i3-msg '[title=\"Roam Research\"] mark roamscratch, move scratchpad'"
 
 set $left h
 set $right l
@@ -70,16 +73,16 @@ bindsym $mod+space focus mode_toggle
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "I"
-set $ws2 "II"
-set $ws3 "III"
-set $ws4 "IV"
-set $ws5 "V"
-set $ws6 "VI"
-set $ws7 "VII"
-set $ws8 "VIII"
-set $ws9 "IV"
-set $ws10 "X"
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -199,9 +202,9 @@ for_window [class="kitty"] border pixel 1
 for_window [class="Zathura"] border pixel 1
 for_window [class="Alacritty"] border pixel 1
 for_window [instance="__scratchpad"] move scratchpad
-for_window [window_role="pop-up" title!="Daily Notes"] floating enable
+for_window [window_role="pop-up" class="google-chrome"] floating enable
 for_window [class="Mathpix Snipping Tool"] floating enable
-for_window [class="Mathpix Snipping Tool"] resize set 640 420
+for_window [class="Mathpix Snipping Tool"] resize set 640 640
 for_window [class=".*ipykernel.*"] floating enable
 for_window [class="Yad"] floating enable
 # for_window [class=".*ipykernel.*"] resize set 640 420

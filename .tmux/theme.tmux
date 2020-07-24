@@ -29,7 +29,6 @@ set -g mode-style reverse
 set -g window-status-format " #I ⚡#W "
 set -g window-status-style "bg=colour7,fg=colour14"
 set -g window-status-current-format "#[bg=colour2,fg=colour15] #I ⚡#W "
-set -g window-status-current-style "[bg=black,fg=colour15]"
 set -g window-status-separator "  "
 
 set -g status-position top

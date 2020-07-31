@@ -200,7 +200,7 @@ for_window [class="kitty"] border pixel 1
 for_window [class="Zathura"] border pixel 1
 for_window [class="Alacritty"] border pixel 1
 for_window [instance="__scratchpad"] move scratchpad
-for_window [window_role="pop-up" title!="Daily Notes"] floating enable
+for_window [window_role="pop-up" class="google-chrome"] floating enable
 for_window [class="Mathpix Snipping Tool"] floating enable
 for_window [class="Mathpix Snipping Tool"] resize set 640 420
 for_window [class=".*ipykernel.*"] floating enable

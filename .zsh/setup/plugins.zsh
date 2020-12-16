@@ -1,8 +1,8 @@
 _rob_zplug_load_file=${ZLPUG_LOADFILE:-$HOME/.zplug/packages.zsh}
-touch $_rob_zplug_load_file
-eval $( dircolors -b $HOME/.dircolors )
-eval "$(lua5.3 ~/repos/z.lua/z.lua --init zsh enhanced once fzf)"
-source ~/anaconda3/etc/profile.d/conda.sh
+# touch $_rob_zplug_load_file
+eval $( gdircolors -b $HOME/.dircolors )
+eval "$(lua /usr/local/Cellar/z.lua/1.8.7/share/z.lua/z.lua --init zsh enhanced once fzf)"
+source "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
 
 zmodload zsh/zpty
 zmodload zsh/mathfunc
@@ -11,7 +11,8 @@ zmodload zsh/mathfunc
 autoload -U select-word-style
 select-word-style bash
 
-source ~/.zplug/init.zsh
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 

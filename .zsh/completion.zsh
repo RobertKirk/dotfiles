@@ -29,7 +29,7 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 setopt interactivecomments
 setopt listpacked
 
-kitty + complete setup zsh | source /dev/stdin
+# kitty + complete setup zsh | source /dev/stdin
 zmodload zsh/complist
 
 # pip zsh completion start

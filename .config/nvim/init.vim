@@ -1,8 +1,7 @@
 " Robert Kirk
 " GENERIC SETTINGS{{{
 let mapleader=" "
-set notermguicolors
-let g:solarized_use16=1
+set termguicolors
 set mouse=a
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
@@ -22,7 +21,7 @@ set completeopt-=preview
 syntax enable
 filetype plugin indent on
 
-let g:python3_host_prog = '/usr/bin/python3.8'
+let g:python3_host_prog = '/usr/local/bin/python3'
 "}}}
 " VIEW SETTINGS{{{
 set signcolumn=yes
@@ -347,11 +346,32 @@ let g:pandoc#command#latex_engine = 'pdflatex'
 "}}}
 " vimtex{{{
 let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abdmg'
 let g:vimtext_fold_enabled = 1
 let g:polyglot_disabled = ['latex']
+let g:vimtex_view_method = "skim"
+let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+let g:vimtex_view_general_options = '-r @line @pdf @tex'
+let g:vimtex_compiler_progname = 'nvr'
+
+" This adds a callback hook that updates Skim after compilation
+function! UpdateSkim(status)
+    " if !a:status | return | endif
+    let l:out = b:vimtex.out()
+    let l:tex = expand('%:p')
+    let l:cmd = [g:vimtex_view_general_viewer, '-r']
+    if !empty(system('pgrep Skim'))
+    call extend(l:cmd, ['-g'])
+    endif
+    call jobstart(l:cmd + [line('.'), l:out, l:tex])
+    endif
+endfunction
+
+augroup vimtext_callback_event
+  au!
+  au User VimtexEventCompileSuccess call UpdateSkim()
+augroup END
 
 "}}}
 "}}}

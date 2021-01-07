@@ -19,6 +19,9 @@ set $mod Mod1
 
 font pango:Source Code Pro 8
 
+# Mouse doesn't follow focus
+mouse_warping none
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -168,8 +171,30 @@ mode "movew" {
 bindsym $mod+m focus floating; mode "movew"
 
 bar {
+  id main
+  output primary
 	position top
   status_command i3blocks
+	modifier Mod4
+  mode dock
+  hidden_state hide
+
+	colors {
+		separator #dc322f
+		background #fdf6e3
+		statusline #657b83
+    #                   border  background  text
+		focused_workspace   #fdf6e3 #859900     #fdf6e3
+		active_workspace    #fdf6e3 #eee8d5     #657b83
+		inactive_workspace  #fdf6e3 #eee8d5     #6c71c4
+		urgent_workspace    #fdf6e3 #cb4b16     #fdf6e3
+	}
+}
+
+bar {
+  id second
+  output DVI-D-0
+	position top
 	modifier Mod4
   mode dock
   hidden_state hide
@@ -203,6 +228,7 @@ for_window [class="Zathura"] border pixel 1
 for_window [class="Alacritty"] border pixel 1
 for_window [instance="__scratchpad"] move scratchpad
 for_window [window_role="pop-up" class="google-chrome"] floating enable
+for_window [title="Sign in - Google Accounts - Google Chrome"] floating enable
 for_window [class="Mathpix Snipping Tool"] floating enable
 for_window [class="Mathpix Snipping Tool"] resize set 640 640
 for_window [class=".*ipykernel.*"] floating enable

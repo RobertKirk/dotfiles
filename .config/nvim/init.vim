@@ -1,7 +1,7 @@
 " Robert Kirk
 " GENERIC SETTINGS{{{
 let mapleader=" "
-set termguicolors
+set notermguicolors
 set mouse=a
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
@@ -20,6 +20,7 @@ set title
 set completeopt-=preview
 syntax enable
 filetype plugin indent on
+let g:solarized_use16=1
 
 let g:python3_host_prog = '/usr/bin/python3.8'
 "}}}
@@ -454,7 +455,7 @@ hi EndOfBuffer guifg=#fdf6e3 guibg=#fdf6e3
 hi VertSplit   guifg=#eee8d5 guibg=#eee8d5
 "}}}
 " Colorizer {{{
-lua require'colorizer'.setup()
+" lua require'colorizer'.setup()
 "}}}
 " defx-{git|icons|}{{{
 " from https://github.com/taigacute/ThinkVim/blob/master/core/plugins/defx.vim

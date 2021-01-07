@@ -31,6 +31,15 @@ align=center
 separator=false
 separator_block_width=15
 
+[google_calendar_current]
+label= 
+command=echo "Current Event:" $(/home/robert/scripts/current_event.sh)
+interval=30
+
+[google_calendar_next]
+command=echo "Next Event:" $(/home/robert/scripts/next_event.sh)
+interval=30
+
 [mediaplayer]
 instance=spotify
 label= 

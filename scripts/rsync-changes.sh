@@ -8,22 +8,25 @@ initialise="$2"
 # EXCLUDES={'.git', '*/.git', '*.git', '__pycache__','*/__pycache__','wandb','logs'}
 
 if [ -z "$DEST" ]; then exit 1; fi
+echo dest= $DEST
 
-if [ "$initial" ];
+if [ "$initialise" ];
 then
   echo "Not Initialising"
 else
   echo "Initialising"
-  rsync -uazv --progress --exclude-from='rsync_excludes.txt' -e 'ssh -J knuckles' * ${DEST}/
+  rsync -uazv --progress --exclude-from='rsync_excludes.txt' -e 'ssh -J tails' * ${DEST}/
   echo "Initialisation Complete!"
 fi
 
 echo "Waiting for files to change..."
-inotifywait -r -m -e close_write --format '%w%f' --exclude '/\.' . | grep -f rsync_excludes.txt -v --line-buffered  |\
+fswatch -r -Ie ".*\.*~$" --event Updated . | grep -f rsync_excludes.txt -v --line-buffered  |\
 while read file
 do
-        echo rsyncing $file
-        rsync -uazv --progress --exclude-from='rsync_excludes.txt' -e 'ssh -J knuckles' $file ${DEST}/$file
+        relpath=${file#$(pwd)/}
+        echo rsyncing $relpath
+        rsync -uazv --exclude-from='rsync_excludes.txt' -e 'ssh -J tails' $relpath ${DEST}/$relpath
         the_date=$(date)
-        echo  "rsync $file complete at $the_date"
+        echo  "rsync $relpath complete at $the_date"
+        echo
 done

@@ -37,19 +37,19 @@ fi
 xset r rate 200 40 &
 
 # Wallpaper
-betterlockscreen -w &
+# betterlockscreen -w &
 
 # keyboard shortcuts
-sxhkd &
+# sxhkd &
 
 # clipboard management
-CM_HISTLENGTH=10 CM_LAUNCHER=rofi clipmenud &
+# CM_HISTLENGTH=10 CM_LAUNCHER=rofi clipmenud &
 
 # disappear the mouse
-xbanish &
+# xbanish &
 
 # authentication agent
-/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+# /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 
 # Started in i3 for system tray support
 # dunst &  # notifications

@@ -1,3 +1,48 @@
+-- Utilities {{{
+function dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. dump(v) .. ','
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
+ end
+
+
+function serializeTable(val, name, skipnewlines, depth)
+    skipnewlines = skipnewlines or false
+    depth = depth or 0
+
+    local tmp = string.rep(" ", depth)
+
+    if name then tmp = tmp .. name .. " = " end
+
+    if type(val) == "table" then
+        tmp = tmp .. "{" .. (not skipnewlines and "\n" or "")
+
+        for k, v in pairs(val) do
+            tmp =  tmp .. serializeTable(v, k, skipnewlines, depth + 1) .. "," .. (not skipnewlines and "\n" or "")
+        end
+
+        tmp = tmp .. string.rep(" ", depth) .. "}"
+    elseif type(val) == "number" then
+        tmp = tmp .. tostring(val)
+    elseif type(val) == "string" then
+        tmp = tmp .. string.format("%q", val)
+    elseif type(val) == "boolean" then
+        tmp = tmp .. (val and "true" or "false")
+    else
+        tmp = tmp .. "\"[unserializeable datatype:" .. type(val) .. "]\""
+    end
+
+    -- print(tmp)
+    return tmp
+end
+-- }}}
 -- Config Reloading{{{
 hs.hotkey.bind({"cmd", "ctrl", "shift"}, "R", function()
   hs.reload()
@@ -57,7 +102,25 @@ end)
 
 allLayouts = {}
 
-function save_layout ()
+allLayouts['default'] = {
+  {'Calendar (Google)', nil, 'Built-in Retina Display', hs.layout.maximized, nil, nil},
+  {'Google Chrome', nil, 'DELL U2715H', hs.layout.maximized, nil, nil},
+  {'Alacritty', nil, 'HP V28 4K', hs.layout.maximized, nil, nil},
+  {'Spotify', nil, 'Built-in Retina Display', hs.layout.maximized, nil, nil},
+  {'Skim', nil, 'DELL U2715H', hs.layout.maximized, nil, nil},
+  {'Roam Research', nil, 'HP V28 4K', hs.layout.maximized, nil, nil},
+}
+
+allLayouts['one_screen'] = {
+  {'Calendar (Google)', nil, 'Built-in Retina Display', hs.layout.maximized, nil, nil},
+  {'Google Chrome', nil, 'Built-in Retina Deisplay', hs.layout.maximized, nil, nil},
+  {'Alacritty', nil, 'Built-in Retina Deisplay', hs.layout.maximized, nil, nil},
+  {'Spotify', nil, 'Built-in Retina Display', hs.layout.maximized, nil, nil},
+  {'Skim', nil, 'Built-in Retina Deisplay', hs.layout.maximized, nil, nil},
+  {'Roam Research', nil, 'Built-in Retina Deisplay', hs.layout.maximized, nil, nil},
+}
+
+function saveLayout ()
   all_windows = hs.window.allWindows()
   saved_layout = {}
   for i, window in pairs(all_windows) do
@@ -71,57 +134,31 @@ function save_layout ()
   return saved_layout
 end
 
-
-function serializeTable(val, name, skipnewlines, depth)
-    skipnewlines = skipnewlines or false
-    depth = depth or 0
-
-    local tmp = string.rep(" ", depth)
-
-    if name then tmp = tmp .. name .. " = " end
-
-    if type(val) == "table" then
-        tmp = tmp .. "{" .. (not skipnewlines and "\n" or "")
-
-        for k, v in pairs(val) do
-            tmp =  tmp .. serializeTable(v, k, skipnewlines, depth + 1) .. "," .. (not skipnewlines and "\n" or "")
-        end
-
-        tmp = tmp .. string.rep(" ", depth) .. "}"
-    elseif type(val) == "number" then
-        tmp = tmp .. tostring(val)
-    elseif type(val) == "string" then
-        tmp = tmp .. string.format("%q", val)
-    elseif type(val) == "boolean" then
-        tmp = tmp .. (val and "true" or "false")
-    else
-        tmp = tmp .. "\"[inserializeable datatype:" .. type(val) .. "]\""
-    end
-
-    print(tmp)
-    return tmp
-end
-
 layoutChooser = hs.chooser.new(function(i)
+    print("layout chooser", i)
     hs.layout.apply(allLayouts[i["uuid"]])
   end
 )
-layoutChooser:choices(
-  function()
-    choices = {}
-    for i, layout in pairs(allLayouts) do
-      choices[i] = {}
-      choices[i]["text"] = serializeTable(layout)
-      choices[i]["uuid"] = i
-    end
-    print(choices)
-    return choices
-  end
-)
 
-function appply_layout ()
+function getLayouts()
+  choices = {}
+  for i, layout in pairs(allLayouts) do
+    choice = {}
+    choice["text"] = "Name: " .. i .. ". Layout: " .. dump(layout)
+    choice["uuid"] = i
+    table.insert(choices, choice)
+  end
+  print(dump(choices))
+  return choices
+end
+
+layoutChooser:choices(getLayouts)
+
+function applyLayout ()
   layoutChooser:show()
 end
+
+hs.hotkey.bind({"cmd", "alt", "shift"}, "L", applyLayout)
 
 -- }}}
 -- Window arrangement{{{

@@ -265,13 +265,8 @@ so ~/scripts/vim/noswapsuck.vim
 set backupcopy=yes
 
 "}}}
-" CtrlP{{{
-let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_working_path_mode = 'ra'
-let g:cpsm_query_inverting_delimiter = ' '
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_clear_cache_on_exit = 0
+" FZF {{{
+nmap <C-P> :FZF<CR>
 
 "}}}
 " UltiSnips{{{
@@ -386,9 +381,8 @@ augroup END
 " Loading Plugins{{{
 call plug#begin('~/.config/nvim/plugged')
 " Finding Files
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'nixprime/cpsm'
 Plug 'jremmen/vim-ripgrep'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " Linting/completion/syntax
 Plug 'w0rp/ale'

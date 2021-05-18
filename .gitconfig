@@ -38,3 +38,5 @@
   p = push
   fixup = !gitfixup
   updb = !git fetch origin master:master && git rebase master
+[pull]
+	rebase = false

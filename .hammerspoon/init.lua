@@ -81,6 +81,7 @@ mapping = {
   a = "Calendar (Google)",
   n = "Notion",
   b = "Zotero",
+  p = "Screenshot",
 }
 
 spoon.AppLauncher.modifiers = two_modifiers

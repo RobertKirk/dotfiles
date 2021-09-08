@@ -27,6 +27,7 @@ snippet template "Basic template" b
 \usepackage{titling}
 \usepackage{graphicx}
 \usepackage[font=small]{caption}
+\usepackage{cleveref}
 \newcommand{\subtitle}[1]{%
   \posttitle{%
     \par\end{center}
@@ -34,8 +35,17 @@ snippet template "Basic template" b
     \vskip0.5em}%
 }
 
+\title{$1}
+\author{Robert Kirk}
+\date{\today}
+\subtitle{$2}
+
 \begin{document}
-	$0
+
+\maketitle{}
+
+$0
+
 \end{document}
 endsnippet
 
@@ -202,6 +212,18 @@ code = match.group(1)
 code = 'ToString[' + code + ', TeXForm]'
 snip.rv = subprocess.check_output(['wolframscript', '-code', code])
 `
+endsnippet
+
+snippet " "quote" iA
+\`\`$1''$0
+endsnippet
+
+snippet ie "i.e." w
+i.e.\ $1
+endsnippet
+
+snippet eg "e.g." w
+e.g.\ $1
 endsnippet
 
 snippet == "equals" iA
@@ -446,14 +468,14 @@ snippet xx "cross" iA
 endsnippet
 
 priority 100
-# snippet * "cdot" iA
-# \cdot 
-# endsnippet
+snippet * "cdot" iA
+\cdot 
+endsnippet
 
-# priority 200
-# snippet '\cdot *' "cdot" iA
-# *
-# endsnippet
+priority 200
+snippet '\cdot *' "cdot" iA
+*
+endsnippet
 
 context "math()"
 snippet norm "norm" iA

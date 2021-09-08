@@ -207,6 +207,18 @@ endfunction
 
 command! -range ToTuple <line1>,<line2> call ToTupleFunction()
 
+function! TwiddleCase(str)
+  if a:str ==# toupper(a:str)
+    let result = tolower(a:str)
+  elseif a:str ==# tolower(a:str)
+    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+  else
+    let result = toupper(a:str)
+  endif
+  return result
+endfunction
+vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
+
 "}}}
 " PLUGINS PRE LOAD{{{
 " ALE setup{{{
@@ -343,30 +355,76 @@ let g:pandoc#command#latex_engine = 'pdflatex'
 let g:tex_flavor='latex'
 let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abdmg'
-let g:vimtext_fold_enabled = 1
+let g:vimtex_fold_enabled = 1
+let g:vimtex_fold_types = {
+      \ 'sections' : {
+      \   'sections' : [
+      \     '%(add)?part',
+      \     '%(chapter|addchap)',
+      \     '%(section|addsec)',
+      \     'subsection',
+      \     'subsubsection',
+      \     'paragraph',
+      \     'table',
+      \   ],
+      \   'parts' : [
+      \     'appendix',
+      \     'frontmatter',
+      \     'mainmatter',
+      \     'backmatter',
+      \     'table',
+      \   ],
+      \ },
+      \}
 let g:polyglot_disabled = ['latex']
 let g:vimtex_view_method = "skim"
 let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
 let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_compiler_latexmk = {
+    \ 'build_dir' : '',
+    \ 'callback' : 1,
+    \ 'continuous' : 1,
+    \ 'executable' : 'latexmk',
+    \ 'hooks' : [],
+    \ 'options' : [
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \   '-shell-escape',
+    \ ],
+    \}
 
 " This adds a callback hook that updates Skim after compilation
-function! UpdateSkim(status)
-    " if !a:status | return | endif
-    let l:out = b:vimtex.out()
-    let l:tex = expand('%:p')
-    let l:cmd = [g:vimtex_view_general_viewer, '-r']
-    if !empty(system('pgrep Skim'))
-    call extend(l:cmd, ['-g'])
-    endif
-    call jobstart(l:cmd + [line('.'), l:out, l:tex])
-    endif
+" function! UpdateSkim()
+"     if !a:status | return | endif
+"     let l:out = b:vimtex.out()
+"     let l:tex = expand('%:p')
+"     let l:cmd = [g:vimtex_view_general_viewer, '-r']
+"     if !empty(system('pgrep Skim'))
+"     call extend(l:cmd, ['-g'])
+"     endif
+"     call jobstart(l:cmd + [line('.'), l:out, l:tex])
+"     endif
+" endfunction
+
+" augroup vimtex_callback_event
+"   au!
+"   au User VimtexEventCompileSuccess call UpdateSkim()
+" augroup END
+
+" Zotero stuff
+function! ZoteroCite()
+  " pick a format based on the filetype (customize at will)
+  let format = &filetype =~ '.*tex' ? 'cite' : 'pandoc'
+  let api_call = 'http://127.0.0.1:23119/better-bibtex/cayw?format='.format.'&brackets=1&minimize=1'
+  let ref = system('curl -s '.shellescape(api_call))
+  return ref
 endfunction
 
-augroup vimtext_callback_event
-  au!
-  au User VimtexEventCompileSuccess call UpdateSkim()
-augroup END
+noremap <leader>z "=ZoteroCite()<CR>p
+inoremap <C-z> <C-r>=ZoteroCite()<CR>
 
 "}}}
 "}}}
@@ -456,7 +514,10 @@ call deoplete#custom#option('max_list', 20)
 " call deoplete#custom#source('_', 'sorters', [])
 call deoplete#custom#option('sources', {
 \ 'python': ['around', 'file', 'member', 'jedi', 'tag'],
+\ 'tex': ['around', 'member', 'buffer'],
 \})
+
+call deoplete#custom#source('buffer', 'require_same_filetype', v:false)
 
 call deoplete#custom#var('omni', 'input_patterns', {
 \ 'pandoc': '@'

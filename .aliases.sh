@@ -19,8 +19,8 @@ alias gsthpm='git stash push -m'
 alias gsthd='git stash drop'
 alias grs='git reset'
 alias gupdb='git fetch origin master:master && git rebase master'
-alias :x='exit'
-alias :q='exit'
+#alias :x='exit'
+#alias :q='exit'
 
 gstatall() {
   (git status -s .; (git status -s . | awk '{ print $2 }'; git ls-files) | sort | uniq -c | grep 1 | awk '{ print " \033[34mU \033[0m" $2 }')
@@ -34,18 +34,18 @@ gitrmuntracked() {
   git status -s | rg '?' -F | xargs rm -rf
 }
 
-gitfixup() {
-  if [ $# -eq 0 ]; then;
-    echo You must specify a prefix for the commit
-    return 1
-  fi;
-  local prefix="$1:"
-  local commit=$(git log --oneline | head -n 10 | rg $prefix -F | head -n 1 | awk '{ print $1 }')
-  git commit . --fixup=$commit
-  EDITOR=true VISUAL=true git rebase --interactive --autosquash $commit~1
-  echo fixup done, state:
-  git log --oneline | head -n 10
-}
+# gitfixup() {
+#  if [[ $# -eq 0 ]]; then;
+#    echo You must specify a prefix for the commit
+#    return 1
+#  fi;
+#  local prefix="$1:"
+#  local commit=$(git log --oneline | head -n 10 | rg $prefix -F | head -n 1 | awk '{ print $1 }')
+#  git commit . --fixup=$commit
+#  EDITOR=true VISUAL=true git rebase --interactive --autosquash $commit~1
+#  echo fixup done, state:
+#  git log --oneline | head -n 10
+#}
 
 lastpasscp() {
   lpass show --clip --password $(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')
@@ -69,25 +69,10 @@ mkalias() {
   source ~/.aliases.sh
 }
 
--() {
-  cd -
-}
-
 get_tags() {
   rm tags tags.temp tags.lock &> /dev/null
   rg --files | ctags -R --links=no --options-maybe=~/.ctags.d/ -L -
 }
-
-command_freq() {
-  if [ $# -eq 0 ]; then
-    local segments=3
-  else
-    local segments=$1
-  fi
-  cat .zsh_history | awk -F':' '/: / { print $3 }' | cut -c 3- | cut -d' ' -f -$segments | sort | uniq -c | sort -bg | tail -n 100
-}
-
-getkeycods() { xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }' }
 
 # single letter aliases:
 # alias a=
@@ -151,10 +136,10 @@ if which exa &> /dev/null; then
   alias lt='exa -lT --group-directories-first -L 3 -I __pycache__'
 fi;
 alias mkdir='mkdir -p'
-alias tree='tree -I '__pycache__''
 alias gpuw='watch -n 1 -d -t nvidia-smi'
 alias cplgvfs='nohup cpulimit -e gvfs -l 5  </dev/null >/dev/null &> & disown'
 alias gentoken='head -c 24 /dev/urandom | base64'
 alias dt='tty-clock -xcsB'
 alias gpuw='watch -n 1 -d -t nvidia-smi'
 alias gotop='gotop -c rob-solarized'
+

@@ -1,3 +1,8 @@
 channels:
   - conda-forge
   - defaults
+envs_dirs:
+  - /cluster/project6/mr_corpora/robekirk/conda/envs
+  - /cluster/project6/mr_corpora/robekirk/conda
+pkgs_dirs:
+  - /cluster/project6/mr_corpora/robekirk/conda/pkgs

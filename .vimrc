@@ -10,11 +10,11 @@ set updatetime=100
 "}}}
 " VIEW SETTINGS{{{
 syntax enable
-set background=dark
+set background=light
 colors solarized
 
-set cursorcolumn      " highlight current column
-highlight CursorColumn ctermbg=8
+" set cursorcolumn      " highlight current column
+" highlight CursorColumn ctermbg=8
 set nowrap
 
 " Changing cursor shape per mode
@@ -22,24 +22,24 @@ set nowrap
 " 2 -> solid block
 " 3 -> blinking underscore
 " 4 -> solid underscore
-if exists('$TMUX')
-    " tmux will only forward escape sequences to the terminal if surrounded by a DCS sequence
-    let &t_SI .= "\<Esc>Ptmux;\<Esc>\<Esc>[6 q\<Esc>\\"
-    let &t_SR .= "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
-    let &t_EI .= "\<Esc>Ptmux;\<Esc>\<Esc>[2 q\<Esc>\\"
-    autocmd VimLeave * silent !echo -ne "\033Ptmux;\033\033[0 q\033\\"
-else
-    let &t_SI .= "\<Esc>[6 q"
-    let &t_SR .= "\<Esc>[4 q"
-    let &t_EI .= "\<Esc>[2 q"
-    autocmd VimLeave * silent !echo -ne "\033[0 q"
-endi
+" if exists('$TMUX')
+"     " tmux will only forward escape sequences to the terminal if surrounded by a DCS sequence
+"     let &t_SI .= \<Esc>Ptmux;\<Esc>\<Esc>[6 q\<Esc>\\"
+"     let &t_SR .= \<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
+"     let &t_EI .= \<Esc>Ptmux;\<Esc>\<Esc>[2 q\<Esc>\\"
+"     autocmd VimLeave * silent !echo -ne \033Ptmux;\033\033[0 q\033\\"
+" else
+"     let &t_SI .= \<Esc>[6 q"
+"     let &t_SR .= \<Esc>[4 q"
+"     let &t_EI .= \<Esc>[2 q"
+"     autocmd VimLeave * silent !echo -ne \033[0 q"
+" endi
 
 " Always show statusline
 set laststatus=2
 
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
+" set t_Co=256
 
 " keep the cursor on the screen
 set scrolloff=5
@@ -84,7 +84,7 @@ endfunction
 autocmd VimEnter * call CorrectColorScheme()
 "}}}
 " KEYBOARD SHORTCUTS{{{
-let mapleader=","
+let mapleader="<space>"
 
 " Move to the next buffer 
 nmap <leader>l :bnext<CR>
@@ -116,8 +116,8 @@ nmap <leader>q :xa<cr>
 nnoremap <CR> za
 
 " Easy searching
-map <space> /
-map <c-space> ?
+" map <space> /
+" map <c-space> ?
 
 " move vertically by visual line
 nnoremap j gj
@@ -244,7 +244,7 @@ let g:sql_type_default = 'pgsql'
 
 "}}}
 "GitGutter setup{{{
-set signcolumn=yes
+" set signcolumn=yes
 let g:gitgutter_map_keys = 0
 
 "}}}
@@ -269,55 +269,54 @@ let g:goyo_width = 200
 
 "}}}
 " powerline setup (just trying){{{
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-let g:powerline_pycmd = "py3"
-let g:powerline_pyeval = "py3eval"
-set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim/
+" python3 from powerline.vim import setup as powerline_setup
+" python3 powerline_setup()
+" let g:powerline_pycmd = "py3"
+" let g:powerline_pyeval = "py3eval"
+" set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim/
 set showtabline=2
 set noshowmode
 "}}}
 " Autoloading vim plugins{{{
-" if empty(glob('~/.vim/autoload/plug.vim'))
-"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-" endif
+ " if empty(glob('~/.vim/autoload/plug.vim'))
+ "   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+ "     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ "   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+ " endif
 
 "}}}
 " Loading Plugins{{{
 call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'nixprime/cpsm'
+" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'nixprime/cpsm'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'plytophogy/vim-virtualenv'
-Plug 'w0rp/ale'
+" Plug 'plytophogy/vim-virtualenv'
+" Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
-Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
+" Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 
 Plug 'markonm/traces.vim'
 
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
-Plug 'cespare/vim-toml'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'tmux-plugins/vim-tmux'
+" Plug 'cespare/vim-toml'
+" Plug 'christoomey/vim-tmux-navigator'
+" Plug 'tmux-plugins/vim-tmux-focus-events'
+" Plug 'tmux-plugins/vim-tmux'
 
 Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
 
-Plug 'junegunn/goyo.vim'
-Plug 'vimwiki/vimwiki'
+" Plug 'junegunn/goyo.vim'
+" Plug 'vimwiki/vimwiki'
 call plug#end()
 "}}}
 "}}}

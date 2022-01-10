@@ -263,13 +263,13 @@ nmap <Leader>gp <Plug>(GitGutterPreviewHunk)
 " fugitive setup{{{
 nmap <Leader>gs :G<CR>
 nmap <Leader>gg :G
-nmap <Leader>gc :Gcommit --verbose
-nmap <Leader>gb :Gblame
-nmap <Leader>gw :Gwrite
-nmap <Leader>gp :Gpush
-nmap <Leader>grb :Grebase
-nmap <Leader>gd :Gdiff
-nmap <Leader>gl :Glog! -n 100<CR>
+nmap <Leader>gc :G commit --verbose
+nmap <Leader>gb :G blame
+nmap <Leader>gw :G write
+nmap <Leader>gp :G push
+nmap <Leader>grb :G rebase
+nmap <Leader>gd :G diff
+nmap <Leader>gl :G log! -n 100<CR>
 
 "}}}
 " NoSwapSuck{{{
@@ -302,7 +302,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 "}}}
 " Goyo{{{
-let g:goyo_width = 200
+let g:goyo_width = 100
 
 "}}}
 " Tagbar {{{
@@ -396,28 +396,10 @@ let g:vimtex_compiler_latexmk = {
     \ ],
     \}
 
-" This adds a callback hook that updates Skim after compilation
-" function! UpdateSkim()
-"     if !a:status | return | endif
-"     let l:out = b:vimtex.out()
-"     let l:tex = expand('%:p')
-"     let l:cmd = [g:vimtex_view_general_viewer, '-r']
-"     if !empty(system('pgrep Skim'))
-"     call extend(l:cmd, ['-g'])
-"     endif
-"     call jobstart(l:cmd + [line('.'), l:out, l:tex])
-"     endif
-" endfunction
-
-" augroup vimtex_callback_event
-"   au!
-"   au User VimtexEventCompileSuccess call UpdateSkim()
-" augroup END
-
 " Zotero stuff
 function! ZoteroCite()
   " pick a format based on the filetype (customize at will)
-  let format = &filetype =~ '.*tex' ? 'cite' : 'pandoc'
+  let format = &filetype =~ '.*tex' ? 'latex&command=citep' : 'pandoc'
   let api_call = 'http://127.0.0.1:23119/better-bibtex/cayw?format='.format.'&brackets=1&minimize=1'
   let ref = system('curl -s '.shellescape(api_call))
   return ref
@@ -426,6 +408,32 @@ endfunction
 noremap <leader>z "=ZoteroCite()<CR>p
 inoremap <C-z> <C-r>=ZoteroCite()<CR>
 
+"}}}
+"Grammarous{{{
+let g:grammarous#languagetool_cmd = 'languagetool'
+let g:grammarous#show_first_error = 1
+let g:grammarous#default_comments_only_filetypes = {
+            \ '*' : 1, 'help' : 0, 'markdown' : 0, 'tex': 0,
+            \ }
+nmap <leader>x <Plug>(grammarous-open-info-window)
+let g:grammarous#hooks = {}
+function! g:grammarous#hooks.on_check(errs) abort
+    nmap <buffer><C-n> <Plug>(grammarous-move-to-next-error)
+    nmap <buffer><C-p> <Plug>(grammarous-move-to-previous-error)
+    nmap <buffer><C-q> <Plug>(grammarous-reset)
+endfunction
+
+function! g:grammarous#hooks.on_reset(errs) abort
+    nunmap <buffer><C-n>
+    nunmap <buffer><C-p>
+    nunmap <buffer><C-q>
+endfunction
+let g:grammarous#disabled_rules = {
+    \ '*' : ['WHITESPACE_RULE', 'EN_QUOTES', 'ARROWS', 'SENTENCE_WHITESPACE',
+    \        'WORD_CONTAINS_UNDERSCORE', 'COMMA_PARENTHESIS_WHITESPACE',
+    \        'EN_UNPAIRED_BRACKETS', 'UPPERCASE_SENTENCE_START',
+    \        'DASH_RULE', 'PLUS_MINUS', 'MULTIPLICATION_SIGN', 'PRP_CHECKOUT']
+    \ }
 "}}}
 "}}}
 " Autoloading vim plugins{{{
@@ -456,6 +464,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'ncm2/float-preview.nvim'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+Plug 'rhysd/vim-grammarous'
 
 " navigation
 Plug 'airblade/vim-gitgutter'

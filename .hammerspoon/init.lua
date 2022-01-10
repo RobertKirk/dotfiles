@@ -61,6 +61,16 @@ else
 end
 
 -- }}}
+-- Finding Screens {{{
+
+laptopScreen = 'Built-in Retina Display'
+mainScreen = hs.screen.primaryScreen():name() -- 'HP V28 4K'
+secondScreen = 'DELL U2715H'
+if not hs.screen(secondScreen) then
+  secondScreen = 'DELL U2414H'
+end
+
+-- }}}
 -- Scrolling for Volume{{{
 hs.loadSpoon("VolumeScroll")
 
@@ -72,16 +82,17 @@ spoon.VolumeScroll:start({"cmd"})
 hs.loadSpoon("AppLauncher")
 
 mapping = {
+  a = "Calendar (Google)",
+  b = "Zotero",
+  f = "Flow",
   g = "Google Chrome",
-  t = "Alacritty",
   m = "Spotify",
+  n = "Notion",
+  p = "Screenshot",
   r = "Roam Research",
   s = "Skim",
+  t = "Alacritty",
   z = "zoom.us",
-  a = "Calendar (Google)",
-  n = "Notion",
-  b = "Zotero",
-  p = "Screenshot",
 }
 
 spoon.AppLauncher.modifiers = two_modifiers
@@ -104,21 +115,23 @@ end)
 allLayouts = {}
 
 allLayouts['default'] = {
-  {'Calendar (Google)', nil, 'Built-in Retina Display', hs.layout.maximized, nil, nil},
-  {'Google Chrome', nil, 'DELL U2715H', hs.layout.maximized, nil, nil},
-  {'Alacritty', nil, 'HP V28 4K', hs.layout.maximized, nil, nil},
-  {'Spotify', nil, 'Built-in Retina Display', hs.layout.maximized, nil, nil},
-  {'Skim', nil, 'DELL U2715H', hs.layout.maximized, nil, nil},
-  {'Roam Research', nil, 'HP V28 4K', hs.layout.maximized, nil, nil},
+  {'Alacritty', nil, mainScreen, hs.layout.maximized, nil, nil},
+  {'Roam Research', nil, mainScreen, hs.layout.maximized, nil, nil},
+  {'Skim', nil, secondScreen, hs.layout.maximized, nil, nil},
+  {'Google Chrome', nil, secondScreen, hs.layout.maximized, nil, nil},
+  {'Spotify', nil, laptopScreen, hs.layout.maximized, nil, nil},
+  {'Zotero', nil, laptopScreen, hs.layout.maximized, nil, nil},
+  {'Calendar (Google)', nil, laptopScreen, hs.layout.maximized, nil, nil},
 }
 
 allLayouts['one_screen'] = {
-  {'Calendar (Google)', nil, 'Built-in Retina Display', hs.layout.maximized, nil, nil},
-  {'Google Chrome', nil, 'Built-in Retina Deisplay', hs.layout.maximized, nil, nil},
-  {'Alacritty', nil, 'Built-in Retina Deisplay', hs.layout.maximized, nil, nil},
-  {'Spotify', nil, 'Built-in Retina Display', hs.layout.maximized, nil, nil},
-  {'Skim', nil, 'Built-in Retina Deisplay', hs.layout.maximized, nil, nil},
-  {'Roam Research', nil, 'Built-in Retina Deisplay', hs.layout.maximized, nil, nil},
+  {'Calendar (Google)', nil, laptopScreen, hs.layout.maximized, nil, nil},
+  {'Google Chrome', nil, laptopScreen, hs.layout.maximized, nil, nil},
+  {'Alacritty', nil, laptopScreen, hs.layout.maximized, nil, nil},
+  {'Spotify', nil, laptopScreen, hs.layout.maximized, nil, nil},
+  {'Skim', nil, laptopScreen, hs.layout.maximized, nil, nil},
+  {'Zotero', nil, laptopScreen, hs.layout.maximized, nil, nil},
+  {'Roam Research', nil, laptopScreen, hs.layout.maximized, nil, nil},
 }
 
 function saveLayout ()

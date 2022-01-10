@@ -468,11 +468,13 @@ snippet xx "cross" iA
 endsnippet
 
 priority 100
+context "math()"
 snippet * "cdot" iA
 \cdot 
 endsnippet
 
 priority 200
+context "math()"
 snippet '\cdot *' "cdot" iA
 *
 endsnippet
@@ -557,6 +559,7 @@ snippet cc "subset" Ai
 \subset 
 endsnippet
 
+context "math()"
 snippet notin "not in " iA
 \not\in 
 endsnippet
@@ -566,7 +569,7 @@ snippet inn "in " iA
 \in 
 endsnippet
 
-snippet NN "n" iA
+snippet NN "n" i
 \N
 endsnippet
 
@@ -586,19 +589,19 @@ snippet nnn "bigcap" iA
 \bigcap_{${1:i \in ${2: I}}} $0
 endsnippet
 
-snippet OO "emptyset" iA
+snippet OO "emptyset" i
 \O
 endsnippet
 
-snippet RR "real" iA
+snippet RR "real" i
 \R
 endsnippet
 
-snippet QQ "Q" iA
+snippet QQ "Q" i
 \Q
 endsnippet
 
-snippet ZZ "Z" iA
+snippet ZZ "Z" i
 \Z
 endsnippet
 
@@ -628,7 +631,7 @@ snippet case "cases" wA
 \end{cases}
 endsnippet
 
-snippet SI "SI" iA
+snippet SI "SI" i
 \SI{$1}{$2}
 endsnippet
 

@@ -155,6 +155,9 @@ nnoremap <leader>n :set number!<CR>
 map <leader>s :setlocal spell!<cr>
 " ctrl l recorrects last spelling mistake
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+" new terminal window
+map <C-T> :vsplit <Bar> :term<CR>
 "}}}
 " FILE SPECIFIC CONFIGS{{{
 augroup configgroup
@@ -465,6 +468,7 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'ncm2/float-preview.nvim'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'rhysd/vim-grammarous'
+Plug 'github/copilot.vim'
 
 " navigation
 Plug 'airblade/vim-gitgutter'
@@ -543,7 +547,7 @@ hi VertSplit   guifg=#eee8d5 guibg=#eee8d5
 "}}}
 " defx-{git|icons|}{{{
 " from https://github.com/taigacute/ThinkVim/blob/master/core/plugins/defx.vim
-map <silent> <C-n> :Defx -search=`expand('%:p')` -toggle -listed -resume -ignored-files='.mypy_cache,__pycache__,.*'<CR>
+map <silent> <C-n> :Defx -search-recursive=`expand('%:p')` -toggle -listed -resume -ignored-files='.mypy_cache,__pycache__'<CR>
 
 let g:defx_icons_enable_syntax_highlight = 0
 

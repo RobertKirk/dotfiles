@@ -78,6 +78,12 @@ spoon.VolumeScroll:init()
 spoon.VolumeScroll:start({"cmd"})
 
 -- }}}
+-- MouseCircle{{{
+hs.loadSpoon("MouseCircle")
+
+spoon.MouseCircle:bindHotkeys({show = {{"cmd", "alt", "shift"}, "M"}})
+
+-- }}}
 -- App Launching/switching{{{
 hs.loadSpoon("AppLauncher")
 

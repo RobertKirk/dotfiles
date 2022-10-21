@@ -64,10 +64,13 @@ end
 -- Finding Screens {{{
 
 laptopScreen = 'Built-in Retina Display'
-mainScreen = hs.screen.primaryScreen():name() -- 'HP V28 4K'
+mainScreen = hs.screen.primaryScreen():name() -- 'HP V28 4K', or 'DELL P3222QE'
 secondScreen = 'DELL U2715H'
 if not hs.screen(secondScreen) then
   secondScreen = 'DELL U2414H'
+end
+if not hs.screen(secondScreen) then
+  secondScreen = 'DELL P3222QE (1)'
 end
 
 -- }}}
@@ -94,7 +97,6 @@ mapping = {
   g = "Google Chrome",
   m = "Spotify",
   n = "Notion",
-  p = "Screenshot",
   r = "Roam Research",
   s = "Skim",
   t = "Alacritty",
@@ -104,6 +106,22 @@ mapping = {
 spoon.AppLauncher.modifiers = two_modifiers
 
 spoon.AppLauncher:bindHotkeys(mapping)
+
+-- Bind two_modifiers and p to launching screencapture with interactive clipboard
+hs.hotkey.bind(two_modifiers, "p", function()
+  hs.task.new("/usr/sbin/screencapture", nil, {"-ic"}):start()
+end)
+
+function currentAppFilter (window)
+  return window:application():name() == hs.application.frontmostApplication():name()
+end
+
+currrentAppSwitcher = hs.window.switcher.new(hs.window.filter.new(currentAppFilter))
+
+basicSwitcher = hs.window.switcher.new()
+
+-- hs.hotkey.bind('cmd','`','Next window',function()basicSwitcher:next()end)
+-- hs.hotkey.bind('cmd-shift','`','Prev window',function()basicSwitcher:previous()end)
 
 -- }}}
 -- Clipboard {{{

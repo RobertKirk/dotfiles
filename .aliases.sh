@@ -21,6 +21,7 @@ alias grs='git reset'
 alias gupdb='git fetch origin master:master && git rebase master'
 alias :x='exit'
 alias :q='exit'
+alias vim='nvim'
 
 unalias gd
 gd() {

@@ -267,12 +267,14 @@ nmap <Leader>gp <Plug>(GitGutterPreviewHunk)
 nmap <Leader>gs :G<CR>
 nmap <Leader>gg :G
 nmap <Leader>gc :G commit --verbose
+nmap <Leader>gcn! :G commit --verbose --no-edit --amend
 nmap <Leader>gb :G blame
 nmap <Leader>gw :G write
-nmap <Leader>gp :G push
+nmap <Leader>gp :G! push
+nmap <Leader>gpb :G! push<CR>
 nmap <Leader>grb :G rebase
 nmap <Leader>gd :G diff
-nmap <Leader>gl :G log! -n 100<CR>
+nmap <Leader>gl :G log -n 100<CR>
 
 "}}}
 " NoSwapSuck{{{
@@ -469,10 +471,12 @@ Plug 'ncm2/float-preview.nvim'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'rhysd/vim-grammarous'
 Plug 'github/copilot.vim'
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 " navigation
 Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'nvim-treesitter/nvim-treesitter-context'
 
 " motions/objects/actions
 Plug 'tpope/vim-surround'
@@ -535,6 +539,74 @@ call deoplete#custom#source('buffer', 'require_same_filetype', v:false)
 call deoplete#custom#var('omni', 'input_patterns', {
 \ 'pandoc': '@'
 \})
+"}}}
+" Tree-sitter{{{
+
+lua << EOF
+require"nvim-treesitter.configs".setup {
+    highlight = {
+      -- `false` will disable the whole extension
+      enable = true,
+
+      -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+      -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+      -- Using this option may slow down your editor, and you may see some duplicate highlights.
+      -- Instead of true it can also be a list of languages
+      additional_vim_regex_highlighting = false,
+    },
+    incremental_selection = {
+      enable = true
+    },
+    indent = {
+      enable = true
+    },
+  }
+EOF
+
+"}}}
+" Tree-sitter{{{
+
+lua << EOF
+require'treesitter-context'.setup{
+    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+    max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+    trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+    patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+        -- For all filetypes
+        -- Note that setting an entry here replaces all other patterns for this entry.
+        -- By setting the 'default' entry below, you can control which nodes you want to
+        -- appear in the context window.
+        default = {
+            'class',
+            'function',
+            'method',
+            'for', -- These won't appear in the context
+            'while',
+            'if',
+            -- 'switch',
+            -- 'case',
+        },
+        -- Example for a specific filetype.
+        -- If a pattern is missing, *open a PR* so everyone can benefit.
+        --   rust = {
+        --       'impl_item',
+        --   },
+    },
+    exact_patterns = {
+        -- Example for a specific filetype with Lua patterns
+        -- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
+        -- exactly match "impl_item" only)
+        -- rust = true,
+    },
+
+    -- [!] The options below are exposed but shouldn't require your attention,
+    --     you can safely ignore them.
+
+    zindex = 20, -- The Z-index of the context window
+    mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+}
+EOF
+
 "}}}
 " Colorscheme {{{
 colors solarized8

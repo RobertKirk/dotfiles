@@ -25,6 +25,7 @@ zplug "plugins/extract", from:oh-my-zsh
 zplug "plugins/kubectl", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
 zplug "plugins/fancy-ctrl-z", from:oh-my-zsh
+zplug "esc/conda-zsh-completion", from:github
 
 zplug "romkatv/powerlevel10k", use:powerlevel10k.zsh-theme
 

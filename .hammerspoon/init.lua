@@ -1,3 +1,108 @@
+-- Laptop/Desktop Mode{{{
+laptopMode = #hs.screen.allScreens() == 1
+
+if laptopMode then
+  hyper_mods = {}
+  hyper_key = 90
+else
+  hyper_mods = {}
+  hyper_key = 113
+end
+
+-- }}}
+-- App Launching/switching{{{
+hs.loadSpoon("AppLauncher")
+--
+-- hyper_config = {
+--   a = "Calendar (Google)", - bundleID = 'com.google.calendar',
+--   b = "Zotero", - bundleID = 'org.zotero.Zotero',
+--   g = "Google Chrome", - bundleID = 'com.google.Chrome',
+--   m = "Spotify", - bundleID = 'com.spotify.client',
+--   n = "Notion", - bundleID = 'notion.id',
+--   r = "Roam Research", - bundleID = 'com.roamresearch.roamresearch',
+--   s = "Skim", - bundleID = 'net.sourceforge.skim-app.skim',
+--   t = "Alacritty", - bundleID = 'io.alacritty',
+--   z = "zoom.us", - bundleID = 'us.zoom.xos',
+-- }
+
+-- spoon.AppLauncher.modifiers = two_modifiers
+-- spoon.AppLauncher:bindHotkeys(mapping)
+
+config = {}
+config.applications = {
+  ['org.alacritty'] = {
+    bundleID = 'org.alacritty',
+    hyper_key = 't',
+  },
+  ['com.spotify.client'] = {
+    bundleID = 'com.spotify.client',
+    hyper_key = 'm'
+  },
+  ['net.sourceforge.skim-app.skim'] = {
+    bundleID = 'net.sourceforge.skim-app.skim',
+    hyper_key = 's',
+  },
+  ['com.google.Chrome'] = {
+    bundleID = 'com.google.Chrome',
+    hyper_key = 'g',
+  },
+  ['com.google.calendar'] = {
+    bundleID = 'com.Calendar_(Google)',
+    hyper_key = 'a',
+  },
+  ['org.zotero.Zotero'] = {
+    bundleID = 'org.zotero.zotero',
+    hyper_key = 'b',
+  },
+  ['notion.id'] = {
+    bundleID = 'notion.id',
+    hyper_key = 'n',
+  },
+  ['com.roam-research.desktop-app'] = {
+    bundleID = 'com.roam-research.desktop-app',
+    hyper_key = 'r',
+  },
+  ['us.zoom.xos'] = {
+    bundleID = 'us.zoom.xos',
+    hyper_key = 'z',
+  },
+  ['design.yugen.flow'] = {
+    bundleID = 'design.yugen.flow',
+    hyper_key = 'f',
+  },
+  ['screenshot'] = {
+    task = "/usr/sbin/screencapture",
+    arg1 = nil,
+    arg2 = {"-ic"},
+    hyper_key = 'p',
+  }
+}
+config.hyper_key = hyper_key
+
+hyper = require('hyper')
+hyper.start(config)
+
+hyper:bind({"cmd"}, 'f', function()
+  hs.osascript("tell application \"Flow\" to show")
+end)
+hyper:bind({}, 'tab', function()
+  hs.osascript("tell application \"Flow\" to skip")
+end)
+hyper:bind({"shift"}, 'tab', function()
+  hs.osascript("tell application \"Flow\" to previous")
+end)
+
+-- function currentAppFilter (window)
+--   return window:application():name() == hs.application.frontmostApplication():name()
+-- end
+
+-- currrentAppSwitcher = hs.window.switcher.new(hs.window.filter.new(currentAppFilter))
+-- basicSwitcher = hs.window.switcher.new()
+
+-- hs.hotkey.bind('cmd','`','Next window',function()basicSwitcher:next()end)
+-- hs.hotkey.bind('cmd-shift','`','Prev window',function()basicSwitcher:previous()end)
+
+-- }}}
 -- Utilities {{{
 function dump(o)
    if type(o) == 'table' then
@@ -44,22 +149,12 @@ function serializeTable(val, name, skipnewlines, depth)
 end
 -- }}}
 -- Config Reloading{{{
-hs.hotkey.bind({"cmd", "ctrl", "shift"}, "R", function()
+hyper:bind({"cmd"}, "r", function()
   hs.reload()
 end)
 hs.loadSpoon("ReloadConfiguration")
 spoon.ReloadConfiguration:start()
 hs.alert.show("Config Reloaded")
--- }}}
--- Laptop/Desktop Mode{{{
-laptopMode = #hs.screen.allScreens() == 1
-
-if laptopMode then
-  two_modifiers = {"option", "cmd"}
-else
-  two_modifiers = {"ctrl", "cmd"}
-end
-
 -- }}}
 -- Finding Screens {{{
 
@@ -84,44 +179,9 @@ spoon.VolumeScroll:start({"cmd"})
 -- MouseCircle{{{
 hs.loadSpoon("MouseCircle")
 
-spoon.MouseCircle:bindHotkeys({show = {{"cmd", "alt", "shift"}, "M"}})
-
--- }}}
--- App Launching/switching{{{
-hs.loadSpoon("AppLauncher")
-
-mapping = {
-  a = "Calendar (Google)",
-  b = "Zotero",
-  f = "Flow",
-  g = "Google Chrome",
-  m = "Spotify",
-  n = "Notion",
-  r = "Roam Research",
-  s = "Skim",
-  t = "Alacritty",
-  z = "zoom.us",
-}
-
-spoon.AppLauncher.modifiers = two_modifiers
-
-spoon.AppLauncher:bindHotkeys(mapping)
-
--- Bind two_modifiers and p to launching screencapture with interactive clipboard
-hs.hotkey.bind(two_modifiers, "p", function()
-  hs.task.new("/usr/sbin/screencapture", nil, {"-ic"}):start()
+hyper:bind({"cmd"}, "m", function()
+  spoon.MouseCircle:show()
 end)
-
-function currentAppFilter (window)
-  return window:application():name() == hs.application.frontmostApplication():name()
-end
-
-currrentAppSwitcher = hs.window.switcher.new(hs.window.filter.new(currentAppFilter))
-
-basicSwitcher = hs.window.switcher.new()
-
--- hs.hotkey.bind('cmd','`','Next window',function()basicSwitcher:next()end)
--- hs.hotkey.bind('cmd-shift','`','Prev window',function()basicSwitcher:previous()end)
 
 -- }}}
 -- Clipboard {{{
@@ -129,7 +189,7 @@ basicSwitcher = hs.window.switcher.new()
 hs.loadSpoon("TextClipboardHistory")
 spoon.TextClipboardHistory:start()
 
-hs.hotkey.bind(two_modifiers, "C", function()
+hyper:bind({}, "C", function()
   spoon.TextClipboardHistory:toggleClipboard()
 end)
 
@@ -196,13 +256,13 @@ function applyLayout ()
   layoutChooser:show()
 end
 
-hs.hotkey.bind({"cmd", "alt", "shift"}, "L", applyLayout)
+hyper:bind({"shift"}, "l", applyLayout)
 
 -- }}}
 -- Window arrangement{{{
 --
 -- Left Half
-hs.hotkey.bind(two_modifiers, "H", function()
+hyper:bind({}, "H", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -216,7 +276,7 @@ hs.hotkey.bind(two_modifiers, "H", function()
 end)
 
 -- Right Half
-hs.hotkey.bind(two_modifiers, "L", function()
+hyper:bind({}, "L", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -230,7 +290,7 @@ hs.hotkey.bind(two_modifiers, "L", function()
 end)
 
 -- Maximise
-hs.hotkey.bind(two_modifiers, "K", function()
+hyper:bind({}, "K", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -244,7 +304,7 @@ hs.hotkey.bind(two_modifiers, "K", function()
 end)
 
 -- Small Centred
-hs.hotkey.bind(two_modifiers, "J", function()
+hyper:bind({}, "J", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -260,10 +320,24 @@ end)
 -- Moving left and right screens (no point when in laptop mode)
 if not laptopMode then
   hs.loadSpoon("WindowScreenLeftAndRight")
-  spoon.WindowScreenLeftAndRight:bindHotkeys({
-        screen_left  = { {"cmd", "ctrl", "shift"}, "H"},
-        screen_right  = { {"cmd", "ctrl", "shift"}, "L"}
-  })
+  hyper:bind({"cmd"}, 'h', function() spoon.WindowScreenLeftAndRight:oneScreenLeft() end)
+  hyper:bind({"cmd"}, 'l', function() spoon.WindowScreenLeftAndRight:oneScreenRight() end)
 end
 ---}}}
+-- KSheet{{{
+hs.loadSpoon("KSheet")
+hyper:bind({}, "v", function()
+  spoon.KSheet:toggle()
+end)
+-- spoon.KSheet:bindHotkeys({toggle = {{"cmd", "alt", "shift"}, "K"}})
+
+-- }}}
+-- HSearch{{{
+hs.loadSpoon("HSearch")
+
+hyper:bind({}, "u", function()
+  spoon.HSearch:toggleShow()
+end)
+
+-- }}}
 -- vim:foldmethod=marker:foldlevel=0

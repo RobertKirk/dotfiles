@@ -5,7 +5,7 @@
 --map-syntax .ignore:.gitignore
 
 # theme
---theme=SolarizedDark
+--theme="Solarized (light)"
 
 # style
 --style=numbers,changes

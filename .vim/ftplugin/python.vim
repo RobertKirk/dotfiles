@@ -13,7 +13,7 @@ let b:ale_python_pylint_change_directory = 1
 let b:ale_python_flake8_options = "--max-line-length=110 --max-complexity=10 --jobs=auto --ignore=D1,W503,E201,E203"
 
 " mypy options
-let b:ale_python_mypy_options = "--follow-imports=skip --check-untyped-defs"
+let b:ale_python_mypy_options = "--follow-imports=skip --check-untyped-defs --ignore-missing-imports"
 let b:ale_python_mypy_ignore_invalid_syntax = 1
 let b:ale_python_mypy_change_directory = 1
 

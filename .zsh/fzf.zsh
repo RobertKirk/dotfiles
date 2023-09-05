@@ -13,3 +13,6 @@ fi
 # Key bindings
 # ------------
 source "$FZF_HOME/shell/key-bindings.zsh"
+
+# use gitignore
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'

@@ -11,4 +11,6 @@ done
 for f in ~/.zsh/func/*.zsh; do
   [ -f $f ] && source $f
 done
+
+source ~/.zsh/private.zsh
 # zprof

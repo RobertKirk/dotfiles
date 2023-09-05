@@ -58,11 +58,24 @@ snippet beg "begin{} / end{}" bA
 \\begin{$1}
 	$0
 \\end{$1}
+$2
+endsnippet
+
+snippet cref "\cref{}" wA
+~\\cref{$1}$0
 endsnippet
 
 priority 100
 snippet ... "ldots" iA
 \ldots
+endsnippet
+
+snippet ** "bold" iA
+\\textbf{$1}$0
+endsnippet
+
+snippet \_\_ "italics" iA
+\\emph{$1}$0
 endsnippet
 
 snippet table "Table environment" b

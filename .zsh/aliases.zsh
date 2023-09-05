@@ -30,3 +30,5 @@ alias icat="kitty +kitten icat"
 hash -d gwt=~/git-worktrees/smarkets
 hash -d rp=~/repos
 hash -d smk=~/smarkets
+
+eval "$(github-copilot-cli alias -- "$0")"

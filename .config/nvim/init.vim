@@ -139,9 +139,11 @@ noremap <leader>P "*p
 nnoremap mp :!mdtex2pdf % <CR><CR>
 
 " leader x closes the buffer
-nmap <leader>x :bp<bar>sp<bar>bn<bar>bd<CR>
+nmap <leader>x :x<CR>
 " leader q exits
 nmap <leader>q :xa<cr>
+" leader w saves the buffer
+nmap <leader>w :wa<CR>
 
 " CR open/closes folds
 nnoremap <CR> za
@@ -166,6 +168,8 @@ augroup configgroup
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
     autocmd BufEnter Makefile setlocal noexpandtab
     autocmd BufEnter gitcommit, COMMIT_EDITMSG setlocal colorcolumn=80
+    autocmd BufEnter gitcommit, COMMIT_EDITMSG startinsert | normal! gg
+    autocmd FileType gitcommit startinsert | normal! gg
     autocmd BufEnter *.sh setlocal tabstop=2
     autocmd BufEnter *.sh setlocal shiftwidth=2
     autocmd BufEnter *.sh setlocal softtabstop=2
@@ -182,6 +186,24 @@ set backupdir=~/.config/nvim/tmp/backup,~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
+
+"}}}
+" CoC.nvim{{{
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 "}}}
 " TMUX PANE NAVIGATION{{{
@@ -307,7 +329,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 "}}}
 " Goyo{{{
-let g:goyo_width = 100
+let g:goyo_width = 130
 
 "}}}
 " Tagbar {{{
@@ -358,8 +380,8 @@ let g:pandoc#command#latex_engine = 'pdflatex'
 "}}}
 " vimtex{{{
 let g:tex_flavor='latex'
-let g:vimtex_quickfix_mode=0
-let g:tex_conceal='abdmg'
+let g:vimtex_quickfix_mode = 2
+let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_fold_enabled = 1
 let g:vimtex_fold_types = {
       \ 'sections' : {
@@ -401,12 +423,23 @@ let g:vimtex_compiler_latexmk = {
     \ ],
     \}
 
+let g:vimtex_quickfix_ignore_filters = [
+    \ 'Underfull \\hbox',
+    \ 'Overfull \\hbox',
+    \ 'LaTeX Warning: .\+ float specifier changed to',
+    \ 'LaTeX hooks Warning',
+    \ 'Package siunitx Warning: Detected the "physics" package:',
+    \ 'Package hyperref Warning: Token not allowed in a PDF string',
+    \]
+
 " Zotero stuff
 function! ZoteroCite()
   " pick a format based on the filetype (customize at will)
   let format = &filetype =~ '.*tex' ? 'latex&command=citep' : 'pandoc'
   let api_call = 'http://127.0.0.1:23119/better-bibtex/cayw?format='.format.'&brackets=1&minimize=1'
   let ref = system('curl -s '.shellescape(api_call))
+  " Return focus to terminal
+  let unused = system('open -a Alacritty')
   return ref
 endfunction
 
@@ -420,7 +453,7 @@ let g:grammarous#show_first_error = 1
 let g:grammarous#default_comments_only_filetypes = {
             \ '*' : 1, 'help' : 0, 'markdown' : 0, 'tex': 0,
             \ }
-nmap <leader>x <Plug>(grammarous-open-info-window)
+nmap <leader>g <Plug>(grammarous-open-info-window)
 let g:grammarous#hooks = {}
 function! g:grammarous#hooks.on_check(errs) abort
     nmap <buffer><C-n> <Plug>(grammarous-move-to-next-error)
@@ -470,8 +503,13 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'ncm2/float-preview.nvim'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'rhysd/vim-grammarous'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'MunifTanjim/nui.nvim',
+" Plug 'nvim-lua/plenary.nvim',
+" Plug 'nvim-telescope/telescope.nvim'
+" Plug 'jackMort/ChatGPT.nvim'
 
 " navigation
 Plug 'airblade/vim-gitgutter'
@@ -516,6 +554,9 @@ Plug 'neomake/neomake'
 Plug 'norcalli/nvim-colorizer.lua'
 
 call plug#end()
+
+lua require('plugins')
+
 "}}}
 " PLUGINS POST LOAD{{{
 " deoplete{{{
@@ -564,7 +605,7 @@ require"nvim-treesitter.configs".setup {
 EOF
 
 "}}}
-" Tree-sitter{{{
+" Tree-sitter context{{{
 
 lua << EOF
 require'treesitter-context'.setup{
@@ -611,11 +652,16 @@ EOF
 " Colorscheme {{{
 colors solarized8
 
-hi EndOfBuffer guifg=#fdf6e3 guibg=#fdf6e3
-hi VertSplit   guifg=#eee8d5 guibg=#eee8d5
+" hi EndOfBuffer guifg=#fdf6e3 guibg=#fdf6e3
+" hi VertSplit   guifg=#eee8d5 guibg=#eee8d5
 "}}}
 " Colorizer {{{
 " lua require'colorizer'.setup()
+"}}}
+" chatgpt {{{
+" lua << EOF
+" require"chaptgpt".setup()
+" EOF
 "}}}
 " defx-{git|icons|}{{{
 " from https://github.com/taigacute/ThinkVim/blob/master/core/plugins/defx.vim

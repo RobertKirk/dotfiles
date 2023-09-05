@@ -1,13 +1,13 @@
 -- Laptop/Desktop Mode{{{
 laptopMode = #hs.screen.allScreens() == 1
 
-if laptopMode then
-  hyper_mods = {}
-  hyper_key = 90
-else
-  hyper_mods = {}
-  hyper_key = 113
-end
+-- if laptopMode then
+--   hyper_mods = {}
+-- else
+--   hyper_mods = {}
+-- end
+
+hyper_key = 113
 
 -- }}}
 -- App Launching/switching{{{
@@ -34,6 +34,10 @@ config.applications = {
     bundleID = 'org.alacritty',
     hyper_key = 't',
   },
+  ['com.microsoft.VSCode'] = {
+    bundleID = 'com.microsoft.VSCode',
+    hyper_key = 'v',
+  },
   ['com.spotify.client'] = {
     bundleID = 'com.spotify.client',
     hyper_key = 'm'
@@ -46,9 +50,13 @@ config.applications = {
     bundleID = 'com.google.Chrome',
     hyper_key = 'g',
   },
-  ['com.google.calendar'] = {
-    bundleID = 'com.Calendar_(Google)',
-    hyper_key = 'a',
+  -- ['com.Calendar_(Google)'] = {
+  --   bundleID = 'com.Calendar_(Google)',
+  --   hyper_key = 'a',
+  -- },
+  ['com.Chat_GPT'] = {
+    bundleID = 'com.Chat_GPT',
+    hyper_key = 'o',
   },
   ['org.zotero.Zotero'] = {
     bundleID = 'org.zotero.zotero',
@@ -90,6 +98,11 @@ hyper:bind({}, 'tab', function()
 end)
 hyper:bind({"shift"}, 'tab', function()
   hs.osascript("tell application \"Flow\" to previous")
+end)
+
+hyper:bind({""}, 'a', function()
+  --- press ctrl command alt j
+  hs.eventtap.keyStroke({"ctrl", "cmd", "alt"}, "j")
 end)
 
 -- function currentAppFilter (window)
@@ -196,6 +209,8 @@ end)
 -- }}}
 -- Layouts {{{
 
+hs.window.animationDuration = 0
+
 allLayouts = {}
 
 allLayouts['default'] = {
@@ -261,6 +276,32 @@ hyper:bind({"shift"}, "l", applyLayout)
 -- }}}
 -- Window arrangement{{{
 --
+function axHotfix(win)
+  if not win then win = hs.window.frontmostWindow() end
+
+  local axApp = hs.axuielement.applicationElement(win:application())
+  local wasEnhanced = axApp.AXEnhancedUserInterface
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = false
+  end
+
+  return function()
+    if wasEnhanced then
+      axApp.AXEnhancedUserInterface = true
+    end
+  end
+end
+
+function withAxHotfix(fn, position)
+  if not position then position = 1 end
+  return function(...)
+    local args = {...}
+    local revert = axHotfix(args[position])
+    fn(...)
+    revert()
+  end
+end
+
 -- Left Half
 hyper:bind({}, "H", function()
   local win = hs.window.focusedWindow()
@@ -272,7 +313,15 @@ hyper:bind({}, "H", function()
   f.y = max.y
   f.w = max.w / 2
   f.h = max.h
-  win:setFrame(f)
+  local axApp = hs.axuielement.applicationElement(win:application())
+  local wasEnhanced = axApp.AXEnhancedUserInterface
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = false
+  end
+  win:setFrame(f, 0)
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = true
+  end
 end)
 
 -- Right Half
@@ -286,11 +335,19 @@ hyper:bind({}, "L", function()
   f.y = max.y
   f.w = max.w / 2
   f.h = max.h
-  win:setFrame(f)
+  local axApp = hs.axuielement.applicationElement(win:application())
+  local wasEnhanced = axApp.AXEnhancedUserInterface
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = false
+  end
+  win:setFrame(f, 0)
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = true
+  end
 end)
 
 -- Maximise
-hyper:bind({}, "K", function()
+hyper:bind({"cmd"}, "K", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -300,36 +357,140 @@ hyper:bind({}, "K", function()
   f.y = max.y
   f.w = max.w
   f.h = max.h
-  win:setFrame(f)
+  local axApp = hs.axuielement.applicationElement(win:application())
+  local wasEnhanced = axApp.AXEnhancedUserInterface
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = false
+  end
+  win:setFrame(f, 0)
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = true
+  end
 end)
 
--- Small Centred
+-- Middle Half
+hyper:bind({"cmd"}, "J", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = max.y + (max.h /4)
+  f.w = max.w
+  f.h = max.h / 2
+  local axApp = hs.axuielement.applicationElement(win:application())
+  local wasEnhanced = axApp.AXEnhancedUserInterface
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = false
+  end
+  win:setFrame(f, 0)
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = true
+  end
+end)
+
+-- Bottom Half
 hyper:bind({}, "J", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = max.x + (max.w /4)
-  f.y = max.y + (max.h /4)
-  f.w = max.w / 2
+  f.x = max.x
+  f.y = max.y + (max.h /2)
+  f.w = max.w
   f.h = max.h / 2
-  win:setFrame(f)
+  local axApp = hs.axuielement.applicationElement(win:application())
+  local wasEnhanced = axApp.AXEnhancedUserInterface
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = false
+  end
+  win:setFrame(f, 0)
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = true
+  end
 end)
 
--- Moving left and right screens (no point when in laptop mode)
-if not laptopMode then
-  hs.loadSpoon("WindowScreenLeftAndRight")
-  hyper:bind({"cmd"}, 'h', function() spoon.WindowScreenLeftAndRight:oneScreenLeft() end)
-  hyper:bind({"cmd"}, 'l', function() spoon.WindowScreenLeftAndRight:oneScreenRight() end)
+-- Top Half
+hyper:bind({}, "K", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w
+  f.h = max.h / 2
+  local axApp = hs.axuielement.applicationElement(win:application())
+  local wasEnhanced = axApp.AXEnhancedUserInterface
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = false
+  end
+  win:setFrame(f, 0)
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = true
+  end
+end)
+
+-- Moving left and right screens
+hs.loadSpoon("WindowScreenLeftAndRight")
+
+function moveLeft()
+  local win = hs.window.focusedWindow()
+  local axApp = hs.axuielement.applicationElement(win:application())
+  local wasEnhanced = axApp.AXEnhancedUserInterface
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = false
+  end
+  spoon.WindowScreenLeftAndRight:oneScreenLeft()
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = true
+  end
 end
+
+function moveRight()
+  local win = hs.window.focusedWindow()
+  local axApp = hs.axuielement.applicationElement(win:application())
+  local wasEnhanced = axApp.AXEnhancedUserInterface
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = false
+  end
+  spoon.WindowScreenLeftAndRight:oneScreenRight()
+  if wasEnhanced then
+    axApp.AXEnhancedUserInterface = true
+  end
+end
+hyper:bind({"cmd"}, 'h', moveLeft)
+hyper:bind({"cmd"}, 'l', moveRight)
+
+spoon.WindowScreenLeftAndRight.animationDuration = 0
+
 ---}}}
 -- KSheet{{{
 hs.loadSpoon("KSheet")
-hyper:bind({}, "v", function()
+hyper:bind({"cmd"}, "v", function()
   spoon.KSheet:toggle()
 end)
 -- spoon.KSheet:bindHotkeys({toggle = {{"cmd", "alt", "shift"}, "K"}})
+
+-- }}}
+-- VimMode{{{
+local VimMode = hs.loadSpoon('VimMode')
+local vim = VimMode:new()
+
+vim
+  :disableForApp('Code')
+  :disableForApp('MacVim')
+  :disableForApp('zoom.us')
+  :disableForApp('Alacritty')
+  :disableForApp('Roam Research')
+  :disableForApp('Google Chrome')
+  :enterWithSequence('jk')
+
+vim:enableBetaFeature('block_cursor_overlay')
+vim:shouldDimScreenInNormalMode(false)
 
 -- }}}
 -- HSearch{{{
@@ -337,6 +498,36 @@ hs.loadSpoon("HSearch")
 
 hyper:bind({}, "u", function()
   spoon.HSearch:toggleShow()
+end)
+
+-- }}}
+-- Hints{{{
+hyper:bind({"shift"}, "f", function()
+  hs.hints.windowHints()
+end)
+
+-- }}}
+-- Fullscreen{{{
+hyper:bind({"shift"}, "f", function()
+  local win = hs.window.focusedWindow()
+  win:setFullScreen(not win:isFullScreen())
+end)
+
+-- }}}
+-- Mouse Hover over menu bar{{{
+
+local mousePosition = nil
+
+hyper:bind({"shift"}, "m", function()
+  -- If mousePosition is nill, move mouse to top right, else move to mousePosition and set it to nill
+  local currentPosition = hs.mouse.getRelativePosition()
+  if mousePosition == nil and currentPosition.x == 0 and currentPosition.y == 0 then
+    mousePosition = hs.mouse.getRelativePosition()
+    hs.mouse.setRelativePosition({x=0, y=0})
+  else
+    hs.mouse.setRelativePosition(mousePosition)
+    mousePosition = nil
+  end
 end)
 
 -- }}}

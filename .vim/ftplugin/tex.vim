@@ -12,3 +12,5 @@ function CR()
     return "\r"
 endfunction
 inoremap <expr><buffer> <CR> CR()
+
+let b:ale_linters = {'tex': ['chktex']}

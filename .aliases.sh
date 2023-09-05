@@ -22,6 +22,7 @@ alias gupdb='git fetch origin master:master && git rebase master'
 alias :x='exit'
 alias :q='exit'
 alias vim='nvim'
+alias pdb='python -m pdb'
 
 unalias gd
 gd() {

@@ -21,6 +21,8 @@ window:
     columns: 0
     lines: 0
 
+  opacity : 1.0
+
 # Allow terminal applications to change Alacritty's window title.
   dynamic_title: true
 
@@ -52,7 +54,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  decorations: full
+  decorations: buttonless
 
   # Startup Mode (changes require restart)
   #
@@ -70,6 +72,9 @@ window:
 
   # Window class (Linux only):
   class: alacritty
+
+  # Send ESC (\x1b) before characters when alt is pressed.
+  alt_send_esc: false
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -280,13 +285,6 @@ bell:
   duration: 0
   color: '0xffffff'
 
-# Background opacity
-#
-# Window opacity as a floating point number from `0.0` to `1.0`.
-# The value `0.0` is completely transparent and `1.0` is opaque.
-window:
-  opacity : 1.0
-
 # Mouse bindings
 #
 # Available fields:
@@ -392,9 +390,6 @@ working_directory: None
 # Alacritty will fall back to the WinPTY automatically if the ConPTY
 # backend cannot be initialized.
 enable_experimental_conpty_backend: false
-
-# Send ESC (\x1b) before characters when alt is pressed.
-alt_send_esc: false
 
 debug:
   # Display the time it takes to redraw each frame.
@@ -584,6 +579,7 @@ key_bindings:
   - { key: Key9,      mods: Alt,       chars: "\x1b9"                       }
   - { key: Key0,      mods: Alt,       chars: "\x1b0"                       }
   - { key: Space,     mods: Control,   chars: "\x00"                        } # Ctrl + Space
+  - { key: Return,    mods: Control,   chars: "\x00"                        } # Ctrl + Enter
   - { key: Grave,     mods: Alt,       chars: "\x1b`"                       } # Alt + `
   - { key: Grave,     mods: Alt|Shift, chars: "\x1b~"                       } # Alt + ~
   - { key: Period,    mods: Alt,       chars: "\x1b."                       } # Alt + .
@@ -628,6 +624,8 @@ key_bindings:
   - { key: Right,    mods: Alt,     chars: "\x1b[1;3C"                       }
   - { key: Right,                   chars: "\x1b[C",        mode: ~AppCursor }
   - { key: Right,                   chars: "\x1bOC",        mode: AppCursor  }
+  - { key: Left,     mods: Alt|Super,   chars: "\x1b[1;7D"                   }
+  - { key: Right,    mods: Alt|Super,   chars: "\x1b[1;7C"                   }
   - { key: Up,       mods: Shift,   chars: "\x1b[1;2A"                       }
   - { key: Up,       mods: Control, chars: "\x1b[1;5A"                       }
   - { key: Up,       mods: Alt,     chars: "\x1b[1;3A"                       }
